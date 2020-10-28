@@ -5,7 +5,7 @@ export class PostPage extends Component {
     render() {
         return (
             <div>
-                <p>hey</p>
+                <p>Welcome to the Post Page!</p>
             </div>
         )
     }

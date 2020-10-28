@@ -5,7 +5,7 @@ export class LandingPage extends Component {
     render() {
         return (
             <div>
-                <p>hello</p>
+                <p>Welcome to the Landing Page!</p>
             </div>
         )
     }

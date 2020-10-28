@@ -5,7 +5,7 @@ export class FinderPage extends Component {
     render() {
         return (
             <div>
-                <p>hi</p>
+                <p>Welcome to the Finding Page!</p>
             </div>
         )
     }
