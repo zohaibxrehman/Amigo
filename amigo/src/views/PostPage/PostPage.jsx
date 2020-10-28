@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './PostPage.css'
 
 export class PostPage extends Component {
     render() {

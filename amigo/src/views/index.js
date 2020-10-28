@@ -1,3 +1,3 @@
-export {default as FinderPage} from './FinderPage'
-export {default as LandingPage} from './LandingPage'
-export {default as PostPage} from './PostPage'
+export {default as FinderPage} from './FinderPage/FinderPage'
+export {default as LandingPage} from './LandingPage/LandingPage'
+export {default as PostPage} from './PostPage/PostPage'

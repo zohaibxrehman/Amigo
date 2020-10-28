@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './FinderPage.css'
 
 export class FinderPage extends Component {
     render() {
