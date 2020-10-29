@@ -15,6 +15,7 @@
 }
 
 .userPhoto {
+    object-fit: cover;
     width: 300px;
     height: 250px;
     border-radius: 3%;
