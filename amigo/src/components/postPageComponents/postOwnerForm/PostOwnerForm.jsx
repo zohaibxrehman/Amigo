@@ -5,7 +5,6 @@ export class PostOwnerForm extends Component {
     render() {
         return (
             <div id="postForm">
-            
                <form action="">
                    <input type="text" placeholder="Name"/><br/>
                    <input type="text" placeholder="Phone"/><br/>
