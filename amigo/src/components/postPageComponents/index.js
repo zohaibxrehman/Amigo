@@ -1,2 +1,3 @@
 export {default as PostHeader} from './PostHeader/PostHeader'
 export {default as PostImage} from './PostImage/PostImage'
+export {default as PostOwnerForm} from './postOwnerForm/PostOwnerForm'

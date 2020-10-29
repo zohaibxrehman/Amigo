@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import './PostPage.css'
-import { PostHeader, PostImage } from "../../components/postPageComponents/index.js"
+import { PostHeader, PostImage, PostOwnerForm } from "../../components/postPageComponents/index.js"
 
 export class PostPage extends Component {
     render() {
         return (
             <div>
                 <PostHeader />,
-                <PostImage />
+                <PostImage />,
+                <PostOwnerForm />
             </div>
         )
     }
