@@ -17,11 +17,6 @@ export class Posts extends Component {
                         <td className='postWrap'><Post /></td>
                         <td className='postWrap'><Post /></td>
                     </tr>
-                    <tr>
-                        <td className='postWrap'><Post /></td>
-                        <td className='postWrap'><Post /></td>
-                        <td className='postWrap'><Post /></td>
-                    </tr>
                 </table>
             </div>
         )
