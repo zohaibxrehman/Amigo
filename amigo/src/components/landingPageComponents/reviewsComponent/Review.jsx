@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
-import ProfilePhoto from '../../../assets/ProfilePhoto.jpeg'
+// import ProfilePhoto from '../../../assets/ProfilePhoto.jpeg'
 import './Review.css'
 
 class Review extends Component {
-    state = {  }
+    state = { 
+
+     }
     render() { 
+        const {userPhoto, userName, location, review} = this.props.userInfo
         return ( 
+
             <div className='reviewContainer'>
                 <div>
                     <p className='reviewText'>
-                    “Certe, inquam, pertinax non existimant oportere exquisitis rationibus conquisitis de quo enim ipsam. Torquem detraxit hosti et quidem faciunt, ut aut.” 
+                    “{review}” 
                     </p>
                 </div>
                 <div className="userInfo">
-                    <img src= { ProfilePhoto } className='profilePhoto' alt='' />
-                    <p className="personName">Lara Madrigal</p>
-                    <p className='personOccupation'>Student</p>
+                    <img src= { userPhoto } className='profilePhoto' alt='' />
+                    <p className="personName">{ userName }</p>
+                    <p className='personOccupation'>{ location }</p>
                 </div>
+                
             </div>
-
-
 
          );
     }
