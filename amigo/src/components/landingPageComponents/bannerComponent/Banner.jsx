@@ -7,10 +7,20 @@ class Banner extends Component {
         return (
         <div className='bgImage'>
             {/* Add NavBar Here. */}
-            <h1 className='bannerTextHeader'>Find your next roommate!</h1>
-            <p className='bannerText'>
-                Torquatos nostros? quos dolores eos, qui dolorem ipsum per se texit, ne ferae quidem se repellere, idque instituit docere sic: omne animal, simul atque integre iudicante itaque aiunt hanc quasi involuta aperiri, altera occulta quaedam et voluptatem accusantium doloremque.
-            </p>
+            <div>
+                <h1 className='bannerTextHeader'>Find your next roommate!</h1>
+                <p className='bannerText'>
+                    Torquatos nostros? quos dolores eos, qui dolorem ipsum per se texit, ne ferae quidem se repellere, idque instituit docere sic: omne animal, simul atque integre iudicante itaque aiunt hanc quasi involuta aperiri, altera occulta quaedam et voluptatem accusantium doloremque.
+                </p>
+            </div>
+            <div className='seeAllListingsContainer'>
+                <div className='seeAllListingsSubContainer'>
+                    <span className='listingText'>See all postings</span> 
+
+                </div>
+
+            </div>
+
         </div>
         );
     }

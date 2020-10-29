@@ -2,7 +2,7 @@
 	position: absolute;
 	left: 7.5%;
 	right: 62.64%;
-	top: 11.5%;
+	top: 350px;
 	bottom: 81.87%;
 
 	font-family: DM Sans;
@@ -14,12 +14,13 @@
 
 	letter-spacing: -0.502564px;
 
-	color: black;
+	color: white;
 
 	mix-blend-mode: normal;
-	opacity: 0.6;
+	opacity: 0.8;
 }
 .bannerTextHeader {
+	position: absolute;
 	width: 756px;
 	height: 233px;
 	left: 95px;
@@ -34,12 +35,47 @@
 
 	letter-spacing: -2.01026px;
 
-	color: black;
+	color: white;
 }
 
 .bgImage {
+	position: absolute;
 	height: 100vh;
 	width: 100vw;
 	background-size: cover;
 	background-image: url(../../../assets/houseBanner.jpg);
+}
+
+.seeAllListingsContainer {
+	position: absolute;
+	width: 338.03px;
+	height: 75px;
+	left: 964px;
+	top: 738px;
+	background: #ffffff;
+}
+
+.seeAllListingsSubContainer {
+	position: absolute;
+	width: 311px;
+	height: 48.15px;
+	left: 991px;
+	top: 751.46px;
+}
+
+.listingText {
+	position: absolute;
+	height: 31px;
+	left: 0%;
+	right: -12.63%;
+	top: calc(50% - 31px / 2 + 1.43px);
+
+	font-family: DM Sans;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 24px;
+	line-height: 31px;
+	letter-spacing: -0.502564px;
+
+	color: #151801;
 }
