@@ -4,13 +4,14 @@ import './PostOwnerForm.css'
 export class PostOwnerForm extends Component {
     render() {
         return (
-            <div >
+            <div id="postForm">
             
                <form action="">
                    <input type="text" placeholder="Name"/><br/>
                    <input type="text" placeholder="Phone"/><br/>
                    <input type="text" placeholder="Email"/><br/>
-                   <textarea name="" id="" cols="30" rows="10" placeholder="Hello, I am interested in.."></textarea><br/>
+                   <input type="text" id="textarea" placeholder="Hello, I am interested in.." /><br/>
+                   <input type="submit" value="Contact" />
                </form>
             </div>
         )

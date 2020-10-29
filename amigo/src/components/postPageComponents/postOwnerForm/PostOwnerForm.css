@@ -1,0 +1,21 @@
+#postForm {
+    background-color: white;
+    width: 40%;
+    margin: 20px;
+    padding-top: 15px;
+    text-align: center;
+}
+
+#postForm input {
+    padding: 15px;
+    margin-bottom: 10px;
+    width: 70%;
+}
+
+#textarea {
+    height: 80px;
+}
+#postForm input[type="submit"] {
+    background-color: black;
+    color: white;
+}
