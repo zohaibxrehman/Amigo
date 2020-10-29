@@ -1,1 +1,3 @@
-// import components
+// export components
+export {default as Filter} from './Filter/Filter'
+export {default as Posts} from './Posts/Posts'
