@@ -11,7 +11,7 @@ class Motto extends Component {
         return ( 
             <div className='ContainerProp'>
             <div >
-                <img src={mottoImg} className='roommatesImage' />
+                <img src={mottoImg} className='roommatesImage' alt='motto'/>
             </div>
             <div className='mottoText'>
                <MottoText />
