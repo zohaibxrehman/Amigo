@@ -1,0 +1,45 @@
+.bannerText {
+	position: absolute;
+	left: 7.5%;
+	right: 62.64%;
+	top: 11.5%;
+	bottom: 81.87%;
+
+	font-family: DM Sans;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	line-height: 28px;
+	/* or 140% */
+
+	letter-spacing: -0.502564px;
+
+	color: black;
+
+	mix-blend-mode: normal;
+	opacity: 0.6;
+}
+.bannerTextHeader {
+	width: 756px;
+	height: 233px;
+	left: 95px;
+	top: 133px;
+
+	font-family: DM Sans;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 80px;
+	line-height: 80px;
+	/* or 100% */
+
+	letter-spacing: -2.01026px;
+
+	color: black;
+}
+
+.bgImage {
+	height: 100vh;
+	width: 100vw;
+	background-size: cover;
+	background-image: url(../../../assets/houseBanner.jpg);
+}
