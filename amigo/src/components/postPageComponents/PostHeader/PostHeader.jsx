@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './PostHeader.css'
 
 class PostHeader extends Component {
     render() {
