@@ -1,27 +1,20 @@
 #postHeader {
-	padding: 5px;
+	padding: 30px;
 	background-color: black;
 }
 
 #postHeader ul {
 	margin: 0px;
-	padding: 3px;
-	
-	/* Add properties below */
-	margin-left: 390px;
+    text-align: center;
 	
 }
 
 #postHeader ul li {
 	margin-right: 20px;
-	font-weight: bold;
+    font-weight: bold;
+    font-size: 25px;
 	list-style: none; /* Gets rid of list bullet points */
-    text-align: center;
     color:white;
-	
-	/* Add a proper display property: We want the stats to have 
-	a height, but also appear side-by-side */
-
 	display: inline-block;
 		
 }
