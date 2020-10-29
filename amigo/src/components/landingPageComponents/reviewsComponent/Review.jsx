@@ -13,7 +13,7 @@ class Review extends Component {
                     </p>
                 </div>
                 <div className="userInfo">
-                    <img src= { ProfilePhoto } className='profilePhoto' />
+                    <img src= { ProfilePhoto } className='profilePhoto' alt='' />
                     <p className="personName">Lara Madrigal</p>
                     <p className='personOccupation'>Student</p>
                 </div>
