@@ -7,7 +7,21 @@ export class Posts extends Component {
         return (
             <div>
                 <table>
-                    
+                    <tr>
+                        <td><Post /></td>
+                        <td><Post /></td>
+                        <td><Post /></td>
+                    </tr>
+                    <tr>
+                        <td><Post /></td>
+                        <td><Post /></td>
+                        <td><Post /></td>
+                    </tr>
+                    <tr>
+                        <td><Post /></td>
+                        <td><Post /></td>
+                        <td><Post /></td>
+                    </tr>
                 </table>
             </div>
         )
