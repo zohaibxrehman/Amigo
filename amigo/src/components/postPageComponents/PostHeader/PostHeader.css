@@ -1,0 +1,21 @@
+#postHeader {
+	padding: 30px;
+	background-color: black;
+}
+
+#postHeader ul {
+	margin: 0px;
+    text-align: center;
+	
+}
+
+#postHeader ul li {
+	margin-right: 20px;
+    font-weight: bold;
+    font-size: 25px;
+	list-style: none; /* Gets rid of list bullet points */
+    color:white;
+	display: inline-block;
+		
+}
+
