@@ -3,15 +3,15 @@ import './LandingPage.css'
 import '../../components/landingPageComponents/bannerComponent/Banner'
 import Banner from '../../components/landingPageComponents/bannerComponent/Banner'
 import Motto from '../../components/landingPageComponents/mottoComponent/Motto'
-import Review from '../../components/landingPageComponents/reviewsComponent/Review'
+import Reviews from '../../components/landingPageComponents/reviewsComponent/Reviews'
 
 export class LandingPage extends Component {
     render() {
         return (
-            <div>
+            <div className="LandingPageStyle">
                 <Banner />
                 <Motto />
-                <Review />
+                <Reviews />
 
             </div>
         )
