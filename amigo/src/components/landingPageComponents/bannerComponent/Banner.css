@@ -41,7 +41,7 @@
 .bgImage {
 	position: relative;
 	height: 100vh;
-	width: 100%;
+	width: 100vw;
 	background-size: cover;
 	background-image: linear-gradient(
 			198.73deg,
@@ -52,11 +52,12 @@
 }
 
 .seeAllListingsButton {
-	position: absolute;
-	width: 338.03px;
-	height: 75px;
-	left: 964px;
-	top: 738px;
+	float: right;
+	width: 20vw;
+	height: 10vh;
+	/* left: 964px; */
+	margin-top: 75vh;
+	margin-right: 10%;
 	background: #ffffff;
 	font-family: DM Sans;
 	font-style: normal;

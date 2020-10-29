@@ -8,7 +8,7 @@ import Review from '../../components/landingPageComponents/reviewsComponent/Revi
 export class LandingPage extends Component {
     render() {
         return (
-            <div>
+            <div className="LandingPageStyle">
                 <Banner />
                 <Motto />
                 <Review />
