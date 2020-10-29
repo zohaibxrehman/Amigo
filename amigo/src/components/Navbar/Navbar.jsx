@@ -6,12 +6,12 @@ export class Navbar extends Component {
     render() {
         return (
             <div className="navbar">
-                <img className='logo' src={logo}></img>
+                <img className='logo' src={logo} alt='logo'></img>
                 <p className='logoName'>Amigo</p>
-                <a href="#">Contact</a>
-                <a href="#">About Us</a>
-                <a className="active" href="#">Posting</a>
-                <a href="#home">Home</a>
+                <a href='mailto: zohaibxrehman@gmail.com'>Contact</a>
+                <a href="/">About Us</a>
+                <a className="active" href="/finder">Posting</a>
+                <a href="/">Home</a>
             </div>
         )
     }
