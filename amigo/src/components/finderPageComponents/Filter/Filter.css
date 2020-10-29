@@ -1,1 +1,25 @@
+.roomHeading {
+    font-size: 40px;
+    float: left;
+}
 
+.postButton {
+    background-color: #ffac12;
+    height: 40px;
+    width: 140px;
+    margin-top: 37px;
+    margin-left: 70px;
+    float: right;
+}
+
+.filter {
+    height: 75px;
+    width: 900px;
+    background-color: white;
+    border: 1px solid grey;
+    border-radius: 10%;
+}
+
+.filterItem {
+    border-right: 1px solid black;
+}
