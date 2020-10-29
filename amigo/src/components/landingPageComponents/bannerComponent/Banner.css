@@ -1,6 +1,6 @@
 .bannerText {
 	position: absolute;
-	left: 7.5%;
+	left: 95px;
 	right: 62.64%;
 	top: 350px;
 	bottom: 81.87%;
@@ -17,7 +17,7 @@
 	color: white;
 
 	mix-blend-mode: normal;
-	opacity: 0.8;
+	opacity: 0.6;
 }
 .bannerTextHeader {
 	position: absolute;
@@ -43,39 +43,26 @@
 	height: 100vh;
 	width: 100vw;
 	background-size: cover;
-	background-image: url(../../../assets/houseBanner.jpg);
+	background-image: linear-gradient(
+			198.73deg,
+			rgba(0, 0, 0, 0.0001) 15.31%,
+			rgba(0, 0, 0, 0.837986) 67.37%
+		),
+		url(../../../assets/houseBanner.jpg);
 }
 
-.seeAllListingsContainer {
+.seeAllListingsButton {
 	position: absolute;
 	width: 338.03px;
 	height: 75px;
 	left: 964px;
 	top: 738px;
 	background: #ffffff;
-}
-
-.seeAllListingsSubContainer {
-	position: absolute;
-	width: 311px;
-	height: 48.15px;
-	left: 991px;
-	top: 751.46px;
-}
-
-.listingText {
-	position: absolute;
-	height: 31px;
-	left: 0%;
-	right: -12.63%;
-	top: calc(50% - 31px / 2 + 1.43px);
-
 	font-family: DM Sans;
 	font-style: normal;
 	font-weight: bold;
 	font-size: 24px;
 	line-height: 31px;
 	letter-spacing: -0.502564px;
-
 	color: #151801;
 }
