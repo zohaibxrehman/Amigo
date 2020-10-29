@@ -1,8 +1,11 @@
 #postPhoto {
-    margin: 30px 25px 25px 50px;
+    width: 55%;
+    float: left;
+    margin: 50px 40px 25px 100px;
+    text-align: center;
 }
 
 #postPhoto img {
-    width: 60%;
+    width: 100%;
     border-radius: 5px 50px 5px 5px;
 }

@@ -5,10 +5,12 @@ import { PostHeader, PostImage, PostOwnerForm } from "../../components/postPageC
 export class PostPage extends Component {
     render() {
         return (
-            <div>
+            <div >
                 <PostHeader />
-                <PostImage />
-                <PostOwnerForm />
+                <div id="check">
+                    <PostImage />
+                    <PostOwnerForm />
+                </div>
             </div>
         )
     }
