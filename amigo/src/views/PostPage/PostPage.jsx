@@ -6,8 +6,8 @@ export class PostPage extends Component {
     render() {
         return (
             <div>
-                <PostHeader />,
-                <PostImage />,
+                <PostHeader />
+                <PostImage />
                 <PostOwnerForm />
             </div>
         )
