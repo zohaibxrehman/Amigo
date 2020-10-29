@@ -30,3 +30,8 @@
     margin-top: 0px;
     font-size: 22px;
 }
+
+a {
+    text-decoration: none;
+    color: black;
+}
