@@ -5,7 +5,7 @@ import {Filter, Posts} from '../../components/finderPageComponents/index.js'
 export class FinderPage extends Component {
     render() {
         return (
-            <div>
+            <div className='finder'>
                 <Filter />
                 <Posts />
             </div>

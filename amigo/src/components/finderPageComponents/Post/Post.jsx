@@ -7,9 +7,11 @@ export class Post extends Component {
         return (
             <div className='post'>
                 <img className='userPhoto' src={userPhoto}></img>
-                <h3>Vishnu Varma, 19</h3>
-                <small>UofT | Toronto</small>
-                <p>Seeking 2 roomates, preferably UofT students</p>
+                <div className='postDesc'>
+                    <h3 className='userName'>Vishnu Varma, 19</h3>
+                    <small className='location'>UofT | Toronto</small>
+                    <p>Seeking 2 roomates, preferably UofT students</p>
+                </div>
             </div>
         )
     }

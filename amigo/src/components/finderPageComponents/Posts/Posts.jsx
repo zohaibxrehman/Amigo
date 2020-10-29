@@ -6,21 +6,21 @@ export class Posts extends Component {
     render() {
         return (
             <div>
-                <table>
+                <table className='postTable'>
                     <tr>
-                        <td><Post /></td>
-                        <td><Post /></td>
-                        <td><Post /></td>
+                        <td className='postWrap'><Post /></td>
+                        <td className='postWrap'><Post /></td>
+                        <td className='postWrap'><Post /></td>
                     </tr>
                     <tr>
-                        <td><Post /></td>
-                        <td><Post /></td>
-                        <td><Post /></td>
+                        <td className='postWrap'><Post /></td>
+                        <td className='postWrap'><Post /></td>
+                        <td className='postWrap'><Post /></td>
                     </tr>
                     <tr>
-                        <td><Post /></td>
-                        <td><Post /></td>
-                        <td><Post /></td>
+                        <td className='postWrap'><Post /></td>
+                        <td className='postWrap'><Post /></td>
+                        <td className='postWrap'><Post /></td>
                     </tr>
                 </table>
             </div>
