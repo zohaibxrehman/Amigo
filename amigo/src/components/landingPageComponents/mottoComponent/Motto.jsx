@@ -4,7 +4,16 @@ class Motto extends Component {
     state = {  }
     render() { 
         return ( 
-            
+            <div>
+                <div  className='roommatesImage'>
+
+                </div>
+
+
+
+
+
+            </div>
 
 
 

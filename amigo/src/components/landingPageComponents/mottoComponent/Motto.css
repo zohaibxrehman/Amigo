@@ -1,0 +1,11 @@
+.roommatesImage {
+	position: absolute;
+	width: 704px;
+	height: 657px;
+	left: 0px;
+	top: 1000px;
+
+	background: url(../../../assets/motto.jpg);
+	filter: drop-shadow(0px 62px 54px rgba(0, 0, 0, 0.3));
+	border-radius: 0px 57px 0px 0px;
+}
