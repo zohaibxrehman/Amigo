@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './FinderPage.css'
 import { Filter, Posts } from '../../components/finderPageComponents/index.js'
-import { Map } from '../../components/mapComponents/Map/Map'
+import { MapFinder } from '../../components/mapComponents/MapFinder/MapFinder'
 
 export class FinderPage extends Component {
     constructor() {
@@ -26,7 +26,7 @@ export class FinderPage extends Component {
             <div className='finder'>
                 <button onClick={()=> this.changeView()} />
                 <Filter />
-                {view==='map' && <Map />}
+                {view==='map' && <MapFinder />}
                 {view==='list' && <Posts />}
             </div>
         )
