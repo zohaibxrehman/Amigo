@@ -6,7 +6,10 @@ class PostNotification extends Component {
     render() {
         return (
             <div id="postNotification">
-                HI
+                <h3>Seeking a roommate for 2bd apartment</h3>
+                <div>
+                    Post created: December 23,2018
+                </div>
             </div>
         )
     }
