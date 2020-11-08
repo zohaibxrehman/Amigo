@@ -1,0 +1,24 @@
+#requirement {
+    width: 53%;
+    float: left;
+    background-color: white;
+    margin: 10px 40px 25px 100px;
+    border-radius: 25px;
+    padding: 40px;
+}
+
+hr {
+    border-top: 1px solid #d3d3d3;
+}
+
+#requirement ul li {
+    list-style: none; /* Gets rid of list bullet points */
+    margin: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+	padding-left: 20px;
+	padding-right: 60px;
+    display: inline-block;
+		
+}
+
