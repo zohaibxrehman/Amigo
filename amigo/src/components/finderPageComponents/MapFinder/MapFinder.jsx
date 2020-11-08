@@ -31,7 +31,8 @@ export class MapFinder extends Component {
                 {posts.map((post, postIdx) => {
                     const icon = new Icon({
                         iconUrl: post.userPhoto,
-                        iconSize: [40, 40]
+                        iconSize: [40, 40],
+                        radius: '50'
                     });
                     return (
                         <Marker
