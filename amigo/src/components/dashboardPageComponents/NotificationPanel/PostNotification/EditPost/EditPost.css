@@ -1,0 +1,20 @@
+#editPost ul {
+    margin-top: 25px;
+}
+
+#editPost ul li {
+    margin: 5px;
+    display: inline-block;
+    list-style: none; /* Gets rid of list bullet points */		
+}
+
+.img-decoration {
+    width: 15px;
+}
+
+#postInfo {
+    padding: 10px;
+    background-color: limegreen;
+    color: white;
+    border-radius: 10px;
+}
