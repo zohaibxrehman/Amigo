@@ -3,7 +3,8 @@ h2 {
 }
 
 #userPanel {
-    width: 30%;
+    float: left;
+    width: 25%;
     margin: 20px;
     padding: 25px;
     border-radius: 10px;

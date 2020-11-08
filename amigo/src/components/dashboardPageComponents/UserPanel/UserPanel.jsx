@@ -11,16 +11,16 @@ class UserPanel extends Component {
                 <UserProfile />
                 <ul>
                     <li>
-
-                    </li>
-                    <li>
-
-                    </li>
-                    <li>
-
-                    </li>
-                    <li>
                         
+                    </li>
+                    <li>
+
+                    </li>
+                    <li>
+
+                    </li>
+                    <li>
+
                     </li>
                 </ul>
             </div>

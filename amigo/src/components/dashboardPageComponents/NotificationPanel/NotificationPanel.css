@@ -1,0 +1,13 @@
+h2 {
+    color: orange;
+}
+
+#notificationPanel {
+    float: left;
+    width: 60%;
+    margin: 20px 0px;
+    padding: 25px;
+    border-radius: 10px;
+	background-color: white;
+}
+
