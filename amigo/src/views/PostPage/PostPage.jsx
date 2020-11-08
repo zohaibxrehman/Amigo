@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './PostPage.css'
-import { PostHeader, PostImage, PostOwnerForm, PostDescription } from "../../components/postPageComponents/index.js"
+import { PostHeader, PostImage, PostOwnerForm, PostDescription, PostRequirement } from "../../components/postPageComponents/index.js"
 
 export class PostPage extends Component {
     render() {
@@ -10,6 +10,7 @@ export class PostPage extends Component {
                 <PostImage />
                 <PostOwnerForm />
                 <PostDescription />
+                <PostRequirement />
             </div>
         )
     }
