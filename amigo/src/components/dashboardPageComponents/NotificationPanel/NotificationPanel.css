@@ -4,10 +4,15 @@ h2 {
 
 #notificationPanel {
     float: left;
-    width: 60%;
+    width: 55%;
     margin: 20px 0px;
     padding: 25px;
     border-radius: 10px;
 	background-color: white;
+}
+
+.textTheme {
+    color: orange;
+    text-align: center;
 }
 

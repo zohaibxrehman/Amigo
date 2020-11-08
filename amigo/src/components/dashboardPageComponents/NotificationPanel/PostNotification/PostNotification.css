@@ -9,5 +9,8 @@
 #postNotification .spaceBtw {
     justify-content: space-between;
     display: flex;
+}
+
+#postNotification .spaceBtw span {
     color: grey;
 }

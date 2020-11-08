@@ -12,6 +12,9 @@ class NotificationPanel extends Component {
                 <PostNotification />
                 <PostNotification />
                 <PostNotification />
+                <p className="textTheme">
+                    <strong>Show more</strong>
+                </p>
             </div>
         )
     }

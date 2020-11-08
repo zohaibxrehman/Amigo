@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './PostNotification.css'
 import userPhoto from '../../../../assets/ProfilePhoto.jpeg'
 import UserProfile from '../../UserPanel/UserProfile/UserProfile'
+import EditPost from './EditPost/EditPost'
 
 class PostNotification extends Component {
     render() {
@@ -16,8 +17,9 @@ class PostNotification extends Component {
                         Post Activity
                     </span>
                 </div>
-                <p>
+                <p className="spaceBtw">
                     <UserProfile />
+                    <EditPost />
                 </p>
             </div>
         )
