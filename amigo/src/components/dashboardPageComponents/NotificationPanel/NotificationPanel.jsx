@@ -9,6 +9,9 @@ class NotificationPanel extends Component {
                 <h2>Notifications</h2>
                 <hr/>
                 <PostNotification />
+                <PostNotification />
+                <PostNotification />
+                <PostNotification />
             </div>
         )
     }

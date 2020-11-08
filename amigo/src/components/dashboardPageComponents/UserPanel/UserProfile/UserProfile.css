@@ -1,3 +1,7 @@
+#email{
+    color: grey;
+}
+
 #userProfile {
     margin-top: 20px;
 }
@@ -26,7 +30,6 @@
 
 #userProfile ul li li {
 	list-style: none; /* Gets rid of list bullet points */
-    color:black;
 	display: block;
 		
 }
