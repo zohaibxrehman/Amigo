@@ -1,15 +1,16 @@
 
 import React, { Component } from 'react';
-import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+// import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './Login.css'
 
 class Login extends Component {
+
+
+    
     state = {  }
     render() { 
         return (
             <form>
-            <h3>Sign In</h3>
-
             <div className="form-group">
                 <label>Email address</label>
                 <input type="email" className="form-control" placeholder="Enter email" />
@@ -20,7 +21,7 @@ class Login extends Component {
                 <input type="password" className="form-control" placeholder="Enter password" />
             </div>
 
-            <button type="submit" className="btn btn-primary btn-block">Submit</button>
+            <button type="submit" className="btn btn-warning btn-block">Submit</button>
             <p className="forgotPass text-right">
                 Forgot <a href="#">password?</a>
             </p>
