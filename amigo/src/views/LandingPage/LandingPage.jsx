@@ -10,8 +10,11 @@ export class LandingPage extends Component {
         return (
             <div className="LandingPageStyle">
                 <Banner />
+                <div className='middleSection'>
                 <Motto />
                 <Reviews />
+                </div>
+
 
             </div>
         )
