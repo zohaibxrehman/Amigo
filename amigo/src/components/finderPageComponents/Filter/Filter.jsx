@@ -3,6 +3,7 @@ import './Filter.css'
 
 export class Filter extends Component {
     render() {
+        const { changeView } = this.props
         return (
             <div>
                 <div>
@@ -55,6 +56,9 @@ export class Filter extends Component {
                                 <option value="">$2000-$3000</option>
                                 <option value="">$3000+</option>
                             </select>
+                        </td>
+                        <td className='filterItem'>
+                            <button onClick={()=>changeView()}>Change View</button>
                         </td>
                     </tr>
                 </table>

@@ -23,8 +23,7 @@ export class FinderPage extends Component {
         const { view } = this.state
         return (
             <div className='finder'>
-                <button onClick={()=> this.changeView()} />
-                <Filter />
+                <Filter changeView={() => this.changeView()} />
                 {view==='map' && <MapFinder />}
                 {view==='list' && <Posts />}
             </div>
