@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
-import { FinderPage, LandingPage, PostPage, LoginPage } from "./views/index.js";
+import { FinderPage, LandingPage, PostPage, LoginPage, MakePostPage, DashboardPage } from "./views/index.js";
 import Navbar from './components/Navbar/Navbar';
 import './App.css'
 
@@ -20,7 +20,10 @@ export class App extends Component {
                             (<FinderPage />)}/>
             <Route exact path='/post' render={() => 
                             (<PostPage />)}/>
-
+            <Route exact path='/dashboard' render={() => 
+                            (<DashboardPage />)}/>
+            <Route exact path='/makepost' render={() => 
+                (<MakePostPage />)}/>
           </Switch>
         </BrowserRouter>       
       </div>
