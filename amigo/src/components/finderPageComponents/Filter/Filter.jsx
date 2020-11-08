@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './Filter.css'
+import mapIcon from '../../../assets/map-icon.png'
 
 export class Filter extends Component {
     render() {
@@ -58,7 +59,7 @@ export class Filter extends Component {
                             </select>
                         </td>
                         <td className='filterItem'>
-                            <button onClick={()=>changeView()}>Change View</button>
+                            <input type="image" src={mapIcon} onClick={()=>changeView()} />
                         </td>
                     </tr>
                 </table>
