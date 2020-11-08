@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+// import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './SignUp.css'
 
 class SignUp extends Component {
@@ -7,7 +7,6 @@ class SignUp extends Component {
     render() { 
         return ( 
             <form>
-                <h3>Sign Up</h3>
 
                 <div className="form-group">
                     <label>First name</label>
@@ -29,7 +28,7 @@ class SignUp extends Component {
                     <input type="password" className="form-control" placeholder="Enter a secure password" />
                 </div>
 
-                <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
+                <button type="submit" className="btn btn-warning btn-block">Sign Up</button>
                 <p className="alreadyRegistered text-right">
                     Already registered <a href="#">sign in?</a>
                 </p>

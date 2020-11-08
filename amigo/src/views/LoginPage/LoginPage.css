@@ -1,0 +1,19 @@
+.switchLoginSign {
+	background-color: #fff;
+	margin-left: 40%;
+	margin-right: 40%;
+	margin-top: 50px;
+	padding: 20px;
+	left: 50%;
+	/* height: px; */
+	/* width: 30%; */
+}
+
+.LoginSignButton {
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
+.LoginSignBox {
+	margin-top: 10%;
+}
