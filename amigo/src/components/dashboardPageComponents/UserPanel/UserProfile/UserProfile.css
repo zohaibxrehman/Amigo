@@ -1,12 +1,13 @@
-img {
+#userProfile {
+    margin-top: 20px;
+}
+
+#userProfile img {
     width: 45px;
     height: 45px;
     border-radius: 50%;
 }
 
-#userProfile {
-    margin-top: 20px;
-}
 
 #userProfile ul {
     margin: 0px;
