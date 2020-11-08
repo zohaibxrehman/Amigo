@@ -7,7 +7,7 @@ export class Filter extends Component {
         const { changeView } = this.props
         return (
             <div>
-                <div>
+                <div id='topHeading'>
                     <h2 className='roomHeading'>Find your next roommate</h2>
                     <button className='postButton'>Make a Post</button>
                 </div>

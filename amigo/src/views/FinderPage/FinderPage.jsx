@@ -24,8 +24,10 @@ export class FinderPage extends Component {
         return (
             <div className='finder'>
                 <Filter changeView={() => this.changeView()} />
-                {view==='map' && <MapFinder />}
-                {view==='list' && <Posts />}
+                <div id='finderView'>
+                    {view==='map' && <MapFinder />}
+                    {view==='list' && <Posts />}
+                </div>
             </div>
         )
     }
