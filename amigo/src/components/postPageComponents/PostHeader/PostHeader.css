@@ -5,14 +5,13 @@
 
 #postHeader ul {
 	margin: 0px;
-    text-align: center;
-	
+	display: flex;
+	justify-content: space-between;	
 }
 
 #postHeader ul li {
-	margin-right: 20px;
-	padding-left: 200px;
-	padding-right: 50px;
+	margin-left: 30px;
+	margin-right: 160px;
     font-weight: bold;
     font-size: 25px;
 	list-style: none; /* Gets rid of list bullet points */
