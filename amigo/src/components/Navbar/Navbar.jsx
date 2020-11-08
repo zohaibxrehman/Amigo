@@ -7,6 +7,7 @@ export class Navbar extends Component {
         return (
             <div className="navbar">
                 <img className='logo' src={logo} alt='logo'></img>
+                <a className="active" href="/login">Login</a>
                 <p className='logoName'>Amigo</p>
                 <a href='mailto: zohaibxrehman@gmail.com'>Contact</a>
                 <a href="/">About Us</a>

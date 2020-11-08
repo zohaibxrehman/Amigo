@@ -4,21 +4,51 @@ import React, { Component } from 'react';
 import './Login.css'
 
 class Login extends Component {
+    constructor() {
+        super()
+        this.state = {
+            userId: '',
+            userPass: ''
+        }
+    }
 
+    submitHandler = (e) => {
+        e.preventDefault();
+        let { userId, userPass } = this.state
+        if(userId==='user' && userPass === 'user'){
+            // link to user dashboard
+            console.log("User Authenticated")
+        }
 
-    
-    state = {  }
+        else if (userId==='admin' && userPass === 'admin'){
+            console.log("Admin Authenticated")
+        }
+        else{
+            alert("Please enter a valid credential")
+        }
+    }
+
+    userIdHandler = (e) => {
+        e.preventDefault();
+        this.setState({userId: e.target.value})
+    }
+
+    userPassHandler = (e) => {
+        e.preventDefault();
+        this.setState({userPass: e.target.value})
+    }
     render() { 
+        const { userId, userPass } = this.state
         return (
-            <form>
+            <form onSubmit={this.submitHandler}>
             <div className="form-group">
-                <label>Email address</label>
-                <input type="email" className="form-control" placeholder="Enter email" />
+                <label>Username</label>
+                <input className="form-control" value={ userId } onChange= {this.userIdHandler} placeholder="Enter your username" />
             </div>
 
             <div className="form-group">
                 <label>Password</label>
-                <input type="password" className="form-control" placeholder="Enter password" />
+                <input type="password" className="form-control" value={ userPass } onChange= {this.userPassHandler} placeholder="Enter password" />
             </div>
 
             <button type="submit" className="btn btn-warning btn-block">Submit</button>
