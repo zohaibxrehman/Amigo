@@ -1,9 +1,10 @@
 #editPost ul {
-    margin-top: 25px;
+    margin-top: 10px;
+
 }
 
 #editPost ul li {
-    margin: 5px;
+    margin: 7px;
     display: inline-block;
     list-style: none; /* Gets rid of list bullet points */		
 }
