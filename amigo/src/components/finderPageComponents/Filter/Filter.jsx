@@ -12,7 +12,7 @@ export class Filter extends Component {
                 <table className='filter'>
                     <tr>
                         <td className='filterItem'>
-                            <select name="looking" className='select'>
+                            <select name="looking" className='select select1'>
                                 <option value="">Looking for</option>
                                 <option value="">Any</option>
                                 <option value="">Student</option>
@@ -21,7 +21,7 @@ export class Filter extends Component {
                             </select>
                         </td>
                         <td className='filterItem'>
-                            <select name="location" className='select'>
+                            <select name="location" className='select select2'>
                                 <option value="">Location</option>
                                 <option value="">Toronto</option>
                                 <option value="">Waterloo</option>
@@ -34,7 +34,7 @@ export class Filter extends Component {
                             </select>
                         </td>
                         <td className='filterItem'>
-                            <select name="preference" className='select'>
+                            <select name="preference" className='select select3'>
                                 <option value="">Preference</option>
                                 <option value="">Male</option>
                                 <option value="">Female</option>
@@ -44,7 +44,7 @@ export class Filter extends Component {
                             </select>
                         </td>
                         <td className='filterItem'>
-                            <select name="price" className='select'>
+                            <select name="price" className='select select4'>
                                 <option value="">Price</option>
                                 <option value="">$0-$300</option>
                                 <option value="">$330-$600</option>
