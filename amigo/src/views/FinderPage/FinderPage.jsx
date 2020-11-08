@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import './FinderPage.css'
-import { Filter, Posts } from '../../components/finderPageComponents/index.js'
-import { MapFinder } from '../../components/mapComponents/MapFinder/MapFinder'
+import { Filter, Posts, MapFinder } from '../../components/finderPageComponents/index.js'
 
 export class FinderPage extends Component {
     constructor() {
