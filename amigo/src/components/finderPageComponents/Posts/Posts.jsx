@@ -1,68 +1,38 @@
 import React, { Component } from 'react'
 import Post from '../Post/Post'
 import './Posts.css'
-import userPhoto1 from '../../../assets/potrait1.jpeg'
-import userPhoto5 from '../../../assets/ProfilePhoto.jpeg'
-import userPhoto2 from '../../../assets/potrait2.jpg'
-import userPhoto3 from '../../../assets/potrait3.jpg'
-import userPhoto4 from '../../../assets/potrait4.png'
-import userPhoto6 from '../../../assets/potrait5.png'
-
-const users = [
-    {
-        userPhoto: userPhoto4,
-        userName: 'Vishnu Varma',
-        location: 'UofT | Toronto',
-        postTitle: 'Seeking one roommate preferably male student'
-    },
-    {
-        userPhoto: userPhoto2,
-        userName: 'Kiara Gomez',
-        location: 'Western | London',
-        postTitle: 'Looking for two other girls to join me in apartment hunting!'
-    },
-    {
-        userPhoto: userPhoto6,
-        userName: 'Akshit Goyal',
-        location: 'Western | London',
-        postTitle: 'Seeking love in London <3'
-    },
-    {
-        userPhoto: userPhoto3,
-        userName: 'Kim Leone',
-        location: 'Queens | London',
-        postTitle: 'Found a nice place with a friend - Looking for 1 more roommate'
-    },
-    {
-        userPhoto: userPhoto5,
-        userName: 'Zohaib Rehman',
-        location: 'UBC | Vancouver',
-        postTitle: 'Seeking a chill guy to vibe with'
-    },
-    {
-        userPhoto: userPhoto1,
-        userName: 'Anthony Jones',
-        location: 'Waterloo University',
-        postTitle: 'Looing for four roommates to start a FRAT house!'
-    },
-]
+import data from './dummyData'
 
 export class Posts extends Component {
+    constructor() {
+        super()
+        this.state = {
+            posts: []
+        }
+    }
+
+    componentDidMount() {
+        // when server and database is set up, this data
+        // will be retrieved here
+        this.setState({ posts: data })
+    }
+
     render() {
+        const { posts } = this.state
         return (
             <div>
-                <table className='postTable'>
+                {posts.length !== 0 && <table className='postTable'>
                     <tr>
-                        <td className='postWrap'><Post userInfo={users[0]} /></td>
-                        <td className='postWrap'><Post userInfo={users[1]} /></td>
-                        <td className='postWrap'><Post userInfo={users[2]} /></td>
+                        <td className='postWrap'><Post userInfo={posts[0]} /></td>
+                        <td className='postWrap'><Post userInfo={posts[1]} /></td>
+                        <td className='postWrap'><Post userInfo={posts[2]} /></td>
                     </tr>
                     <tr>
-                        <td className='postWrap'><Post userInfo={users[3]} /></td>
-                        <td className='postWrap'><Post userInfo={users[4]} /></td>
-                        <td className='postWrap'><Post userInfo={users[5]} /></td>
+                        <td className='postWrap'><Post userInfo={posts[3]} /></td>
+                        <td className='postWrap'><Post userInfo={posts[4]} /></td>
+                        <td className='postWrap'><Post userInfo={posts[5]} /></td>
                     </tr>
-                </table>
+                </table>}
             </div>
         )
     }
