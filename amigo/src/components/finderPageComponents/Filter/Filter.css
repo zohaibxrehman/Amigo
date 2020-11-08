@@ -29,3 +29,11 @@
     height: 100%;
     width: 100%;
 }
+
+.select1 {
+    border-radius: 35px 0 0 35px;
+}
+
+.select4 {
+    border-radius: 0 35px 35px 0;
+}
