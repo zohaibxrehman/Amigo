@@ -54,7 +54,7 @@
 	top: 500px;
 	left: 100px;
 	float: left;
-	margin-right: 100px;
+	margin-right: 10px;
 }
 
 .userInfo {
@@ -62,5 +62,6 @@
 }
 
 .ReviewBox {
-	margin-left: 300px;
+	/* margin-left: 100px; */
+	margin: auto;
 }
