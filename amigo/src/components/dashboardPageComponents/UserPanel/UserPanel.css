@@ -1,0 +1,17 @@
+h2 {
+    color: orange;
+}
+
+#userPanel {
+    width: 30%;
+    margin: 20px;
+    padding: 25px;
+    border-radius: 10px;
+	background-color: white;
+}
+
+#userPanel ul li {
+	list-style: none; /* Gets rid of list bullet points */
+	display: block;
+		
+}

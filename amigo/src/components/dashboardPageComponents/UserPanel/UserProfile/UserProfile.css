@@ -1,0 +1,35 @@
+img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+#userProfile {
+    margin-top: 20px;
+}
+
+#userProfile ul {
+    margin: 0px;
+    padding: 0px;
+    text-align: left;
+	
+}
+
+#userProfile ul li {
+    margin: 5px;
+	display: inline-block;
+		
+}
+
+
+#userProfile ul li li {
+	list-style: none; /* Gets rid of list bullet points */
+    color:black;
+	display: block;
+		
+}
+
+#email {
+    color: grey;
+}
+
