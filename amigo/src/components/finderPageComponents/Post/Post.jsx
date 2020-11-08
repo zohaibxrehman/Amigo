@@ -3,6 +3,7 @@ import './Post.css'
 
 export class Post extends Component {
     render() {
+        console.dir(this.props.userInfo)
         const { userPhoto, userName, location, postTitle} = this.props.userInfo;
         return (
             <div className='post'>
@@ -11,7 +12,7 @@ export class Post extends Component {
                     <div className='postDesc'>
                         <h3 className='userName'>{userName}</h3>
                         <small className='location'>{location}</small>
-                        <p>{postTitle}</p>
+                        <p className='postTitle'>{postTitle}</p>
                     </div>
                 </a>
             </div>

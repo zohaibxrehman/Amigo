@@ -1,12 +1,14 @@
 .post {
     width: 300px;
-    height: 370px;
+    height: 360px;
     background-color: white;
-    border-radius: 3%;
+    border-radius: 5%;
     margin-bottom: 15px;
     margin-right: 20px;
+    margin-top: 10px;
     box-shadow: 5px 10px #f5f5f1;
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 7px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 1px 5px 5px 1px rgba(0, 0, 0, 0.2),
+        0 5px 9px 0 rgba(0, 0, 0, 0.19);
 }
 
 .postDesc {
@@ -14,11 +16,15 @@
     padding-right: 10px;
 }
 
+.postTitle {
+    margin-top: 7px;
+}
+
 .userPhoto {
     object-fit: cover;
     width: 300px;
-    height: 250px;
-    border-radius: 3%;
+    height: 240px;
+    border-radius: 5%;
 }
 
 .location {
@@ -28,11 +34,11 @@
 
 .userName {
     margin-bottom: 0px;
-    margin-top: 0px;
+    margin-top: 10px;
     font-size: 22px;
 }
 
 a {
     text-decoration: none;
-    color: black;
+    color: black !important;
 }
