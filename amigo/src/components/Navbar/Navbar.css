@@ -1,11 +1,11 @@
-.navbar {
+.navbarBlack {
     background-color: black;
     overflow: hidden;
 }
 
-.navbar a {
+.navbarBlack a {
     float: right;
-    color: white;
+    color: white !important;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -13,9 +13,9 @@
     margin-right: 4%;
 }
 
-.navbar a.active {
+.navbarBlack a.active {
     background-color: #ffac12;
-    color: white;
+    color: white !important;
 }
 
 .logo {
