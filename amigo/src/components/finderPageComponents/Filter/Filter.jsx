@@ -59,7 +59,7 @@ export class Filter extends Component {
                             </select>
                         </td>
                         <td className='filterItem'>
-                            <input type="image" src={mapIcon} onClick={()=>changeView()} />
+                            <input type="image" src={mapIcon} onClick={()=>changeView()} id='mapIcon'/>
                         </td>
                     </tr>
                 </table>

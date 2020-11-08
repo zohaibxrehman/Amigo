@@ -18,7 +18,7 @@
 
 .filter {
     height: 75px;
-    width: 90%;
+    width: 100%;
     /* background-color: white; */
 }
 /* 
@@ -36,4 +36,10 @@
 
 .select4 {
     border-radius: 0 35px 35px 0;
+}
+
+#mapIcon {
+    height: 65%;
+    float: right;
+    margin-right: 20px;
 }
