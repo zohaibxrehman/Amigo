@@ -17,7 +17,8 @@
     border-radius: 0 0 0 35px;
     font-weight: bold;
     font-size: 1.05rem;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    border: none;
 }
 
 .filter {
@@ -31,14 +32,16 @@
 .select {
     height: 100%;
     width: 100%;
+    padding-left: 10px;
+    border: none;
 }
 
 .select1 {
-    border-radius: 35px 0 0 35px;
+    border-radius: 25px 0 0 25px;
 }
 
 .select4 {
-    border-radius: 0 35px 35px 0;
+    border-radius: 0 25px 25px 0;
 }
 
 #mapIcon {
