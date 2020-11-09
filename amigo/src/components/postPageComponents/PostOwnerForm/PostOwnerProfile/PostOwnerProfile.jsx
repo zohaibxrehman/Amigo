@@ -13,12 +13,14 @@ class PostOwnerProfile extends Component {
                         <img src={ profile.profilePhoto } alt=""/>
                     </li>
                     <li>
-                        <li> 
-                            <strong> { profile.profileName } </strong>
-                        </li>
-                        <li id="profile">
-                            View Profile
-                        </li>
+                        <ul id = "profileInfo">
+                            <li> 
+                                <strong> { profile.profileName } </strong>
+                            </li>
+                            <li id="profile">
+                                View Profile
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
