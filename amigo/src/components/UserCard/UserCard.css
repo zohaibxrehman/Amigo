@@ -1,4 +1,4 @@
-.userCard {
+#userCard {
     height: 600px;
     width: 1000px;
     background-color: white;
@@ -8,12 +8,12 @@
     padding: 40px;
 }
 
-.userCardContainer {
+#userCardContainer {
     width: fit-content;
     margin: 150px auto;
 }
 
-.userCardPhoto {
+#userCardPhoto {
     height: 350px;
     width: 350px;
     object-fit: cover;
@@ -22,7 +22,7 @@
     margin-top: 100px;
 }
 
-.userCardInfo {
+#userCardInfo {
     float: left;
     width: 50%;
     margin-top: 50px;

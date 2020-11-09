@@ -26,10 +26,10 @@ export class UserCard extends Component {
     render() {
         const { userName, location, aboutMe, userPhoto } = this.state.userData
         return (
-            <div className='userCardContainer'>
-                <div className='userCard'>
-                    <img src={userPhoto} alt="user photo" className='userCardPhoto'/>
-                    <div className='userCardInfo'>
+            <div id='userCardContainer'>
+                <div id='userCard'>
+                    <img src={userPhoto} alt="user photo" id='userCardPhoto'/>
+                    <div id='userCardInfo'>
                         <h2>{userName}</h2>
                         <h3>{location}</h3>
                         <p>{aboutMe}</p>
