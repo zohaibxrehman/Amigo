@@ -1,18 +1,23 @@
 import React, { Component } from 'react'
 import './UserFunctionality.css'
+import dashboardIcon from '../../../../assets/dashboard-icon.png'
 
 class UserFunctionality extends Component {
-    render() {
-        return (
-            <div id="userFunctionality">
-                <ul>
-                    <li>
 
-                    </li>
-                    <li>
-                    
-                    </li>
-                </ul>
+    setDivId(functionality){
+        let divId = "userFunctionality";
+        if (functionality == "Settings"){
+            divId = "userFunctionalitySettings";
+        }
+        return divId;
+    }
+
+    render() {
+        const { userFunction } = this.props
+        return (
+            <div id={this.setDivId(userFunction.name)}>
+                <span className="design-fuction"><img src= { userFunction.icon } alt=""/></span>
+                <span className="design-fuction"> {userFunction.name } </span>
             </div>
         )
     }

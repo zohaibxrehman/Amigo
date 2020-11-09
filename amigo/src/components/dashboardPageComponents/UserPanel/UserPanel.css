@@ -10,9 +10,3 @@ h2 {
     border-radius: 10px;
 	background-color: white;
 }
-
-#userPanel ul li {
-	list-style: none; /* Gets rid of list bullet points */
-	display: block;
-		
-}
