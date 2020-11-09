@@ -1,0 +1,15 @@
+.pageNums {
+    width: 400px;
+    height: 50px;
+    padding: 0px;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.pageNum {
+    float: left;
+    list-style-type: none;
+    padding: 5px 15px;
+    background-color: #fff;
+    border: 1px solid lightgrey;
+}
