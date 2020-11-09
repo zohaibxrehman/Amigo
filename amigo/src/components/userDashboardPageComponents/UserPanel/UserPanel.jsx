@@ -3,11 +3,10 @@ import UserFunctionality from './UserFunctionality/UserFunctionality'
 import './UserPanel.css'
 import UserProfile from './UserProfile/UserProfile'
 import dashboardIcon from '../../../assets/dashboard-icon.png'
-import userManagementIcon from '../../../assets/user-management.png'
-import postManagementIcon from '../../../assets/post-management.png'
+import userActivityIcon from '../../../assets/user-activity.png'
 import settingIcon from '../../../assets/settings.png'
 
-let userPanelMap = {'dashboard': {'name': "Dashboard", 'icon': dashboardIcon}, 'setting': {'name': "Settings", 'icon': settingIcon}};
+let userPanelMap = {'dashboard': {'name': "Dashboard", 'icon': dashboardIcon}, 'activity': {'name': "User Activity", 'icon': userActivityIcon}, 'setting': {'name': "Settings", 'icon': settingIcon}};
 
 class UserPanel extends Component {
 
@@ -19,6 +18,7 @@ class UserPanel extends Component {
                 <hr/>
                 <UserProfile name="Vishnu Varma"/>
                 <UserFunctionality userFunction={userPanelMap.dashboard} />
+                <UserFunctionality userFunction={userPanelMap.activity} />
                 <UserFunctionality userFunction={userPanelMap.setting} />
             </div>
         )
