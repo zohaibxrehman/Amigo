@@ -11,7 +11,9 @@ export class Filter extends Component {
             <div>
                 <div id='topHeading'>
                     <h2 className='roomHeading'>Find your next roommate</h2>
-                    <button className='postButton'>Make a Post</button>
+                    <a href='/makepost'>
+                        <button className='postButton'>Make a Post</button>
+                    </a>
                 </div>
                 <table className='filter'>
                     <tr>
