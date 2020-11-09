@@ -1,36 +1,70 @@
 import React, { Component } from 'react';
-// import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './SignUp.css'
 
 class SignUp extends Component {
-    state = {  }
-    render() { 
-        return ( 
-            <form>
+   
+    constructor() {
+        super()
+        this.state = {
+            firstname: '',
+            lastname: '',
+            email: '',
+            password: '',
+            email: ''
+        }
+    }
 
+    changeHandler = (e) => {
+        e.preventDefault();
+        const target = e.target;
+        const value = target.value;
+        const name = target.id;
+
+        this.setState({
+            [name]: value 
+          });
+    }
+
+    submitHandler = (e) => {
+        e.preventDefault();
+        let { firstname, lastname, email, password, username  } = this.state
+        // We need to make a server call and add this data to the server.
+        alert("Successful SignUp")
+    }
+
+
+
+    render() { 
+        const { firstname, lastname, email, password, username } = this.state
+        return ( 
+
+            <form onSubmit={ this.submitHandler }>
                 <div className="form-group">
                     <label>First name</label>
-                    <input type="text" className="form-control" placeholder="First Name" />
+                    <input type="text" className="form-control" placeholder="First Name" id='firstname' value={firstname} onChange={this.changeHandler}/>
                 </div>
 
                 <div className="form-group">
                     <label>Last name</label>
-                    <input type="text" className="form-control" placeholder="Last Name" />
+                    <input type="text" className="form-control" placeholder="Last Name" id='lastname' value={lastname} onChange={this.changeHandler}/>
                 </div>
-
+                <div className="form-group">
+                    <label>Username</label>
+                    <input type="text" className="form-control" id='username' placeholder="Enter a username" value= {username} onChange={this.changeHandler}/>
+                </div>
                 <div className="form-group">
                     <label>Email address</label>
-                    <input type="email" className="form-control" placeholder="Enter your email" />
+                    <input type="email" className="form-control" placeholder="Enter your email" id='email' value = {email} onChange={this.changeHandler}/>
                 </div>
 
                 <div className="form-group">
                     <label>Password</label>
-                    <input type="password" className="form-control" placeholder="Enter a secure password" />
+                    <input type="password" className="form-control" placeholder="Enter a secure password" id='password' value= {password} onChange={this.changeHandler}/>
                 </div>
 
-                <button type="submit" className="btn btn-warning btn-block">Sign Up</button>
+                <button type="submit" className="btn btn-warning btn-block" >Sign Up</button>
                 <p className="alreadyRegistered text-right">
-                    Already registered <a href="#">sign in?</a>
+                    Already registered <a href="/login">sign in?</a>
                 </p>
             </form>
 
