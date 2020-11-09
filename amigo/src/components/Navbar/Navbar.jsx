@@ -14,6 +14,12 @@ export class Navbar extends Component {
                 }
                 <p className='logoName'>Amigo</p>
                 <a href='mailto: zohaibxrehman@gmail.com'>Contact</a>
+                {/* Once authentication is added, page will redirect to user dashboard if user logged
+                otherwise admin dashboard if admin is logged in.
+                To have a look at admin dashboard, go to http://localhost:3000/admindashboard OR log in as admin
+                To have a look at user dashboard, just click on the dashboard button OR log in as user
+                */}
+                <a href="/userdashboard">Dashboard</a>
                 <a href="/finder">Posting</a>
                 <a href="/">Home</a>
             </div>
