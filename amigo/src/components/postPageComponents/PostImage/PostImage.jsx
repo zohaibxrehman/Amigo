@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import './PostImage.css'
-import postPhoto from '../../../assets/interior-1.jpg'
 
 class PostImage extends Component {
     render() {
+
+        const { img } = this.props;
+
         return (
             <div id="postPhoto">
-                <img src={postPhoto} alt=""/>
+                <img src={img} alt=""/>
             </div>
         )
     }

@@ -4,9 +4,12 @@ import PostOwnerProfile from './PostOwnerProfile/PostOwnerProfile'
 
 export class PostOwnerForm extends Component {
     render() {
+
+        const { profile } = this.props;
+
         return (
             <div id="postForm">
-                <PostOwnerProfile />
+                <PostOwnerProfile profile={profile}/>
                 <form action="">
                     <input type="text" placeholder="Name"/><br/>
                     <input type="text" placeholder="Phone"/><br/>
