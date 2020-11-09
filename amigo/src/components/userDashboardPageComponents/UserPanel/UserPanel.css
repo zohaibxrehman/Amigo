@@ -1,0 +1,12 @@
+h2 {
+    color: orange;
+}
+
+#userPanel {
+    float: left;
+    width: 25%;
+    margin: 20px;
+    padding: 25px;
+    border-radius: 10px;
+	background-color: white;
+}

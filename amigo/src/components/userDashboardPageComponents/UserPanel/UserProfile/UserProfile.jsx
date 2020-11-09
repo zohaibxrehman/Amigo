@@ -5,6 +5,7 @@ import userPhoto from '../../../../assets/ProfilePhoto.jpeg'
 class UserProfile extends Component {
     render() {
         const { name } = this.props;
+
         return (
             <div id="userProfile">
                 <ul>
