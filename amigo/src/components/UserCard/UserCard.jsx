@@ -30,9 +30,9 @@ export class UserCard extends Component {
                 <div id='userCard'>
                     <img src={userPhoto} alt="user photo" id='userCardPhoto'/>
                     <div id='userCardInfo'>
-                        <h2>{userName}</h2>
-                        <h3>{location}</h3>
-                        <p>{aboutMe}</p>
+                        <h2 id='userCardName'>{userName}</h2>
+                        <h3 id='userCardLocation'>{location}</h3>
+                        <p id='userCardAboutMe'>{aboutMe}</p>
                     </div>
                 </div>
             </div>
