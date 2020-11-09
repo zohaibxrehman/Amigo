@@ -41,9 +41,9 @@
 
 .reviewContainer {
     position: relative;
-    height: 1200px;
+    height: 400px;
     width: 350px;
-    top: 500px;
+    top: 450px;
     float: left;
     margin-right: 10px;
 }
