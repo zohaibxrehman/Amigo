@@ -29,11 +29,14 @@ export class Filter extends Component {
     render() {
         const { view, changeView } = this.props
         const { looking, location, preference, price } = this.state
+        // the next line will be added later when authentication is implemented
+        // const makePostButtonUrl = isLoggedIn ? '/makepost' : 'login'
+        const makePostButtonUrl = '/makepost'
         return (
             <div>
                 <div id='topHeading'>
                     <h2 className='roomHeading'>Find your next roommate</h2>
-                    <a href='/makepost'>
+                    <a href={makePostButtonUrl}>
                         <button className='postButton'>Make a Post</button>
                     </a>
                 </div>

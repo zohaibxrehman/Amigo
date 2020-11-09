@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import './Login.css'
 
@@ -13,17 +12,17 @@ class Login extends Component {
 
     submitHandler = (e) => {
         e.preventDefault();
-        let { userId, userPass } = this.state
+        const { userId, userPass } = this.state
+        const { loginUser } = this.props
         //  We need check credentials with the server with a callback and authorise user.
         if(userId==='user' && userPass === 'user'){
             // link to user dashboard
-            console.log("User Authenticated")
-        }
-
-        else if (userId==='admin' && userPass === 'admin'){
-            console.log("Admin Authenticated")
-        }
-        else{
+            loginUser('user')
+            window.location.href='/userdashboard'
+        } else if (userId==='admin' && userPass === 'admin'){
+            loginUser('user')
+            window.location.href='/admindashboard'
+        } else{
             alert("Please enter a valid credential")
         }
     }
