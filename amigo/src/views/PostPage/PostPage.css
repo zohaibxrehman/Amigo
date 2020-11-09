@@ -1,3 +1,13 @@
 #check {
     overflow: hidden;
 }
+
+#check input[type="submit"] {
+    padding: 20px 90px;
+    
+    margin-left: 130px;
+    background-color: #F7685B;
+    color: white;
+    border-radius: 5px 20px 5px;
+    border: none;
+}

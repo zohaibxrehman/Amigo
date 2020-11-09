@@ -3,37 +3,39 @@
     font-size: 12px;
 }
 
-#userProfile img {
+#postOwnerProfile {
+    margin: 15px 20px 30px 20px;
+    border-radius: 5px;
+    background-color: #F5F5F5;
+}
+
+#postOwnerProfile img {
     object-fit: cover;
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 
-#userProfile ul {
+#postOwnerProfile ul {
     margin: 0px;
-    padding: 0px;
+    padding-top: 25px;
     text-align: left;
 }
 
-#userProfile ul li {
+#postOwnerProfile ul li {
     margin: 5px;
     display: inline-block;
 		
 }
 
 
-#userProfile ul li li {
+#postOwnerProfile ul li li {
     margin: 0px;
     padding: 0px;
 	list-style: none; /* Gets rid of list bullet points */
     display: block;
 		
-}
-
-#email {
-    color: grey;
 }
 
