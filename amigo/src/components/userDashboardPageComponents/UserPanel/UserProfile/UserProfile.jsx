@@ -16,8 +16,8 @@ class UserProfile extends Component {
                             <li> 
                                 <strong> {name} </strong>
                             </li>
-                            <li id="profile">
-                                View Profile
+                            <li>
+                                <a id="profile-style" href="/user">View Profile</a>
                             </li>
                         </ul>
                     </li>

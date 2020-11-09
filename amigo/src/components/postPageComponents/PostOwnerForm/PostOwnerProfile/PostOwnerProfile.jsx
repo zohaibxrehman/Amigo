@@ -17,9 +17,7 @@ class PostOwnerProfile extends Component {
                             <li> 
                                 <strong> { profile.profileName } </strong>
                             </li>
-                            <li id="profile">
-                                View Profile
-                            </li>
+                            <a id="profile-style" href="/user">View Profile</a>
                         </ul>
                     </li>
                 </ul>
