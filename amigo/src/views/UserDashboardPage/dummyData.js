@@ -1,11 +1,11 @@
-import adminPhoto from '../../assets/ProfilePhoto.jpeg' 
-import userPhoto1 from '../../assets/potrait4.png'
+import userPhoto from '../../assets/potrait4.png' 
+import userPhoto1 from '../../assets/potrait3.jpg'
 import userPhoto2 from '../../assets/potrait1.jpeg'
 
 const dashboardData = 
     {
         profile: {
-            profilePhoto: userPhoto1,
+            profilePhoto: userPhoto,
             profileName: 'Vishnu Varma'
         },
 
@@ -15,8 +15,8 @@ const dashboardData =
                     profileName: 'Vishnu Varma'
                     },
             {
-                    msg: "Seeking a roommate for 2bd apartment",
-                    date: "November 3, 2020",
+                    msg: "I am interested in this place",
+                    date: "November 1, 2020",
                     activity: "Post Activity"
             }
             ],
@@ -25,8 +25,8 @@ const dashboardData =
                 profileName: 'Anthony Jones'
                 },
         {
-                msg: "Looking for four roommates to start a FRAT house!",
-                date: "October 23, 2020",
+                msg: "Are you interested in making this a FRAT house!",
+                date: "October 29, 2020",
                 activity: "Post Activity"
         }
         ]

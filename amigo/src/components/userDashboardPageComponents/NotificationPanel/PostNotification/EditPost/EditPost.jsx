@@ -15,8 +15,8 @@ class EditPost extends Component {
                         <img className="img-decoration" src={ deleteImg } alt=""/>
                     </li>
                     <li>
-                        <div id ="postInfo">
-                            Post Created
+                        <div id ="userPostInfo">
+                            Post Notification
                         </div>
                     </li>
                 </ul>
