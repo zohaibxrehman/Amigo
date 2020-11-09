@@ -1,0 +1,41 @@
+#profile {
+    color: orange;
+    font-size: 12px;
+}
+
+#postOwnerProfile {
+    margin: 15px;
+    border-radius: 5px;
+    background-color: #F5F5F5;
+}
+
+#postOwnerProfile img {
+    object-fit: cover;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-bottom: 25px;
+}
+
+
+#postOwnerProfile ul {
+    margin: 0px;
+    padding-top: 25px;
+    text-align: left;
+}
+
+#postOwnerProfile ul li {
+    margin: 5px;
+    display: inline-block;
+		
+}
+
+
+#postOwnerProfile ul li li {
+    margin: 0px;
+    padding: 0px;
+	list-style: none; /* Gets rid of list bullet points */
+    display: block;
+		
+}
+
