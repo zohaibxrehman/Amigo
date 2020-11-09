@@ -10,7 +10,6 @@ class SignUp extends Component {
             lastname: '',
             email: '',
             password: '',
-            email: ''
         }
     }
 
@@ -27,7 +26,7 @@ class SignUp extends Component {
 
     submitHandler = (e) => {
         e.preventDefault();
-        let { firstname, lastname, email, password, username  } = this.state
+        // let { firstname, lastname, email, password, username  } = this.state
         // We need to make a server call and add this data to the server.
         alert("Successful SignUp")
     }

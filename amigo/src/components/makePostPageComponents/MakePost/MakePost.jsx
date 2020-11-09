@@ -19,7 +19,7 @@ class MakePost extends Component {
 
     submitHandler = (e) => {
         e.preventDefault();
-        let { inputTitle, inputPrice, inputLocation, preferences, inputDescription } = this.state
+        // let { inputTitle, inputPrice, inputLocation, preferences, inputDescription } = this.state
         // We need to make a server call and add this data to the server.
         alert("Post successfully made.")
     }
@@ -46,14 +46,12 @@ class MakePost extends Component {
             updatedPreferences.push(value)
         }
         else{
-            updatedPreferences = preferences.filter((preference)=> preference != value)
+            updatedPreferences = preferences.filter((preference)=> preference !== value)
         }
 
-        console.log(updatedPreferences)
-        console.log(target.checked)
         this.setState({
             preferences: updatedPreferences
-          });
+        });
     }
 
 
@@ -113,6 +111,24 @@ class MakePost extends Component {
                                 <input className="form-check-input" type="checkbox" value="Female" onChange={this.checkboxChangeHandler}/>
                                 <label className="form-check-label" >
                                     Female
+                                </label>
+                            </div>
+                            <div className="form-check">
+                                <input className="form-check-input" type="checkbox" value="Student" onChange={this.checkboxChangeHandler}/>
+                                <label className="form-check-label" >
+                                    Student
+                                </label>
+                            </div>
+                            <div className="form-check">
+                                <input className="form-check-input" type="checkbox" value="Student" onChange={this.checkboxChangeHandler}/>
+                                <label className="form-check-label" >
+                                    Professional
+                                </label>
+                            </div>
+                            <div className="form-check">
+                                <input className="form-check-input" type="checkbox" value="Student" onChange={this.checkboxChangeHandler}/>
+                                <label className="form-check-label" >
+                                    Elderly
                                 </label>
                             </div>
                             <div className="form-check">

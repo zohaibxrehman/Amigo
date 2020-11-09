@@ -7,15 +7,15 @@ export class Pagination extends Component {
             <nav>
                 <ul className='pageNums'>
                     <li className='pageNum'>
-                        <a className='' href=''>
+                        <a className='' href='/#'>
                             &laquo;
                         </a>
                     </li>
-                    <li className='pageNum'><a href=''>1</a></li>
-                    <li className='pageNum'><a href=''>2</a></li>
-                    <li className='pageNum'><a href=''>3</a></li>
+                    <li className='pageNum'><a href='/#'>1</a></li>
+                    <li className='pageNum'><a href='/#'>2</a></li>
+                    <li className='pageNum'><a href='/#'>3</a></li>
                     <li className='pageNum'>
-                        <a href=''>
+                        <a href='/#'>
                             &raquo;
                         </a>
                     </li>

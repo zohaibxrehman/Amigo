@@ -1,0 +1,66 @@
+#userCard {
+    height: 550px;
+    width: 1000px;
+    background-color: white;
+    box-shadow: 2px 4px 4px 2px rgba(0, 0, 0, 0.1),
+        0 5px 7px 0 rgba(0, 0, 0, 0.15);
+    border-radius: 30px;
+    padding: 40px;
+}
+
+#userCardContainer {
+    width: fit-content;
+    margin: 150px auto;
+}
+
+#userCardPhoto {
+    height: 320px;
+    width: 320px;
+    object-fit: cover;
+    border-radius: 50%;
+    float: left;
+    margin-top: 60px;
+}
+
+#userCardInfo {
+    float: left;
+    width: 50%;
+    margin-top: 100px;
+    margin-left: 50px;
+}
+
+#userCardName {
+    font-size: 50px;
+    color: black;
+}
+
+#userCardLocation {
+    font-size: 30px;
+    color: black;
+    font-weight: 400;
+    color: #ffac12;
+}
+
+#userCardContact {
+    list-style: none;
+    padding-left: 0px;
+    font-size: 12px;
+    color: grey;
+}
+
+.userCardContactInfo {
+    font-style: italic;
+    display: inline;
+    font-weight: 200;
+    color: black;
+}
+
+#reportUser {
+    font-style: italic;
+    float: right;
+    background-color: lightcoral;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+}
