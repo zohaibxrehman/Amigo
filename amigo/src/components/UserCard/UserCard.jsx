@@ -27,6 +27,12 @@ export class UserCard extends Component {
         this.setState({ userData: data })
     }
 
+    reportUser() {
+        alert('User Reported!')
+        // call to database will be written here
+        // and the admin can retrieve these reported users
+    }
+
     render() {
         const { userName, location, aboutMe, userPhoto, contact } = this.state.userData
         const { email, phone } = contact
@@ -51,6 +57,7 @@ export class UserCard extends Component {
                             </li>
                         </ul>
                         <p id='userCardAboutMe'>{aboutMe}</p>
+                        <button id='reportUser' onClick={this.reportUser}>Report User</button>
                     </div>
                 </div>
             </div>

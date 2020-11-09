@@ -14,8 +14,8 @@
 }
 
 #userCardPhoto {
-    height: 350px;
-    width: 350px;
+    height: 320px;
+    width: 320px;
     object-fit: cover;
     border-radius: 50%;
     float: left;
@@ -53,4 +53,14 @@
     display: inline;
     font-weight: 200;
     color: black;
+}
+
+#reportUser {
+    font-style: italic;
+    float: right;
+    background-color: lightcoral;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    color: white;
 }
