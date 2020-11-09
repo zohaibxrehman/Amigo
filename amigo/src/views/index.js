@@ -4,3 +4,5 @@ export {default as LandingPage} from './LandingPage/LandingPage'
 export {default as PostPage} from './PostPage/PostPage'
 export {default as DashboardPage} from './DashboardPage/DashboardPage'
 export {default as MakePostPage} from './MakePostPage/MakePostPage'
+export {default as UserPage} from './UserPage/UserPage'
+
