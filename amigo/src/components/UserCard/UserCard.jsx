@@ -29,9 +29,11 @@ export class UserCard extends Component {
             <div className='userCardContainer'>
                 <div className='userCard'>
                     <img src={userPhoto} alt="user photo" className='userCardPhoto'/>
-                    <h2>{userName}</h2>
-                    <h3>{location}</h3>
-                    <p>{aboutMe}</p>
+                    <div className='userCardInfo'>
+                        <h2>{userName}</h2>
+                        <h3>{location}</h3>
+                        <p>{aboutMe}</p>
+                    </div>
                 </div>
             </div>
         )
