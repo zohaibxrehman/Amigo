@@ -30,8 +30,7 @@ class MakePost extends Component {
         const target = e.target;
         const value = target.value;
         const name = target.id;
-        console.log(name)
-        console.log(value)
+
         this.setState({
             [name]: value 
           });
