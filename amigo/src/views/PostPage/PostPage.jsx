@@ -10,6 +10,7 @@ export class PostPage extends Component {
                 <PostImage />
                 <PostOwnerForm />
                 <PostDescription />
+                <input type="submit" value="Report" />
                 <PostRequirement />
             </div>
         )
