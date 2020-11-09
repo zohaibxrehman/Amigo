@@ -11,12 +11,14 @@ class UserProfile extends Component {
                         <img src={ photo } alt=""/>
                     </li>
                     <li>
-                        <li> 
-                            <strong> {name} {admin} </strong>
-                        </li>
-                        <li id="profile">
-                            View Profile
-                        </li>
+                        <ul>
+                            <li> 
+                                <strong> {name} {admin} </strong>
+                            </li>
+                            <li id="profile">
+                                View Profile
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>

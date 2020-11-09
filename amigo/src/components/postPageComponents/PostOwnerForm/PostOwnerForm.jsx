@@ -16,7 +16,7 @@ export class PostOwnerForm extends Component {
 
     submitHandler = (e) => {
         e.preventDefault();
-        let { name, phone, email, message } = this.state
+        // let { name, phone, email, message } = this.state
         // We need to make a server call and add this data to the server.
         alert("Post successfully made.")
     }
