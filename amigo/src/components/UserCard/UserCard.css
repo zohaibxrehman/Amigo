@@ -1,0 +1,10 @@
+.userCard {
+    height: 600px;
+    width: 1000px;
+    background-color: blue;
+}
+
+.userCardContainer {
+    width: fit-content;
+    margin: 150px auto;
+}

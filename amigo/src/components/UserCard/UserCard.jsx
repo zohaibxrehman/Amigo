@@ -4,8 +4,10 @@ import './UserCard.css'
 export class UserCard extends Component {
     render() {
         return (
-            <div>
-                <p>UserCard</p>
+            <div className='userCardContainer'>
+                <div className='userCard'>
+
+                </div>
             </div>
         )
     }
