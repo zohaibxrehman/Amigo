@@ -7,7 +7,7 @@ class NotificationPanel extends Component {
     renderPostNotifications(notifications){
         let renderNotifications = []
         for (let i = 0; i < notifications.length; i++){
-            renderNotifications.push(<PostNotification id={`postNotification${i}`} notification = {notifications[i]} />);
+            renderNotifications.push(<PostNotification key={`postNotification${i}`} notification = {notifications[i]} />);
         }
         return renderNotifications;
     }
