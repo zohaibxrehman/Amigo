@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './UserFunctionality.css'
-import dashboardIcon from '../../../../assets/dashboard-icon.png'
+
 
 class UserFunctionality extends Component {
 

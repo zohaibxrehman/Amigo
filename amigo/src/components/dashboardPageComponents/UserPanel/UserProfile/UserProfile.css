@@ -1,5 +1,6 @@
-#email{
-    color: grey;
+#profile {
+    color: orange;
+    font-size: 12px;
 }
 
 #userProfile img {
@@ -25,6 +26,8 @@
 
 
 #userProfile ul li li {
+    margin: 0px;
+    padding: 0px;
 	list-style: none; /* Gets rid of list bullet points */
     display: block;
 		

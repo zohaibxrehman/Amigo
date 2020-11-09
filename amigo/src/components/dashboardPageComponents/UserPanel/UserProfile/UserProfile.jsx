@@ -14,8 +14,8 @@ class UserProfile extends Component {
                         <li> 
                             <strong> Zohaib Rehman </strong>
                         </li>
-                        <li id="email">
-                            zohaibxrehman@gmail.com
+                        <li id="profile">
+                            View Profile
                         </li>
                     </li>
                 </ul>
