@@ -6,14 +6,37 @@ import Navbar from './components/Navbar/Navbar';
 import './App.css'
 
 export class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+        isLoggedIn: false,
+        userType: 'user'
+    }
+  }
+  
+  logoutUser() {
+    this.setState({ isLoggedIn: false })
+  }
+
+  loginUser = (userType) => {
+    // if ((user === 'admin' && pass === 'admin')) {
+    //   this.setState({ isLoggedIn: true, userType: 'admin' })
+    // } else if (user === 'user' && pass === 'user') {
+    //   this.setState({ isLoggedIn: true, userType: 'user' })
+    // }
+    this.setState({ isLoggedIn: true, userType: userType })
+    console.log('LOGGING IN')
+  }
+
   render() {
+    const { isLoggedIn } = this.state
     return (
       <div className='amigo'>
-        <Navbar />
+        <Navbar isLoggedIn={isLoggedIn} logoutUser={this.logoutUser} />
         <BrowserRouter>
           <Switch> 
           <Route exact path='/login' render={() => 
-                            (<LoginPage />)}/>
+                            (<LoginPage loginUser={this.loginUser} />)}/>
             <Route exact path='/' render={() => 
                             (<LandingPage />)}/>
             <Route exact path='/finder' render={() => 

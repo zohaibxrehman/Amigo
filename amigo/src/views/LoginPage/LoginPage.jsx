@@ -20,14 +20,12 @@ class LoginPage extends Component {
         else{
             this.setState({ view: newView, signUpButton: "btn btn-warning btn-block", loginButton: "btn btn-outline-warning" })
         }
-
-
-
     }
 
 
     render() { 
         const { view , loginButton, signUpButton } = this.state
+        const { loginUser } = this.props
         return (
             <div>
                 <div className='switchLoginSign'>
@@ -36,7 +34,7 @@ class LoginPage extends Component {
                         <button type="button" className={ signUpButton }onClick={()=> this.changeView('signup')}>Register</button>
                     </div>
                     <div className='LoginSignBox'>
-                        {view==='login' && <Login />}
+                        {view==='login' && <Login loginUser={loginUser} />}
                         {view==='signup' && <SignUp />}
                     </div>
 
