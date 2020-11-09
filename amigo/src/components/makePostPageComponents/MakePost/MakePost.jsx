@@ -19,7 +19,7 @@ class MakePost extends Component {
 
     submitHandler = (e) => {
         e.preventDefault();
-        let { inputTitle, inputPrice, inputLocation, preferences, inputDescription } = this.state
+        // let { inputTitle, inputPrice, inputLocation, preferences, inputDescription } = this.state
         // We need to make a server call and add this data to the server.
         alert("Post successfully made.")
     }
@@ -46,14 +46,12 @@ class MakePost extends Component {
             updatedPreferences.push(value)
         }
         else{
-            updatedPreferences = preferences.filter((preference)=> preference != value)
+            updatedPreferences = preferences.filter((preference)=> preference !== value)
         }
 
-        console.log(updatedPreferences)
-        console.log(target.checked)
         this.setState({
             preferences: updatedPreferences
-          });
+        });
     }
 
 
