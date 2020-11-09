@@ -37,7 +37,6 @@ export class UserCard extends Component {
                     <div id='userCardInfo'>
                         <h2 id='userCardName'>{userName}</h2>
                         <h3 id='userCardLocation'>{location}</h3>
-                        <p id='userCardAboutMe'>{aboutMe}</p>
                         <ul id='userCardContact'>
                             <li className='userCardContactInfo'>
                                 <img src={mailIcon} alt="mail icon"/>{' '}
@@ -45,11 +44,13 @@ export class UserCard extends Component {
                                     {email}
                                 </a>
                             </li>
+                            {' | '}
                             <li className='userCardContactInfo'>
                                 <img src={phoneIcon} alt="phone icon"/>{' '}
                                 {phone}
                             </li>
                         </ul>
+                        <p id='userCardAboutMe'>{aboutMe}</p>
                     </div>
                 </div>
             </div>
