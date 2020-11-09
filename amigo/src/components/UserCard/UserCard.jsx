@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import './UserCard.css'
-// import userPhoto from '../../assets/ProfilePhoto.jpeg'
 import data from './dummyData'
-import userData from './dummyData'
+import mailIcon from '../../assets/mailicon.svg'
+import phoneIcon from '../../assets/phoneicon.svg'
 
 export class UserCard extends Component {
     constructor() {
@@ -39,8 +39,16 @@ export class UserCard extends Component {
                         <h3 id='userCardLocation'>{location}</h3>
                         <p id='userCardAboutMe'>{aboutMe}</p>
                         <ul id='userCardContact'>
-                            <li className='userCardContactInfo'><a href={`mailto:${email}`}>{email}</a></li>
-                            <li className='userCardContactInfo'>{phone}</li>
+                            <li className='userCardContactInfo'>
+                                <img src={mailIcon} alt="mail icon"/>{' '}
+                                <a href={`mailto:${email}`}>
+                                    {email}
+                                </a>
+                            </li>
+                            <li className='userCardContactInfo'>
+                                <img src={phoneIcon} alt="phone icon"/>{' '}
+                                {phone}
+                            </li>
                         </ul>
                     </div>
                 </div>
