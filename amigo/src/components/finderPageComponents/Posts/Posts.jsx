@@ -22,6 +22,7 @@ export class Posts extends Component {
         return (
             <div>
                 {posts.length !== 0 && <table className='postTable'>
+                    <tbody>
                     <tr>
                         <td className='postWrap'><Post userInfo={posts[0]} /></td>
                         <td className='postWrap'><Post userInfo={posts[1]} /></td>
@@ -32,6 +33,7 @@ export class Posts extends Component {
                         <td className='postWrap'><Post userInfo={posts[4]} /></td>
                         <td className='postWrap'><Post userInfo={posts[5]} /></td>
                     </tr>
+                    </tbody>
                 </table>}
             </div>
         )

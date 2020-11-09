@@ -10,7 +10,7 @@ export class Filter extends Component {
         this.state = {
             looking: '',
             location: '',
-            preference: [],   
+            preference: '',   
             price: ''         
         }
     }
@@ -38,6 +38,7 @@ export class Filter extends Component {
                     </a>
                 </div>
                 <table className='filter'>
+                    <tbody>
                     <tr>
                         <td className='filterItem'>
                             <select name="looking" id="looking" value={looking} className='select select1' onChange={ this.changeHandler }>
@@ -91,6 +92,7 @@ export class Filter extends Component {
                             }
                         </td>
                     </tr>
+                    </tbody>
                 </table>
             </div>
         )
