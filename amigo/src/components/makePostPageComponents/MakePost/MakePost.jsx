@@ -116,6 +116,24 @@ class MakePost extends Component {
                                 </label>
                             </div>
                             <div className="form-check">
+                                <input className="form-check-input" type="checkbox" value="Student" onChange={this.checkboxChangeHandler}/>
+                                <label className="form-check-label" >
+                                    Student
+                                </label>
+                            </div>
+                            <div className="form-check">
+                                <input className="form-check-input" type="checkbox" value="Student" onChange={this.checkboxChangeHandler}/>
+                                <label className="form-check-label" >
+                                    Professional
+                                </label>
+                            </div>
+                            <div className="form-check">
+                                <input className="form-check-input" type="checkbox" value="Student" onChange={this.checkboxChangeHandler}/>
+                                <label className="form-check-label" >
+                                    Elderly
+                                </label>
+                            </div>
+                            <div className="form-check">
                                 <input className="form-check-input" type="checkbox" value="No Smoking" onChange={this.checkboxChangeHandler}/>
                                 <label className="form-check-label" >
                                     No Smoking
