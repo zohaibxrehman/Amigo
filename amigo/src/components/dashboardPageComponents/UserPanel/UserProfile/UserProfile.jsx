@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import './UserProfile.css'
-import userPhoto from '../../../../assets/ProfilePhoto.jpeg'
 
 class UserProfile extends Component {
     render() {
-        const { name, photo } = this.props;
+        const { name, photo, admin } = this.props;
         return (
             <div id="userProfile">
                 <ul>
@@ -13,7 +12,7 @@ class UserProfile extends Component {
                     </li>
                     <li>
                         <li> 
-                            <strong> {name} </strong>
+                            <strong> {name} {admin} </strong>
                         </li>
                         <li id="profile">
                             View Profile

@@ -17,7 +17,7 @@ class UserPanel extends Component {
             <div id="userPanel">
                 <h2>Dashboard</h2>
                 <hr/>
-                <UserProfile name={profile.profileName} photo={profile.profilePhoto}/>
+                <UserProfile name={profile.profileName} photo={profile.profilePhoto} admin={'( Admin )'}/>
                 <UserFunctionality userFunction={userPanelMap.dashboard} />
                 <UserFunctionality userFunction={userPanelMap.userManagement} />
                 <UserFunctionality userFunction={userPanelMap.postManagement} />
