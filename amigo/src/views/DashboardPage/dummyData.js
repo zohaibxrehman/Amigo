@@ -1,21 +1,35 @@
+import adminPhoto from '../../assets/ProfilePhoto.jpeg' 
+import userPhoto1 from '../../assets/potrait4.png'
+import userPhoto2 from '../../assets/potrait1.jpeg'
+
 const dashboardData = 
     {
         profile: {
-            profilePhoto: '../../../../assets/ProfilePhoto.jpeg',
+            profilePhoto: adminPhoto,
             profileName: 'Zohaib Rehman'
         },
 
         notifications: [
             [ {
-                    profilePhoto: '../../../../assets/ProfilePhoto.jpeg',
-                    profileName: 'Zohaib Rehman'
+                    profilePhoto: userPhoto1,
+                    profileName: 'Vishnu Varma'
                     },
             {
                     msg: "Seeking a roommate for 2bd apartment",
-                    date: "December 23, 2018",
+                    date: "November 3, 2020",
                     activity: "Post Activity"
             }
-            ]
+            ],
+            [ {
+                profilePhoto: userPhoto2,
+                profileName: 'Anthony Jones'
+                },
+        {
+                msg: "Looking for four roommates to start a FRAT house!",
+                date: "October 23, 2020",
+                activity: "Post Activity"
+        }
+        ]
         ]
     }
 

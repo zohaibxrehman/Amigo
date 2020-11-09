@@ -20,7 +20,7 @@ class PostNotification extends Component {
                     </span>
                 </div>
                 <p className="spaceBtw">
-                    <UserProfile profile={notification[0]}/>
+                    <UserProfile name={notification[0].profileName} photo={notification[0].profilePhoto}/>
                     <EditPost />
                 </p>
             </div>

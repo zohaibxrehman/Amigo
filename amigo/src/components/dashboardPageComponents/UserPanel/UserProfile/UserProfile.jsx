@@ -4,12 +4,12 @@ import userPhoto from '../../../../assets/ProfilePhoto.jpeg'
 
 class UserProfile extends Component {
     render() {
-        const { name } = this.props;
+        const { name, photo } = this.props;
         return (
             <div id="userProfile">
                 <ul>
                     <li>
-                        <img src={ userPhoto } alt=""/>
+                        <img src={ photo } alt=""/>
                     </li>
                     <li>
                         <li> 
