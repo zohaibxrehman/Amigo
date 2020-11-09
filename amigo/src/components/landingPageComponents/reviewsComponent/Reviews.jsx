@@ -5,6 +5,10 @@ import userPhoto1 from '../../../assets/potrait2.jpg'
 import userPhoto2 from '../../../assets/potrait3.jpg'
 import userPhoto3 from '../../../assets/potrait4.png'
 
+
+
+// We need to get users from server using a callback function.
+
 const users = [
     {
         userPhoto: userPhoto1,

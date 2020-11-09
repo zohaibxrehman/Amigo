@@ -1,6 +1,5 @@
 
 import React, { Component } from 'react';
-// import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './Login.css'
 
 class Login extends Component {
@@ -15,6 +14,7 @@ class Login extends Component {
     submitHandler = (e) => {
         e.preventDefault();
         let { userId, userPass } = this.state
+        //  We need check credentials with the server with a callback and authorise user.
         if(userId==='user' && userPass === 'user'){
             // link to user dashboard
             console.log("User Authenticated")
@@ -52,9 +52,6 @@ class Login extends Component {
             </div>
 
             <button type="submit" className="btn btn-warning btn-block">Submit</button>
-            <p className="forgotPass text-right">
-                Forgot <a href="#">password?</a>
-            </p>
         </form>
 
           );
