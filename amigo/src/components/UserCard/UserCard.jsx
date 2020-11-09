@@ -39,7 +39,7 @@ export class UserCard extends Component {
                         <h3 id='userCardLocation'>{location}</h3>
                         <p id='userCardAboutMe'>{aboutMe}</p>
                         <ul id='userCardContact'>
-                            <li className='userCardContactInfo'><a href='mailto:zohaibxrehman@gmail.com'>{email}</a></li>
+                            <li className='userCardContactInfo'><a href={`mailto:${email}`}>{email}</a></li>
                             <li className='userCardContactInfo'>{phone}</li>
                         </ul>
                     </div>
