@@ -86,8 +86,8 @@ export class Filter extends Component {
                         </td>
                         <td className='filterItem viewIconContainer'>
                             {view==='list' ? 
-                                <input type="image" src={mapIcon} onClick={()=>changeView()} id='viewIcon'/> :
-                                <input type="image" src={listIcon} onClick={()=>changeView()} id='viewIcon'/>
+                                <input type="image" src={mapIcon} onClick={()=>changeView()} id='viewIcon' alt='Map View' /> :
+                                <input type="image" src={listIcon} onClick={()=>changeView()} id='viewIcon' alt='List View'/>
                             }
                         </td>
                     </tr>
