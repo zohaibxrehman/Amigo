@@ -12,7 +12,11 @@ export class UserCard extends Component {
                 userName: '',
                 location: '',
                 aboutMe: '',
-                userPhoto: null
+                userPhoto: null,
+                contact: {
+                    email: '',
+                    phone: ''
+                }
             }
         }
     }
@@ -24,7 +28,8 @@ export class UserCard extends Component {
     }
 
     render() {
-        const { userName, location, aboutMe, userPhoto } = this.state.userData
+        const { userName, location, aboutMe, userPhoto, contact } = this.state.userData
+        const { email, phone } = contact
         return (
             <div id='userCardContainer'>
                 <div id='userCard'>
@@ -33,6 +38,10 @@ export class UserCard extends Component {
                         <h2 id='userCardName'>{userName}</h2>
                         <h3 id='userCardLocation'>{location}</h3>
                         <p id='userCardAboutMe'>{aboutMe}</p>
+                        <ul id='userCardContact'>
+                            <li className='userCardContactInfo'>{email}</li>
+                            <li className='userCardContactInfo'>{phone}</li>
+                        </ul>
                     </div>
                 </div>
             </div>
