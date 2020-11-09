@@ -99,11 +99,9 @@ class MakePost extends Component {
                         
                 </div>
                 <div class="form-group">
-                    <label for="uploadFile">Example textarea</label>
-                    <input type="file" className="btn btn-warning btn-block form-control-file" id="uploadFile" />
+                    <label for="uploadFile">Upload photos</label>
+                    <input type="file" className="  form-control-file" id="uploadFile" />
                 </div>
-
-
                 
                 <button type="submit" className="btn btn-warning btn-block">Submit</button>
             </form>
