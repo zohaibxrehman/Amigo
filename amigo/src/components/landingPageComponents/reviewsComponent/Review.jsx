@@ -9,7 +9,6 @@ class Review extends Component {
     render() { 
         const {userPhoto, userName, location, review} = this.props.userInfo
         return ( 
-
             <div className='reviewContainer'>
                 <div>
                     <p className='reviewText'>
@@ -21,7 +20,6 @@ class Review extends Component {
                     <p className="personName">{ userName }</p>
                     <p className='personOccupation'>{ location }</p>
                 </div>
-                
             </div>
 
          );
