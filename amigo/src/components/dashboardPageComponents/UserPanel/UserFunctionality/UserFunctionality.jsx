@@ -6,7 +6,7 @@ class UserFunctionality extends Component {
 
     setDivId(functionality){
         let divId = "userFunctionality";
-        if (functionality == "Settings"){
+        if (functionality === "Settings"){
             divId = "userFunctionalitySettings";
         }
         return divId;

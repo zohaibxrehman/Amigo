@@ -13,9 +13,9 @@
     width: 15px;
 }
 
-#postInfo {
+#userPostInfo {
     padding: 10px;
-    background-color: limegreen;
+    background-color:lightblue;
     color: white;
     border-radius: 10px;
 }

@@ -1,24 +1,10 @@
 import React, { Component } from 'react'
 import './PostDescription.css'
-import data from '../dummyData'
 
 class PostDescription extends Component {
-    
-    constructor() {
-        super()
-        this.state = {
-            description: {}
-        }
-    }
-
-    componentDidMount() {
-        // when server and database is set up, this data
-        // will be retrieved here
-        this.setState({ description: data[0].description })
-    }
 
     render() {
-        const { description } = this.state;
+        const { description } = this.props;
 
         return (
             <div id = "description">
