@@ -3,7 +3,6 @@ import './Post.css'
 
 export class Post extends Component {
     render() {
-        console.dir(this.props.userInfo)
         const { userPhoto, userName, location, postTitle} = this.props.userInfo;
         return (
             <div className='post'>
