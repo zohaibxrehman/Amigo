@@ -46,8 +46,12 @@
     border-radius: 0 25px 25px 0;
 }
 
-#mapIcon {
+#viewIcon {
     height: 65%;
     float: right;
-    margin-right: 40px;
+    margin-right: 20px;
+}
+
+.viewIconContainer {
+    width: 10%;
 }

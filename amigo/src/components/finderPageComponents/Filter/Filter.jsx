@@ -60,10 +60,10 @@ export class Filter extends Component {
                                 <option value="">$3000+</option>
                             </select>
                         </td>
-                        <td className='filterItem'>
+                        <td className='filterItem viewIconContainer'>
                             {view==='list' ? 
-                                <input type="image" src={mapIcon} onClick={()=>changeView()} id='mapIcon'/> :
-                                <input type="image" src={listIcon} onClick={()=>changeView()} id='mapIcon'/>
+                                <input type="image" src={mapIcon} onClick={()=>changeView()} id='viewIcon'/> :
+                                <input type="image" src={listIcon} onClick={()=>changeView()} id='viewIcon'/>
                             }
                         </td>
                     </tr>
