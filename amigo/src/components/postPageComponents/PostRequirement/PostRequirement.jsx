@@ -6,7 +6,8 @@ class PostRequirement extends Component {
     renderRequirements(requirements){
         let renderRequirements = [];
         for (let i = 0; i < requirements.length; i++){
-            renderRequirements.push(<li>{requirements[i]}</li>);
+            let idName = 'postRequirement' + i
+            renderRequirements.push(<li key={idName}>{requirements[i]}</li>);
         }
         return renderRequirements
     }
