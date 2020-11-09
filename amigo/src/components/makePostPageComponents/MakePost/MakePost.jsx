@@ -62,14 +62,14 @@ class MakePost extends Component {
 
             <form onSubmit={this.submitHandler}>
                 <div className="form-group">
-                    <label for="inputTitle">Title</label>
+                    <label htmlFor="inputTitle">Title</label>
                     <input type="text" className="form-control" id="inputTitle" placeholder="Try something like: Seeking Roomate or 2 bd room place." value={ inputTitle } onChange = { this.changeHandler }/>
                 </div>
                 <div className="form-row">
                     <div className="form-group col-md-4">
-                        <label for="inputPrice">Price</label>
+                        <label htmlFor="inputPrice">Price</label>
                         <select id="inputPrice" className="form-control" value={ inputPrice} onChange = { this.changeHandler } >
-                                <option selected>Choose...</option>
+                                <option defaultValue>Choose...</option>
                                 <option >$0-$300</option>
                                 <option >$330-$600</option>
                                 <option >$600-$900</option>
@@ -81,9 +81,9 @@ class MakePost extends Component {
                         </select>
                     </div>
                     <div className="form-group col-md-4">
-                        <label for="inputLocation">Location</label>
+                        <label htmlFor="inputLocation">Location</label>
                         <select id="inputLocation" className="form-control" value={ inputLocation} onChange = { this.changeHandler }>
-                                <option selected>Choose...</option>
+                                <option defaultValue>Choose...</option>
                                 <option >Toronto</option>
                                 <option >Waterloo</option>
                                 <option >London</option>
@@ -164,14 +164,14 @@ class MakePost extends Component {
                         </div>
                 </div>
                 <div className="form-group">
-                        <label for="inputDescription">Description:</label>
-                        <textarea class="form-control rounded-0" id="inputDescription" rows="10" 
+                        <label htmlFor="inputDescription">Description:</label>
+                        <textarea className="form-control rounded-0" id="inputDescription" rows="10" 
                         placeholder="Try Something Like:&#13;&#13;Unit: One bedroom for rent in a 2 bedroom basement apartment in Harbord Village, starting November 1, 2020.&#10;Price: $1150 (includes internet + utilities).&#10;First and last month’s rent required.&#10;Rent Control: Unit was used for residential purposes prior to Nov 15 2018.&#10;Location: Bathurst and Harbord&#10;Relationship to unit: Current tenant seeking roommate.&#10;Lease Term: 12 months, preferably" value={ inputDescription } onChange = { this.changeHandler } />
 
                         
                 </div>
-                <div class="form-group">
-                    <label for="uploadFile">Upload photos</label>
+                <div className="form-group">
+                    <label htmlFor="uploadFile">Upload photos</label>
                     <input type="file" className="  form-control-file" id="uploadFile" />
                 </div>
                 
