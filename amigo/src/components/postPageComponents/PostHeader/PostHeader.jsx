@@ -1,16 +1,33 @@
 import React, { Component } from 'react'
 import './PostHeader.css'
+import data from '../dummyData'
 
 class PostHeader extends Component {
+    constructor() {
+        super()
+        this.state = {
+            header: {}
+        }
+    }
+
+    componentDidMount() {
+        // when server and database is set up, this data
+        // will be retrieved here
+        this.setState({ header: data[0].header })
+    }
+
     render() {
+
+        const { header } = this.state;
+
         return (
             <div id="postHeader">
                 <ul>
                     <li>
-                        Seeking a roomate for 2bd apartment
+                        {header.title}
                     </li>
                     <li>
-                        Budget: $1150
+                        Budget: {header.budget}
                     </li>
                 </ul>
             </div>
