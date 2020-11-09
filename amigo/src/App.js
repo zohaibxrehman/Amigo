@@ -8,7 +8,6 @@ import './App.css'
 export class App extends Component {
   constructor() {
     super()
-    console.log('HELLLOOO')
     this.state = {
         isLoggedIn: false,
         userType: 'user'

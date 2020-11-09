@@ -27,9 +27,11 @@ export class Filter extends Component {
     }
 
     render() {
-        const { view, changeView, isLoggedIn } = this.props
+        const { view, changeView } = this.props
         const { looking, location, preference, price } = this.state
-        const makePostButtonUrl = isLoggedIn ? '/makepost' : 'login'
+        // the next line will be added later when authentication is implemented
+        // const makePostButtonUrl = isLoggedIn ? '/makepost' : 'login'
+        const makePostButtonUrl = '/makepost'
         return (
             <div>
                 <div id='topHeading'>
