@@ -23,7 +23,6 @@ export class DashboardPage extends Component {
 
     render() {
         const {dashboardInfo} = this.state;
-        console.log(dashboardInfo)
         return (
             <div >
                 <UserPanel profile={dashboardInfo.profile}/>
