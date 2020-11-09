@@ -20,7 +20,7 @@ export class App extends Component {
                             (<FinderPage />)}/>
             <Route exact path='/post' render={() => 
                             (<PostPage />)}/>
-            <Route exact path='/dashboard' render={() => 
+            <Route exact path='/admindashboard' render={() => 
                             (<DashboardPage />)}/>
             <Route exact path='/makepost' render={() => 
                 (<MakePostPage />)}/>

@@ -1,9 +1,14 @@
+import userPhoto from '../../assets/potrait4.png'
+import housePhoto from '../../assets/interior-1.jpg'
+
 const postData = 
-    [{
+    {
         profile: {
-            profilePhoto: '../../../../assets/ProfilePhoto.jpeg',
-            profileName: 'Zohaib Rehman'
+            profilePhoto: userPhoto,
+            profileName: 'Vishnu Varma'
         },
+
+        photo: housePhoto,
 
         header: {
             title: "Seeking a roomate for 2bd apartment",
@@ -17,7 +22,7 @@ const postData =
             leaseTerm: '12 months, preferably'
         },
 
-        requirement: ['No Smoking', 'Male', 'Student', 'Less Parties']
-    }]
+        requirements: ['No Smoking', 'Male', 'Student', 'Less Parties']
+    }
 
 export default postData

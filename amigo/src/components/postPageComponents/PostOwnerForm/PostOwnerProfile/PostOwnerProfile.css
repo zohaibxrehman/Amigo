@@ -3,6 +3,10 @@
     font-size: 12px;
 }
 
+#profileInfo {
+    padding-left: 15px;
+}
+
 #postOwnerProfile {
     margin: 15px 20px 30px 20px;
     border-radius: 5px;
@@ -20,18 +24,18 @@
 
 #postOwnerProfile ul {
     margin: 0px;
-    padding-top: 25px;
+    padding-top: 15px;
     text-align: left;
 }
 
 #postOwnerProfile ul li {
-    margin: 5px;
+    margin: 0px;
     display: inline-block;
 		
 }
 
 
-#postOwnerProfile ul li li {
+#postOwnerProfile ul li ul li {
     margin: 0px;
     padding: 0px;
 	list-style: none; /* Gets rid of list bullet points */
