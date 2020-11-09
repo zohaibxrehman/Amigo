@@ -7,7 +7,6 @@ class SignUp extends Component {
     render() { 
         return ( 
             <form>
-
                 <div className="form-group">
                     <label>First name</label>
                     <input type="text" className="form-control" placeholder="First Name" />
@@ -30,7 +29,7 @@ class SignUp extends Component {
 
                 <button type="submit" className="btn btn-warning btn-block">Sign Up</button>
                 <p className="alreadyRegistered text-right">
-                    Already registered <a href="#">sign in?</a>
+                    Already registered <a href="/login">sign in?</a>
                 </p>
             </form>
 
