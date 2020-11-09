@@ -9,8 +9,11 @@ class MakePostPage extends Component {
     state = {  }
     render() { 
         return (  
+            <div className="MakePostForm">
+                <h2>Make a New Post</h2>
+                <MakePost />
+            </div>
 
-            <MakePost />
 
         );
     }
