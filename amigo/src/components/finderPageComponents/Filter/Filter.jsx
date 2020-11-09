@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
 import './Filter.css'
+import mapIcon from '../../../assets/map-icon.png'
+import listIcon from '../../../assets/list-icon.png'
+
 
 export class Filter extends Component {
     render() {
+        const { view, changeView } = this.props
         return (
             <div>
-                <div>
+                <div id='topHeading'>
                     <h2 className='roomHeading'>Find your next roommate</h2>
                     <button className='postButton'>Make a Post</button>
                 </div>
@@ -55,6 +59,12 @@ export class Filter extends Component {
                                 <option value="">$2000-$3000</option>
                                 <option value="">$3000+</option>
                             </select>
+                        </td>
+                        <td className='filterItem viewIconContainer'>
+                            {view==='list' ? 
+                                <input type="image" src={mapIcon} onClick={()=>changeView()} id='viewIcon'/> :
+                                <input type="image" src={listIcon} onClick={()=>changeView()} id='viewIcon'/>
+                            }
                         </td>
                     </tr>
                 </table>

@@ -1,0 +1,14 @@
+.MakePostForm {
+	background-color: #fff;
+	margin-left: 20%;
+	margin-right: 20%;
+	margin-top: 50px;
+	padding: 30px;
+	left: 50%;
+	border-radius: 2%;
+}
+
+.MakePostForm h2 {
+	color: black;
+	margin-bottom: 20px;
+}
