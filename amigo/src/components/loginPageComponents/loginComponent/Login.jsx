@@ -18,10 +18,10 @@ class Login extends Component {
         if(userId==='user' && userPass === 'user'){
             // link to user dashboard
             loginUser('user')
-            window.location.href='/admindashboard'
+            window.location.href='/userdashboard'
         } else if (userId==='admin' && userPass === 'admin'){
             loginUser('user')
-            window.location.href='/userdashboard'
+            window.location.href='/admindashboard'
         } else{
             alert("Please enter a valid credential")
         }

@@ -21,9 +21,10 @@ export class FinderPage extends Component {
 
     render() {
         const { view } = this.state
+        const { isLoggedIn } = this.props
         return (
             <div className='finder'>
-                <Filter view={ view } changeView={() => this.changeView()} />
+                <Filter view={ view } changeView={() => this.changeView()} isLoggedIn={isLoggedIn} />
                 <div id='finderView'>
                     {view==='list' && 
                     <React.Fragment>

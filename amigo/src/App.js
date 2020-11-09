@@ -8,6 +8,7 @@ import './App.css'
 export class App extends Component {
   constructor() {
     super()
+    console.log('HELLLOOO')
     this.state = {
         isLoggedIn: false,
         userType: 'user'
@@ -19,11 +20,6 @@ export class App extends Component {
   }
 
   loginUser = (userType) => {
-    // if ((user === 'admin' && pass === 'admin')) {
-    //   this.setState({ isLoggedIn: true, userType: 'admin' })
-    // } else if (user === 'user' && pass === 'user') {
-    //   this.setState({ isLoggedIn: true, userType: 'user' })
-    // }
     this.setState({ isLoggedIn: true, userType: userType })
   }
 
@@ -39,7 +35,7 @@ export class App extends Component {
             <Route exact path='/' render={() => 
                             (<LandingPage />)}/>
             <Route exact path='/finder' render={() => 
-                            (<FinderPage />)}/>
+                            (<FinderPage isLoggedIn={isLoggedIn} />)}/>
             <Route exact path='/post' render={() => 
                             (<PostPage />)}/>
             <Route exact path='/admindashboard' render={() => 
