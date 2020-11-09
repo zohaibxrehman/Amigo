@@ -25,7 +25,6 @@ export class App extends Component {
     //   this.setState({ isLoggedIn: true, userType: 'user' })
     // }
     this.setState({ isLoggedIn: true, userType: userType })
-    console.log('LOGGING IN')
   }
 
   render() {
