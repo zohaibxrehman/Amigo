@@ -23,7 +23,7 @@ export class FinderPage extends Component {
         const { view } = this.state
         return (
             <div className='finder'>
-                <Filter changeView={() => this.changeView()} />
+                <Filter view={ view } changeView={() => this.changeView()} />
                 <div id='finderView'>
                     {view==='list' && 
                     <React.Fragment>
