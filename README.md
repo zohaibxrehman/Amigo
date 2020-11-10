@@ -16,9 +16,10 @@ The home page displays information and acts as the landing page for our project.
 Once logged in as admin, you will be redirected to the admin dashboard. This page allows you to see recent activity by all users - like reported users, reported posts, new posts created, and so on. You will be able to edit and delete any post and also delete any users as an admin once the backend is set up. Also, other functionality like user management and post management will be handled once the backend is set up. 
 
 ### User Dashboard View - http://localhost:3000/userdashboard
-<ins>username</ins>: admin
+<ins>username</ins>: user
 
-<ins>password</ins>: admin
+<ins>password</ins>: user
+
 Once logged in as user, you will be taken to the user dashboard. Here, you will be able to see recent notifications received from users who are interested in being your roommates. You will be able to view and edit your own post once the backend is set up, under User Activity.
 
 ### Make a Post View - http://localhost:3000/makepost
