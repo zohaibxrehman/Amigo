@@ -74,10 +74,14 @@ Users can see their own posts in dashboard.
 ### Install dependencies and run
 
 Clone the project onto your local machine.
+```bash
+git clone https://github.com/csc309-fall-2020/team39.git
+```
 
 Install all the npm packages. Go into the project folder and install all npm packages:
 
 ```bash
+cd team39/amigo/
 npm install
 ```
 
