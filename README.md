@@ -28,7 +28,7 @@ We plan on having filtering functionality based on preferences, price and locati
 ### Make a New Post View - http://localhost:3000/makepost
 As a user you will be able to create a post by clicking on Make a Post on the postings page. 
 
-### Post View** - http://localhost:3000/post
+### Post View - http://localhost:3000/post
 Once you click on a post, you will be taken to another page with post details and ability to contact the user who made the post. 
 
 ### Profile Page View - http://localhost:3000/user
