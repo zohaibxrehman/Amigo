@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-
-
 class MakePost extends Component {
 
     constructor() {
@@ -15,15 +13,12 @@ class MakePost extends Component {
         }
     }
 
-
-
     submitHandler = (e) => {
         e.preventDefault();
         // let { inputTitle, inputPrice, inputLocation, preferences, inputDescription } = this.state
         // We need to make a server call and add this data to the server.
         alert("Post successfully made.")
     }
-
 
     changeHandler = (e) => {
         e.preventDefault();
@@ -53,8 +48,6 @@ class MakePost extends Component {
             preferences: updatedPreferences
         });
     }
-
-
 
     render() { 
         const { inputTitle, inputPrice, inputLocation, inputDescription } = this.state
@@ -94,8 +87,6 @@ class MakePost extends Component {
                                 <option >Scarborough</option>
                         </select>
                     </div>
-
-                   
                 </div>
                 <div className="form-group row">
                         <div className="col-sm-2">Preferences</div>
@@ -105,7 +96,6 @@ class MakePost extends Component {
                                 <label className="form-check-label" >
                                     Male
                                 </label>
-
                             </div>
                             <div className="form-check">
                                 <input className="form-check-input" type="checkbox" value="Female" onChange={this.checkboxChangeHandler}/>
@@ -167,18 +157,13 @@ class MakePost extends Component {
                         <label htmlFor="inputDescription">Description:</label>
                         <textarea className="form-control rounded-0" id="inputDescription" rows="10" 
                         placeholder="Try Something Like:&#13;&#13;Unit: One bedroom for rent in a 2 bedroom basement apartment in Harbord Village, starting November 1, 2020.&#10;Price: $1150 (includes internet + utilities).&#10;First and last month’s rent required.&#10;Rent Control: Unit was used for residential purposes prior to Nov 15 2018.&#10;Location: Bathurst and Harbord&#10;Relationship to unit: Current tenant seeking roommate.&#10;Lease Term: 12 months, preferably" value={ inputDescription } onChange = { this.changeHandler } />
-
-                        
                 </div>
                 <div className="form-group">
                     <label htmlFor="uploadFile">Upload photos</label>
                     <input type="file" className="  form-control-file" id="uploadFile" />
                 </div>
-                
                 <button type="submit" className="btn btn-warning btn-block">Submit</button>
             </form>
-
-
          );
     }
 }
