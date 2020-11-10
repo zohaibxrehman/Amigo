@@ -1,70 +1,99 @@
-# Getting Started with Create React App
+# team39 - Amigo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Purpose:
+Canada is the land of immigrants.  The newcomers don’t have contacts when they arrive and as a result, have difficulty finding roommates to stay at shared rentals at affordable pricing. This issue is faced by professionals and students alike.  We aim to simplify the process of finding roommates.
 
-## Available Scripts
+## Usage & Current Functionality:
 
-In the project directory, you can run:
+### Homepage - http://localhost:3000
+The home page displays information and acts as the landing page for our project. On the homepage, you can click the posting button on the navbar to view the posting page and login button to login in as an admin or an user. 
 
-### `npm start`
+<img src='../screenshots/home-page.png' width=70%>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Admin Dashboard View - http://localhost:3000/admindashboard
+<ins>username</ins>: admin
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<ins>password</ins>: admin
 
-### `npm test`
+Once logged in as admin, you will be redirected to the admin dashboard. This page allows you to see recent activity by all users - like reported users, reported posts, new posts created, and so on. You will be able to edit and delete any post and also delete any users as an admin once the backend is set up. Also, other functionality like user management and post management will be handled once the backend is set up. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<img src='../screenshots/admin-dashboard.png' width=70%>
 
-### `npm run build`
+### User Dashboard View - http://localhost:3000/userdashboard
+<ins>username</ins>: user
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<ins>password</ins>: user
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Once logged in as user, you will be taken to the user dashboard. Here, you will be able to see recent notifications received from users who are interested in being your roommates. You will be able to view and edit your own post once the backend is set up, under User Activity.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<img src='../screenshots/user-dashboard.png' width=70%>
 
-### `npm run eject`
+### Postings View - http://localhost:3000/finder
+We plan on having filtering functionality based on preferences, price and location once we have our backend setup. You can switch between the **Map View** and **Postings View** by clicking on the map/list button on the Postings Page. 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<img src='../screenshots/post-view-postings.png' width=45%>   <img src='../screenshots/map-view-postings.png' width=45%>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Make a New Post View - http://localhost:3000/makepost
+As a user you will be able to create a post by clicking on Make a Post on the postings page. 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<img src='../screenshots/make-a-post.png' width=70%>
 
-## Learn More
+### Post View - http://localhost:3000/post
+Once you click on a post, you will be taken to another page with post details and ability to contact the user who made the post. 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<img src='../screenshots/post-view.png' width=70%>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Profile Page View - http://localhost:3000/user
+Note: You can view profile by clicking on View Profile link for any user. 
 
-### Code Splitting
+We are also collecting information from forms (such as make a post, filter, login, contact) and storing it in a react state. When server functionality will be added, this same react state object will be sent to the server and no extra work will be needed.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<img src='../screenshots/user-profile.png' width=70%>
 
-### Analyzing the Bundle Size
+### Login and Register View** - http://localhost:3000/login
+The login page is easily accessible from the navbar. It has functionality for logging in and registering a new account. Upon entering the correct credentials, the user is redirected to user dashboard and the admin is redirected to the admin dashboard. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<img src='../screenshots/login-register.png' width=70%>
 
-### Making a Progressive Web App
+## Upcoming Features:
+Users view housing/roommate posts and filter based on preferences.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Authentication will be added to secure certain views.
 
-### Advanced Configuration
+Logged in users will be able to create a new post and view their dashboard.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Currently, a template is shown upon clicking View Profile and clicking on a Post. In the future, users will be able to view other user’s profiles who have created a post or contacted them. This data will be received from the database.
 
-### Deployment
+A user can report posts to the admin which they deem inappropriate.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Integration with Maps. This will help the user to filter out roommates according to their locations of interest.
 
-### `npm run build` fails to minify
+Users can see their own posts in dashboard.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Install dependencies and run
+
+Clone the project onto your local machine.
+
+Install all the npm packages. Go into the project folder and install all npm packages:
+
+```bash
+npm install
+```
+
+To run the application:
+
+```bash
+npm start
+```
+
+The application runs on **localhost:3000** on your local machine.
+
+## External Libraries Used:
+React
+
+Leafleft (Maps)
+
+Bootstrap 4 (Very limited use. Only used for fonts and login page.)
+
+**The pictures are taken from prexel which are free for commercial use and no attribution is required. The icons are taken from Icons8.**
