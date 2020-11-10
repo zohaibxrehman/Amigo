@@ -31,7 +31,8 @@ Once logged in as user, you will be taken to the user dashboard. Here, you will 
 ### Postings View - http://localhost:3000/finder
 We plan on having filtering functionality based on preferences, price and location once we have our backend setup. You can switch between the **Map View** and **Postings View** by clicking on the map/list button on the Postings Page. 
 
-<img src='./screenshots/post-view-postings.png' width=70%>
+
+<img src='./screenshots/post-view-postings.png' width=45%>   <img src='./screenshots/map-view-postings.png' width=45%>
 
 ### Make a New Post View - http://localhost:3000/makepost
 As a user you will be able to create a post by clicking on Make a Post on the postings page. 
@@ -41,12 +42,14 @@ As a user you will be able to create a post by clicking on Make a Post on the po
 ### Post View - http://localhost:3000/post
 Once you click on a post, you will be taken to another page with post details and ability to contact the user who made the post. 
 
-
+<img src='./screenshots/post-view.png' width=70%>
 
 ### Profile Page View - http://localhost:3000/user
 Note: You can view profile by clicking on View Profile link for any user. 
 
 We are also collecting information from forms (such as make a post, filter, login, contact) and storing it in a react state. When server functionality will be added, this same react state object will be sent to the server and no extra work will be needed.
+
+<img src='./screenshots/user-profile.png' width=70%>
 
 ### Login and Register View** - http://localhost:3000/login
 The login page is easily accessible from the navbar. It has functionality for logging in and registering a new account. Upon entering the correct credentials, the user is redirected to user dashboard and the admin is redirected to the admin dashboard. 
@@ -88,8 +91,9 @@ The application runs on **localhost:3000** on your local machine.
 
 ## External Libraries Used:
 React
+
 Leafleft (Maps)
+
 Bootstrap 4 (Very limited use. Only used for fonts and login page.)
 
-
-	
+**The pictures are taken from prexel which are free for commercial use and no attribution is required. The icons are taken from Icons8.**
