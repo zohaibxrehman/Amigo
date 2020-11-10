@@ -10,7 +10,7 @@ class Banner extends Component {
                 <div>
                     <h1 className='bannerTextHeader'>Find your next roommate!</h1>
                     <p className='bannerText'>
-                        Torquatos nostros? quos dolores eos, qui dolorem ipsum per se texit, ne ferae quidem se repellere, idque instituit docere sic: omne animal, simul atque integre iudicante itaque aiunt hanc quasi involuta aperiri, altera occulta quaedam et voluptatem accusantium doloremque.
+                    New to Canada? Just moved cities? Looking for someone to share a place with? You've come to the perfect place. Amigo is your true friend which helps you find your next roommate!
                     </p>
                 </div>
                 <a href='/finder'>
