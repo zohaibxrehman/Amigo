@@ -17,7 +17,9 @@ class Motto extends Component {
                <MottoText />
             </div>
             <div>
-                <button className='LearnMoreButton' >Learn More</button>
+                <a href='/finder'>
+                <button className='LearnMoreButton'>Learn More</button>
+                </a>
             </div>
             </div>
          );
