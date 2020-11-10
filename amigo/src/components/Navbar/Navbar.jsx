@@ -9,8 +9,8 @@ export class Navbar extends Component {
             <div className="navbarBlack">
                 <img className='logo' src={logo} alt='logo'></img>
                 {
-                    isLoggedIn ? <a className="active" href="/login">Logout</a> :
-                    <a className="active" href="/login">Login</a>
+                    isLoggedIn ? <a className="active loginPageButton" href="/login">Logout</a> :
+                    <a className="active loginPageButton" href="/login">Login</a>
                 }
                 <p className='logoName'>Amigo</p>
                 <a href='mailto: zohaibxrehman@gmail.com'>Contact</a>
