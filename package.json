@@ -18,6 +18,11 @@
   },
   "homepage": "https://github.com/csc309-fall-2020/team39#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mongodb": "^3.6.3",
+    "mongoose": "^5.10.19",
+    "validator": "^13.5.1"
   }
 }

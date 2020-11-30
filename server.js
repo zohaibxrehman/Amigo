@@ -1,4 +1,5 @@
 "use strict";
+const log = console.log;
 
 const express = require("express");
 // starting the express server
