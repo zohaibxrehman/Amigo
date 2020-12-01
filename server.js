@@ -220,7 +220,12 @@ app.delete('/posts/:id', mongoChecker, async (req, res) => {
         if (!post) {
             res.status(404).send("Post not found")
         }
-        res.send(post)
+        const user = await User.findOne({ _id: post.creator })
+        user.posts = user.posts.filter(postIdx => {
+            return !postIdx.equals(post._id)
+        })
+        user.save()
+        res.send({ post, user })
     } catch {
         res.status(500).send("Internal Server Error")
     }
