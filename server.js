@@ -87,6 +87,18 @@ app.post("/users/login", async (req, res) => {
     }
 });
 
+app.get("/users/logout", (req, res) => {
+    // Remove the session
+    log(req.session)
+    req.session.destroy(error => {
+        if (error) {
+            res.status(500).send(error);
+        } else {
+            res.send()
+        }
+    });
+});
+
 // User API Route
 app.post('/users/new', mongoChecker, async (req, res) => {
     const { email, password, username, firstName, lastName } = req.body;
