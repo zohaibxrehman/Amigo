@@ -87,6 +87,32 @@ app.post("/users/login", async (req, res) => {
     }
 });
 
+// User API Route
+app.post('/users/new', mongoChecker, async (req, res) => {
+    const { email, password, username, firstName, lastName } = req.body;
+
+    // Create a new user
+    const user = new User({
+        email: email,
+        password: password,
+        username: username,
+        firstName: firstName,
+        lastName: lastName
+    })
+
+    try {
+        // Save the user
+        const newUser = await user.save()
+        res.send(newUser)
+    } catch (error) {
+        if (isMongoError(error)) { // check for if mongo server suddenly disconnected before this request.
+            res.status(500).send('Internal server error')
+        } else {
+            log(error)
+            res.status(400).send('Bad Request') // bad request for changing the student.
+        }
+    }
+})
 
 // Serve the build
 // app.use(express.static(path.join(__dirname, "/client/build")));
