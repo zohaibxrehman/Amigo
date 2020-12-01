@@ -99,6 +99,15 @@ app.get("/users/logout", (req, res) => {
     });
 });
 
+app.get("/users/check-session", (req, res) => {
+    log(req.session)
+    if (req.session.user) {
+        res.send({ currentUser: req.session.username });
+    } else {
+        res.status(401).send();
+    }
+});
+
 // User API Route
 app.post('/users/new', mongoChecker, async (req, res) => {
     const { email, password, username, firstName, lastName } = req.body;
