@@ -13,6 +13,8 @@ mongoose.set('useFindAndModify', false);
 
 // to validate object IDs
 const { ObjectID } = require("mongodb");
+const { User } = require("./models/user");
+const { UserPost } = require("./models/userPost");
 
 // body-parser: middleware for parsing HTTP JSON body into a usable object
 const bodyParser = require("body-parser");

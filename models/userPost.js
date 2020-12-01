@@ -39,4 +39,4 @@ const UserPost = mongoose.model('UserPost', {
 	}
 })
 
-module.exports = { Student }
+module.exports = { UserPost }
