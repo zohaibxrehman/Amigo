@@ -156,8 +156,11 @@ app.get('/users/:id', mongoChecker, async (req, res) => {
 
 app.delete('/users/:id', mongoChecker, async (req, res) => {
     try {
-        const users = await User.findByIdAndRemove(req.params.id)
-        res.send(users)
+        const user = await User.findByIdAndRemove(req.params.id)
+        if (!user) {
+            res.status(404).send("User not found")
+        }
+        res.send(user)
     } catch {
         res.status(500).send("Internal Server Error")
     }
@@ -202,6 +205,18 @@ app.get('/posts', mongoChecker, async (req, res) => {
 app.get('/posts/:id', mongoChecker, async (req, res) => {
     try {
         const post = await UserPost.findById(req.params.id)
+        if (!post) {
+            res.status(404).send("Post not found")
+        }
+        res.send(post)
+    } catch {
+        res.status(500).send("Internal Server Error")
+    }
+})
+
+app.delete('/posts/:id', mongoChecker, async (req, res) => {
+    try {
+        const post = await UserPost.findByIdAndRemove(req.params.id)
         if (!post) {
             res.status(404).send("Post not found")
         }
