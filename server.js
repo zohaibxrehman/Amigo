@@ -135,6 +135,10 @@ app.get("/users/check-session", (req, res) => {
 app.post('/users/new', mongoChecker, async (req, res) => {
     const { email, password, username, firstName, lastName } = req.body;
 
+    if (username === 'admin') {
+        res.status(400).send('Bad Request. Cannot create account as admin.')
+    }
+
     const user = new User({
         email: email,
         password: password,
