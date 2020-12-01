@@ -1,0 +1,32 @@
+{
+  "name": "team39",
+  "version": "1.0.0",
+  "description": "## Purpose: Canada is the land of immigrants.  The newcomers don’t have contacts when they arrive and as a result, have difficulty finding roommates to stay at shared rentals at affordable pricing. This issue is faced by professionals and students alike.  We aim to simplify the process of finding roommates.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csc309-fall-2020/team39.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/csc309-fall-2020/team39/issues"
+  },
+  "homepage": "https://github.com/csc309-fall-2020/team39#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mongodb": "^3.6.3",
+    "mongoose": "^5.10.19",
+    "validator": "^13.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
