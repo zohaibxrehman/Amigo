@@ -14,6 +14,7 @@ mongoose.set('useFindAndModify', false);
 // to validate object IDs
 const { ObjectID } = require("mongodb");
 const { User } = require("./models/user");
+const { Admin } = require("./models/admin")
 const { UserPost } = require("./models/userPost");
 
 // body-parser: middleware for parsing HTTP JSON body into a usable object
@@ -41,6 +42,8 @@ const mongoChecker = (req, res, next) => {
     }   
 }
 
+
+
 // Middleware for authentication of resources
 const authenticate = async (req, res, next) => {
     if (req.session.user) {
@@ -60,6 +63,24 @@ const authenticate = async (req, res, next) => {
     }
 }
 
+const authenticateAdmin = async (req, res, next) => {
+    if (req.session.user) {
+        try {
+            const admin = await Admin.findById(req.session.user)
+            if (!admin) {
+                res.status(401).send("Unauthorized")
+            } else {
+                req.user = admin
+                next()
+            }
+        } catch {
+            res.status(401).send("Unauthorized")
+        }
+    } else {
+        res.status(401).send("Unauthorized")
+    }
+}
+
 /*** Session handling **************************************/
 // Create a session and session cookie
 app.use(
@@ -68,7 +89,7 @@ app.use(
         resave: false,
         saveUninitialized: false,
         cookie: {
-            expires: 60000,
+            expires: 120000,
             httpOnly: true
         }
     })
@@ -77,6 +98,12 @@ app.use(
 app.post("/users/login", async (req, res) => {
     const { username, password } = req.body;
     try {
+        if (username == 'admin') {
+            const user = await Admin.findByUserPassword(username, password);
+            req.session.user = user._id;
+            req.session.username = user.username;
+            res.send({ currentUser: user.username });
+        }
         const user = await User.findByUserPassword(username, password);
         req.session.user = user._id;
         req.session.username = user.username;
