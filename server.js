@@ -197,6 +197,24 @@ app.get('/users/:id', mongoChecker, async (req, res) => {
     }
 })
 
+app.post('/users/:id/report', mongoChecker, async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id)
+        if (!user) {
+            res.status(404).send("Post not found")
+        }
+        user.flagged = true
+        user.save()
+        res.send(user)
+    } catch(error) {
+        if (isMongoError(error)) {
+            res.status(500).send('Internal server error')
+        } else {
+            res.status(400).send('Bad Request')
+        }
+    }
+})
+
 app.delete('/users/:id', mongoChecker, authenticateAdmin, async (req, res) => {
     try {
         const user = await User.findByIdAndRemove(req.params.id)
