@@ -40,6 +40,25 @@ const mongoChecker = (req, res, next) => {
     }   
 }
 
+// Middleware for authentication of resources
+const authenticate = async (req, res, next) => {
+    if (req.session.user) {
+        try {
+            const user = await User.findById(req.session.user)
+            if (!user) {
+                res.status(401).send("Unauthorized")
+            } else {
+                req.user = user
+                next()
+            }
+        } catch {
+            res.status(401).send("Unauthorized")
+        }
+    } else {
+        res.status(401).send("Unauthorized")
+    }
+}
+
 /*** Session handling **************************************/
 // Create a session and session cookie
 app.use(
