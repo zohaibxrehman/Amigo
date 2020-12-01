@@ -22,6 +22,7 @@ app.use(bodyParser.json());
 
 // express-session for managing user sessions
 const session = require("express-session");
+const { mongo } = require("mongoose");
 app.use(bodyParser.urlencoded({ extended: true }));
 
 function isMongoError(error) { // checks for first error returned by promise rejection if Mongo database suddently disconnects
@@ -142,7 +143,7 @@ app.post('/posts/new', mongoChecker, authenticate, async (req, res) => {
     })
 
     try {
-        const result = await userPost.save() 
+        const result = await userPost.save()
         const user = await User.findById(req.user._id)
         user.posts.push(userPost._id)
         user.save()
@@ -161,7 +162,18 @@ app.get('/posts', mongoChecker, async (req, res) => {
         const posts = await UserPost.find()
         res.send(posts)
     } catch(error) {
-        log(error)
+        res.status(500).send("Internal Server Error")
+    }
+})
+
+app.get('/posts/:id', mongoChecker, async (req, res) => {
+    try {
+        const post = await UserPost.findById(req.params.id)
+        if (!post) {
+            res.status(404).send("Post not found")
+        }
+        res.send(post)
+    } catch {
         res.status(500).send("Internal Server Error")
     }
 })
