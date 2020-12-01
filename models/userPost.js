@@ -4,19 +4,19 @@ const UserPost = mongoose.model('UserPost', {
 	title: {
 		type: String,
 		required: true,
-		minLength: 1,
+		minlength: 1,
 		trim: true
 	},
 	location: {
 		type: String,
 		required: true,
-		minLength: 1,
+		minlength: 1,
 		trim: true
 	},
 	price: {
 		type: String,
 		required: true,
-		minLength: 1,
+		minlength: 1,
 		trim: true
 	},
 	preferences: {
@@ -26,7 +26,7 @@ const UserPost = mongoose.model('UserPost', {
 	description: {
 		type: String,
 		required: true,
-		minLength: 1
+		minlength: 1
 	},
 	year: {
 		type: Number,
