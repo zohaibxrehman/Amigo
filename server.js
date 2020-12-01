@@ -73,10 +73,8 @@ app.use(
     })
 );
 
-// A route to login and create a session
 app.post("/users/login", async (req, res) => {
     const { username, password } = req.body;
-
     try {
         const user = await User.findByUserPassword(username, password);
         req.session.user = user._id;
@@ -88,8 +86,6 @@ app.post("/users/login", async (req, res) => {
 });
 
 app.get("/users/logout", (req, res) => {
-    // Remove the session
-    log(req.session)
     req.session.destroy(error => {
         if (error) {
             res.status(500).send(error);
@@ -111,7 +107,6 @@ app.get("/users/check-session", (req, res) => {
 app.post('/users/new', mongoChecker, async (req, res) => {
     const { email, password, username, firstName, lastName } = req.body;
 
-    // Create a new user
     const user = new User({
         email: email,
         password: password,
@@ -125,17 +120,17 @@ app.post('/users/new', mongoChecker, async (req, res) => {
         const newUser = await user.save()
         res.send(newUser)
     } catch (error) {
-        if (isMongoError(error)) { // check for if mongo server suddenly disconnected before this request.
+        if (isMongoError(error)) {
             res.status(500).send('Internal server error')
         } else {
             log(error)
-            res.status(400).send('Bad Request') // bad request for changing the student.
+            res.status(400).send('Bad Request')
         }
     }
 })
 
 app.post('/posts/new', mongoChecker, authenticate, async (req, res) => {
-    const { title, location, price, preferences, description, creator } = req.body
+    const { title, location, price, preferences, description } = req.body
 
     const userPost = new UserPost({
         title: title,
@@ -143,9 +138,8 @@ app.post('/posts/new', mongoChecker, authenticate, async (req, res) => {
         price: price,
         preferences: preferences,
         description: description,
-        creator: req.user._id // creator id from the authenticate middleware
+        creator: req.user._id
     })
-
 
     try {
         const result = await userPost.save() 
@@ -154,12 +148,21 @@ app.post('/posts/new', mongoChecker, authenticate, async (req, res) => {
         user.save()
         res.send(result)
     } catch(error) {
-        log(error) // log server error to the console, not to the client.
-        if (isMongoError(error)) { // check for if mongo server suddenly dissconnected before this request.
+        if (isMongoError(error)) {
             res.status(500).send('Internal server error')
         } else {
-            res.status(400).send('Bad Request') // 400 for bad request gets sent to client.
+            res.status(400).send('Bad Request')
         }
+    }
+})
+
+app.get('/posts', mongoChecker, async (req, res) => {
+    try {
+        const posts = await UserPost.find()
+        res.send(posts)
+    } catch(error) {
+        log(error)
+        res.status(500).send("Internal Server Error")
     }
 })
 
