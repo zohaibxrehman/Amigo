@@ -73,6 +73,20 @@ app.use(
     })
 );
 
+// A route to login and create a session
+app.post("/users/login", async (req, res) => {
+    const { username, password } = req.body;
+
+    try {
+        const user = await User.findByUserPassword(username, password);
+        req.session.user = user._id;
+        req.session.username = user.username;
+        res.send({ currentUser: user.username });
+    } catch {
+        res.status(400).send()
+    }
+});
+
 
 // Serve the build
 // app.use(express.static(path.join(__dirname, "/client/build")));
@@ -80,3 +94,5 @@ app.use(
 app.listen(port, () => {
     log(`Listening on port ${port}...`);
 });
+
+
