@@ -130,6 +130,18 @@ app.post('/users/new', mongoChecker, async (req, res) => {
     }
 })
 
+app.get('/users/:id', mongoChecker, async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id)
+        if (!user) {
+            res.status(404).send("Post not found")
+        }
+        res.send(user)
+    } catch {
+        res.status(500).send("Internal Server Error")
+    }
+})
+
 app.post('/posts/new', mongoChecker, authenticate, async (req, res) => {
     const { title, location, price, preferences, description } = req.body
 
