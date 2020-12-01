@@ -31,6 +31,10 @@ const UserPost = mongoose.model('UserPost', {
 	creator: {
 		type: mongoose.Schema.Types.ObjectId,
 		required: true
+	},
+	flagged: {
+		type: Boolean,
+		default: false
 	}
 })
 

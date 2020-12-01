@@ -66,6 +66,10 @@ const UserSchema = new mongoose.Schema({
     posts: {
 		type: [mongoose.Schema.Types.ObjectId],
 		required: false
+	},
+	flagged: {
+		type: Boolean,
+		default: false
 	}
 })
 
