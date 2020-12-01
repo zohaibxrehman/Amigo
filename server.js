@@ -293,7 +293,7 @@ app.post('/posts/:id/report', mongoChecker, async (req, res) => {
     }
 })
 
-app.delete('/posts/:id', mongoChecker, async (req, res) => {
+app.delete('/posts/:id', mongoChecker, authenticateAdmin, async (req, res) => {
     try {
         const post = await UserPost.findByIdAndRemove(req.params.id)
         if (!post) {
