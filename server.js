@@ -257,6 +257,24 @@ app.get('/posts/:id', mongoChecker, async (req, res) => {
     }
 })
 
+app.post('/posts/:id/report', mongoChecker, async (req, res) => {
+    try {
+        const post = await UserPost.findById(req.params.id)
+        if (!post) {
+            res.status(404).send("Post not found")
+        }
+        post.flagged = true
+        post.save()
+        res.send(post)
+    } catch(error) {
+        if (isMongoError(error)) {
+            res.status(500).send('Internal server error')
+        } else {
+            res.status(400).send('Bad Request')
+        }
+    }
+})
+
 app.delete('/posts/:id', mongoChecker, async (req, res) => {
     try {
         const post = await UserPost.findByIdAndRemove(req.params.id)
