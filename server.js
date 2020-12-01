@@ -42,8 +42,6 @@ const mongoChecker = (req, res, next) => {
     }   
 }
 
-
-
 // Middleware for authentication of resources
 const authenticate = async (req, res, next) => {
     if (req.session.user) {
@@ -98,18 +96,32 @@ app.use(
 app.post("/users/login", async (req, res) => {
     const { username, password } = req.body;
     try {
-        if (username == 'admin') {
+        if (username === 'admin') {
             const user = await Admin.findByUserPassword(username, password);
+            if (!user) {
+                res.status(404).send('Admin does not exist')
+                return;
+            }
             req.session.user = user._id;
             req.session.username = user.username;
             res.send({ currentUser: user.username });
+            return;
         }
         const user = await User.findByUserPassword(username, password);
+        if (!user) {
+            res.status(404).send('User does not exist')
+            return;
+        }
         req.session.user = user._id;
         req.session.username = user.username;
         res.send({ currentUser: user.username });
-    } catch {
-        res.status(400).send()
+    } catch(error) {
+        if (isMongoError(error)) {
+            res.status(500).send('Internal server error')
+        } else {
+            log(error)
+            res.status(400).send('Bad Request. Could not login user.')
+        }
     }
 });
 
@@ -185,7 +197,7 @@ app.get('/users/:id', mongoChecker, async (req, res) => {
     }
 })
 
-app.delete('/users/:id', mongoChecker, async (req, res) => {
+app.delete('/users/:id', mongoChecker, authenticateAdmin, async (req, res) => {
     try {
         const user = await User.findByIdAndRemove(req.params.id)
         if (!user) {
