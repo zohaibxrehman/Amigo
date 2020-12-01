@@ -28,11 +28,6 @@ const UserPost = mongoose.model('UserPost', {
 		required: true,
 		minlength: 1
 	},
-	year: {
-		type: Number,
-		required: true,
-		// default: 1
-	},
 	creator: {
 		type: mongoose.Schema.Types.ObjectId,
 		required: true

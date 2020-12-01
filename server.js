@@ -100,7 +100,6 @@ app.get("/users/logout", (req, res) => {
 });
 
 app.get("/users/check-session", (req, res) => {
-    log(req.session)
     if (req.session.user) {
         res.send({ currentUser: req.session.username });
     } else {
@@ -131,6 +130,35 @@ app.post('/users/new', mongoChecker, async (req, res) => {
         } else {
             log(error)
             res.status(400).send('Bad Request') // bad request for changing the student.
+        }
+    }
+})
+
+app.post('/posts/new', mongoChecker, authenticate, async (req, res) => {
+    const { title, location, price, preferences, description, creator } = req.body
+
+    const userPost = new UserPost({
+        title: title,
+        location: location,
+        price: price,
+        preferences: preferences,
+        description: description,
+        creator: req.user._id // creator id from the authenticate middleware
+    })
+
+
+    try {
+        const result = await userPost.save() 
+        const user = await User.findById(req.user._id)
+        user.posts.push(userPost._id)
+        user.save()
+        res.send(result)
+    } catch(error) {
+        log(error) // log server error to the console, not to the client.
+        if (isMongoError(error)) { // check for if mongo server suddenly dissconnected before this request.
+            res.status(500).send('Internal server error')
+        } else {
+            res.status(400).send('Bad Request') // 400 for bad request gets sent to client.
         }
     }
 })
