@@ -25,5 +25,8 @@
     "mongodb": "^3.6.3",
     "mongoose": "^5.10.19",
     "validator": "^13.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
   }
 }
