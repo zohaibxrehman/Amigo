@@ -154,6 +154,15 @@ app.get('/users/:id', mongoChecker, async (req, res) => {
     }
 })
 
+app.delete('/users/:id', mongoChecker, async (req, res) => {
+    try {
+        const users = await User.findByIdAndRemove(req.params.id)
+        res.send(users)
+    } catch {
+        res.status(500).send("Internal Server Error")
+    }
+})
+
 app.post('/posts/new', mongoChecker, authenticate, async (req, res) => {
     const { title, location, price, preferences, description } = req.body
 
