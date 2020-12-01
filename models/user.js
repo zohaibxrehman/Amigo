@@ -29,18 +29,35 @@ const UserSchema = new mongoose.Schema({
 		trim: true,
 		unique: true
     },
-
+    phone: {
+        type: String,
+		required: false,
+		minlength: 5,
+		trim: true
+    },
+    location: {
+        type: String,
+		required: false,
+		minlength: 1,
+		trim: true,
+		unique: true
+    },
 	email: {
 		type: String,
 		required: true,
-		minlength: 1,
+		minlength: 3,
 		trim: true,
 		unique: true,
 		validate: {
 			validator: validator.isEmail,   // custom validator
 			message: 'Not valid email'
 		}
-	}, 
+    }, 
+    aboutMe: {
+        type: String,
+		required: false,
+		trim: true
+    },
 	password: {
 		type: String,
 		required: true,
