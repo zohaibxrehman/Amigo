@@ -250,31 +250,40 @@ app.delete('/users/:id', mongoChecker, authenticateAdmin, async (req, res) => {
     }
 })
 
-app.post('/posts/new', mongoChecker, authenticate, async (req, res) => {
+app.post('/posts/new', mongoChecker, authenticate, multipartMiddleware, async (req, res) => {
     const { title, location, price, preferences, description } = req.body
 
-    const userPost = new UserPost({
-        title: title,
-        location: location,
-        price: price,
-        preferences: preferences,
-        description: description,
-        creator: req.user._id
-    })
-
-    try {
-        const result = await userPost.save()
-        const user = await User.findById(req.user._id)
-        user.posts.push(userPost._id)
-        user.save()
-        res.send(result)
-    } catch(error) {
-        if (isMongoError(error)) {
-            res.status(500).send('Internal server error')
-        } else {
-            res.status(400).send('Bad Request')
+    cloudinary.uploader.upload(
+        req.files.image.path, // req.files contains uploaded files
+        async function (result) {
+            try {
+                const userPost = new UserPost({
+                    title: title,
+                    location: location,
+                    price: price,
+                    preferences: preferences,
+                    description: description,
+                    creator: req.user._id,
+                    image_id: result.public_id,
+                    image_url: result.url,
+                    created_at: new Date()
+                })
+            
+                const userPostSaved = await userPost.save()
+                const user = await User.findById(req.user._id)
+                user.posts.push(userPost._id)
+                user.save()
+                res.send(userPostSaved)
+            } catch (error) {
+                log(error)
+                if (isMongoError(error)) {
+                    res.status(500).send('Internal server error')
+                } else {
+                    res.status(400).send('Bad Request')
+                }
+            }
         }
-    }
+    );
 })
 
 app.get('/posts', mongoChecker, async (req, res) => {
