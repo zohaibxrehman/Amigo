@@ -327,14 +327,18 @@ app.post('/posts/:id/report', mongoChecker, async (req, res) => {
 
 app.delete('/posts/:id', mongoChecker, authenticateAdmin, async (req, res) => {
     try {
+        // remove post
         const post = await UserPost.findByIdAndRemove(req.params.id)
         if (!post) {
             res.status(404).send("Post not found")
         }
+        // remove posts from creator posts list
         const user = await User.findOne({ _id: post.creator })
         user.posts = user.posts.filter(postIdx => {
             return !postIdx.equals(post._id)
         })
+        // remove post image from the cloud
+        cloudinary.uploader.destroy(post.image_id)
         user.save()
         res.send({ post, user })
     } catch {
