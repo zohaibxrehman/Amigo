@@ -35,7 +35,16 @@ const UserPost = mongoose.model('UserPost', {
 	flagged: {
 		type: Boolean,
 		default: false
-	}
+	},
+	image_id: {
+        type: String,
+        required: true
+    },
+    image_url: {
+        type: String,
+        required: true
+    },
+    created_at: String
 })
 
 module.exports = { UserPost }
