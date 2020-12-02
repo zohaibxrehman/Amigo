@@ -17,6 +17,17 @@ const { User } = require("./models/user");
 const { Admin } = require("./models/admin")
 const { UserPost } = require("./models/userPost");
 
+// multipart middleware: allows you to access uploaded file from req.file
+const multipart = require('connect-multiparty');
+const multipartMiddleware = multipart();
+
+const cloudinary = require('cloudinary');
+cloudinary.config({
+    cloud_name: 'amigo',
+    api_key: '572949329481838',
+    api_secret: 'nmIMlXq84VbW6psJ6BuuYkOZXdM'
+})
+
 // body-parser: middleware for parsing HTTP JSON body into a usable object
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
@@ -144,30 +155,38 @@ app.get("/users/check-session", (req, res) => {
 });
 
 // User API Route
-app.post('/users/new', mongoChecker, async (req, res) => {
+app.post('/users/new', mongoChecker, multipartMiddleware, async (req, res) => {
     const { email, password, username, firstName, lastName } = req.body;
 
     if (username === 'admin') {
         res.status(400).send('Bad Request. Cannot create account as admin.')
     }
 
-    try {
-        const user = new User({
-            email: email,
-            password: password,
-            username: username,
-            firstName: firstName,
-            lastName: lastName
-        })
-        const newUser = await user.save()
-        res.send(newUser)
-    } catch (error) {
-        if (isMongoError(error)) {
-            res.status(500).send('Internal server error')
-        } else {
-            res.status(400).send('Bad Request')
+    cloudinary.uploader.upload(
+        req.files.image.path, // req.files contains uploaded files
+        async function (result) {
+            try {
+                const user = new User({
+                email: email,
+                password: password,
+                username: username,
+                firstName: firstName,
+                lastName: lastName,
+                image_id: result.public_id,
+                image_url: result.url,
+                created_at: new Date()
+                })
+                const newUser = await user.save()
+                res.send(newUser)
+            } catch (error) {
+                if (isMongoError(error)) {
+                    res.status(500).send('Internal server error')
+                } else {
+                    res.status(400).send('Bad Request')
+                }
+            }
         }
-    }
+    );
 })
 
 app.get('/users', mongoChecker, async (req, res) => {
