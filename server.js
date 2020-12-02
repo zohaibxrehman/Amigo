@@ -14,6 +14,7 @@ mongoose.set('useFindAndModify', false);
 // to validate object IDs
 const { ObjectID } = require("mongodb");
 const { User } = require("./models/user");
+const { Admin } = require("./models/admin")
 const { UserPost } = require("./models/userPost");
 
 // body-parser: middleware for parsing HTTP JSON body into a usable object
@@ -60,6 +61,24 @@ const authenticate = async (req, res, next) => {
     }
 }
 
+const authenticateAdmin = async (req, res, next) => {
+    if (req.session.user) {
+        try {
+            const admin = await Admin.findById(req.session.user)
+            if (!admin) {
+                res.status(401).send("Unauthorized")
+            } else {
+                req.user = admin
+                next()
+            }
+        } catch {
+            res.status(401).send("Unauthorized")
+        }
+    } else {
+        res.status(401).send("Unauthorized")
+    }
+}
+
 /*** Session handling **************************************/
 // Create a session and session cookie
 app.use(
@@ -68,7 +87,7 @@ app.use(
         resave: false,
         saveUninitialized: false,
         cookie: {
-            expires: 60000,
+            expires: 120000,
             httpOnly: true
         }
     })
@@ -77,12 +96,32 @@ app.use(
 app.post("/users/login", async (req, res) => {
     const { username, password } = req.body;
     try {
+        if (username === 'admin') {
+            const user = await Admin.findByUserPassword(username, password);
+            if (!user) {
+                res.status(404).send('Admin does not exist')
+                return;
+            }
+            req.session.user = user._id;
+            req.session.username = user.username;
+            res.send({ currentUser: user.username });
+            return;
+        }
         const user = await User.findByUserPassword(username, password);
+        if (!user) {
+            res.status(404).send('User does not exist')
+            return;
+        }
         req.session.user = user._id;
         req.session.username = user.username;
         res.send({ currentUser: user.username });
-    } catch {
-        res.status(400).send()
+    } catch(error) {
+        if (isMongoError(error)) {
+            res.status(500).send('Internal server error')
+        } else {
+            log(error)
+            res.status(400).send('Bad Request. Could not login user.')
+        }
     }
 });
 
@@ -107,6 +146,10 @@ app.get("/users/check-session", (req, res) => {
 // User API Route
 app.post('/users/new', mongoChecker, async (req, res) => {
     const { email, password, username, firstName, lastName } = req.body;
+
+    if (username === 'admin') {
+        res.status(400).send('Bad Request. Cannot create account as admin.')
+    }
 
     const user = new User({
         email: email,
@@ -154,7 +197,25 @@ app.get('/users/:id', mongoChecker, async (req, res) => {
     }
 })
 
-app.delete('/users/:id', mongoChecker, async (req, res) => {
+app.post('/users/:id/report', mongoChecker, async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id)
+        if (!user) {
+            res.status(404).send("Post not found")
+        }
+        user.flagged = true
+        user.save()
+        res.send(user)
+    } catch(error) {
+        if (isMongoError(error)) {
+            res.status(500).send('Internal server error')
+        } else {
+            res.status(400).send('Bad Request')
+        }
+    }
+})
+
+app.delete('/users/:id', mongoChecker, authenticateAdmin, async (req, res) => {
     try {
         const user = await User.findByIdAndRemove(req.params.id)
         if (!user) {
@@ -214,7 +275,25 @@ app.get('/posts/:id', mongoChecker, async (req, res) => {
     }
 })
 
-app.delete('/posts/:id', mongoChecker, async (req, res) => {
+app.post('/posts/:id/report', mongoChecker, async (req, res) => {
+    try {
+        const post = await UserPost.findById(req.params.id)
+        if (!post) {
+            res.status(404).send("Post not found")
+        }
+        post.flagged = true
+        post.save()
+        res.send(post)
+    } catch(error) {
+        if (isMongoError(error)) {
+            res.status(500).send('Internal server error')
+        } else {
+            res.status(400).send('Bad Request')
+        }
+    }
+})
+
+app.delete('/posts/:id', mongoChecker, authenticateAdmin, async (req, res) => {
     try {
         const post = await UserPost.findByIdAndRemove(req.params.id)
         if (!post) {
