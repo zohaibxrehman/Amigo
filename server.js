@@ -233,13 +233,17 @@ app.post('/users/:id/report', mongoChecker, async (req, res) => {
 
 app.delete('/users/:id', mongoChecker, authenticateAdmin, async (req, res) => {
     try {
+        // remove user
         const user = await User.findByIdAndRemove(req.params.id)
         if (!user) {
             res.status(404).send("User not found")
         }
+        // remove user posts
         user.posts.forEach(async (post) => {
             const removedPost = await UserPost.findByIdAndRemove(post._id)
         })
+        // remove user profile photo from the cloud
+        cloudinary.uploader.destroy(user.image_id)
         res.status(200).send(user)
     } catch {
         res.status(500).send("Internal Server Error")
