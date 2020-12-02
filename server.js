@@ -151,23 +151,20 @@ app.post('/users/new', mongoChecker, async (req, res) => {
         res.status(400).send('Bad Request. Cannot create account as admin.')
     }
 
-    const user = new User({
-        email: email,
-        password: password,
-        username: username,
-        firstName: firstName,
-        lastName: lastName
-    })
-
     try {
-        // Save the user
+        const user = new User({
+            email: email,
+            password: password,
+            username: username,
+            firstName: firstName,
+            lastName: lastName
+        })
         const newUser = await user.save()
         res.send(newUser)
     } catch (error) {
         if (isMongoError(error)) {
             res.status(500).send('Internal server error')
         } else {
-            log(error)
             res.status(400).send('Bad Request')
         }
     }
@@ -221,7 +218,10 @@ app.delete('/users/:id', mongoChecker, authenticateAdmin, async (req, res) => {
         if (!user) {
             res.status(404).send("User not found")
         }
-        res.send(user)
+        user.posts.forEach(async (post) => {
+            const removedPost = await UserPost.findByIdAndRemove(post._id)
+        })
+        res.status(200).send(user)
     } catch {
         res.status(500).send("Internal Server Error")
     }
