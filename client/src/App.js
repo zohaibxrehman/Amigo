@@ -4,22 +4,25 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import { FinderPage, LandingPage, PostPage, LoginPage, MakePostPage, DashboardPage, UserPage, UserDashboardPage } from "./views/index.js";
 import Navbar from './components/Navbar/Navbar';
 import './App.css'
+import { checkSession } from './actions/user';
 
 export class App extends Component {
   constructor() {
     super()
-    this.state = {
-        isLoggedIn: false,
-        userType: 'user'
-    }
+
+    checkSession(this);
   }
-  
+  state = {
+    isLoggedIn: false,
+    userType: 'user',
+    currentUser: ''
+}
   logoutUser() {
     this.setState({ isLoggedIn: false })
   }
 
   loginUser = (userType) => {
-    this.setState({ isLoggedIn: true, userType: userType })
+    this.setState({ userType: userType })
   }
 
   render() {

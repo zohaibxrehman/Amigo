@@ -1,53 +1,57 @@
 import React, { Component } from 'react';
+import { login } from '../../../actions/user';
 import './Login.css'
 
 class Login extends Component {
     constructor() {
         super()
         this.state = {
-            userId: '',
-            userPass: ''
+            username: '',
+            password: ''
         }
     }
 
     submitHandler = (e) => {
         e.preventDefault();
-        const { userId, userPass } = this.state
+        // const { username, password } = this.state
         const { loginUser } = this.props
         //  We need check credentials with the server with a callback and authorise user.
-        if(userId==='user' && userPass === 'user'){
-            // link to user dashboard
-            loginUser('user')
-            window.location.href='/userdashboard'
-        } else if (userId==='admin' && userPass === 'admin'){
-            loginUser('user')
-            window.location.href='/admindashboard'
-        } else{
-            alert("Please enter a valid credential")
-        }
+        login(this,loginUser)
+
+
+        // if(username==='user' && password === 'user'){
+        //     // link to user dashboard
+        //     loginUser('user')
+        //     window.location.href='/userdashboard'
+        // } else if (username==='admin' && password === 'admin'){
+        //     loginUser('user')
+        //     window.location.href='/admindashboard'
+        // } else{
+        //     alert("Please enter a valid credential")
+        // }
     }
 
-    userIdHandler = (e) => {
+    usernameHandler = (e) => {
         e.preventDefault();
-        this.setState({userId: e.target.value})
+        this.setState({username: e.target.value})
     }
 
-    userPassHandler = (e) => {
+    passwordHandler = (e) => {
         e.preventDefault();
-        this.setState({userPass: e.target.value})
+        this.setState({password: e.target.value})
     }
     render() { 
-        const { userId, userPass } = this.state
+        const { username, password } = this.state
         return (
             <form onSubmit={this.submitHandler}>
             <div className="form-group">
                 <label>Username</label>
-                <input className="form-control" value={ userId } onChange= {this.userIdHandler} placeholder="Enter your username" />
+                <input className="form-control" value={ username } onChange= {this.usernameHandler} placeholder="Enter your username" />
             </div>
 
             <div className="form-group">
                 <label>Password</label>
-                <input type="password" className="form-control" value={ userPass } onChange= {this.userPassHandler} placeholder="Enter password" />
+                <input type="password" className="form-control" value={ password } onChange= {this.passwordHandler} placeholder="Enter password" />
             </div>
 
             <button type="submit" className="btn btn-warning btn-block">Submit</button>
