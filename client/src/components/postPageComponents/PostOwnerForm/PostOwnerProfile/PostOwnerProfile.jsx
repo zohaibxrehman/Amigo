@@ -4,7 +4,7 @@ import './PostOwnerProfile.css'
 class PostOwnerProfile extends Component {
 
     render() {
-        const { creator, creatorUrl } = this.props;
+        const { creator, creatorName, creatorUrl } = this.props;
 
         return (
             <div id="postOwnerProfile">
@@ -15,9 +15,9 @@ class PostOwnerProfile extends Component {
                     <li>
                         <ul id = "profileInfo">
                             <li> 
-                                <strong> { creator } </strong>
+                                <strong> { creatorName } </strong>
                             </li>
-                            <a id="profile-style" href="/user">View Profile</a>
+                            <a id="profile-style" href={`/user/${creator}`}>View Profile</a>
                         </ul>
                     </li>
                 </ul>

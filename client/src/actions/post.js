@@ -1,3 +1,71 @@
+export const getUserByIDForPosts = (userComp) => {
+
+    fetch("/users/check-session")
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            }
+        })
+        .then(json => {
+            if (json && json.currentUser) {
+                const url = "/users/" + json.currentUserId;
+
+                fetch(url)
+                    .then(res => {
+                        if (res.status === 200) {
+                            return res.json();
+                        }
+                    })
+                    .then(json => {
+                        if (json) {
+                            const newData = {
+                                userName: json.firstName+ ' '+json.lastName,
+                                location: json.location,
+                                aboutMe: json.aboutMe,
+                                userPhoto: json.image_url,
+                                contact: {
+                                    email: json.email,
+                                    phone: json.phone
+                                },
+                                posts: []
+                            }
+                            userComp.setState({ dashboardInfo: newData });
+                            for (let i = 0; i < json["posts"].length; i++){
+                                const post_url = "/posts/" + json.posts[i];
+                                // Since this is a GET request, simply call fetch on the URL
+                                fetch(post_url)
+                                    .then(res => {
+                                        if (res.status === 200) {
+                                            // return a promise that resolves with the JSON body
+                                            return res.json();
+                                        } else {
+                                            alert("Could not get posts");
+                                        }
+                                    })
+                                    .then(json => {
+                                        // the resolved promise with the JSON body
+                                      newData["posts"].push(json)  
+                                      userComp.setState({ dashboardInfo: newData });
+                                    })
+                                    .catch(error => {
+                                        console.log(error);
+                                    });
+
+                            }
+                            
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+};
+
+
 export const getPosts = (postList) => {
     // the URL for the request
     const url = "/posts";
@@ -27,7 +95,7 @@ export const getPosts = (postList) => {
                         alert("Could not get User");
                     }
                 }).then(json_user => {
-                    json[i]["creator"] = json_user.firstName + " " + json_user.lastName;
+                    json[i]["creator_name"] = json_user.firstName + " " + json_user.lastName;
                     json[i]["creator_image_url"] = json_user.image_url;
                     postList.setState({ posts: json });
                     
@@ -70,7 +138,7 @@ export const getPostsById = (post, id) => {
                     alert("Could not get User");
                 }
             }).then(json_user => {
-                json["creator"] = json_user.firstName + " " + json_user.lastName;
+                json["creator_name"] = json_user.firstName + " " + json_user.lastName;
                 json["creator_image_url"] = json_user.image_url;
                 post.setState({ postData: json });  
             }).catch(error =>{
