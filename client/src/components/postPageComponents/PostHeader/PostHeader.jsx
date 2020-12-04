@@ -5,16 +5,16 @@ class PostHeader extends Component {
 
     render() {
 
-        const { header } = this.props;
+        const { title, price } = this.props;
 
         return (
             <div id="postHeader">
                 <ul>
                     <li>
-                        {header.title}
+                        {title}
                     </li>
                     <li>
-                        Budget: {header.budget}
+                        Budget: {price}
                     </li>
                 </ul>
             </div>

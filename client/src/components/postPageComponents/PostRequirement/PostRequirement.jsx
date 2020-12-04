@@ -13,13 +13,13 @@ class PostRequirement extends Component {
     }
 
     render() {
-        const {requirements} = this.props
+        const {preferences} = this.props
         return (
             <div id = "requirement">
                 <h2>Requirement</h2>
                 <hr/>
                 <ul>
-                    {this.renderRequirements(requirements)}
+                    {this.renderRequirements(preferences)}
                 </ul>
             </div>
         )

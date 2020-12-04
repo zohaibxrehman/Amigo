@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './PostPage.css'
 import { PostHeader, PostImage, PostOwnerForm, PostDescription, PostRequirement } from "../../components/postPageComponents/index.js"
 import data from './dummyData'
+import { getPostsById } from './../../actions/post'
 
 export class PostPage extends Component {
 
@@ -14,21 +15,15 @@ export class PostPage extends Component {
                     profileName: ''
                 },
 
-                photo: '',
+                image_url: '',
+
+                title: '',
+
+                price: '',
         
-                header: {
-                    title: '',
-                    budget: ''
-                },
+                description: '',
         
-                description: {
-                    unit: '',
-                    price: '',
-                    location: '',
-                    leaseTerm: ''
-                },
-        
-                requirements: []
+                preferences: []
             }
         }
     }
@@ -37,6 +32,7 @@ export class PostPage extends Component {
         // when server and database is set up, this data
         // will be retrieved here
         this.setState({ postData: data })
+        // getPostsById(this)
     }
 
     render() {
@@ -45,12 +41,12 @@ export class PostPage extends Component {
 
         return (
             <div id="check" >
-                <PostHeader header = {postData.header}/>
-                <PostImage img = {postData.photo}/>
+                <PostHeader title = {postData.title} header={postData.price}/>
+                <PostImage img = {postData.image_url}/>
                 <PostOwnerForm profile = {postData.profile}/>
                 <PostDescription description = {postData.description} />
                 <input type="submit" value="Report" />
-                <PostRequirement requirements = {postData.requirements} />
+                <PostRequirement requirements = {postData.preferences} />
             </div>
         )
     }
