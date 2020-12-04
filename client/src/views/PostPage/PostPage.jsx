@@ -31,8 +31,12 @@ export class PostPage extends Component {
     componentDidMount() {
         // when server and database is set up, this data
         // will be retrieved here
-        this.setState({ postData: data })
-        // getPostsById(this)
+
+        const { postid } = this.props.match.params
+        console.log(postid)
+        
+        // this.setState({ postData: data })
+        getPostsById(this, postid)
     }
 
     render() {
@@ -43,10 +47,10 @@ export class PostPage extends Component {
             <div id="check" >
                 <PostHeader title = {postData.title} header={postData.price}/>
                 <PostImage img = {postData.image_url}/>
-                <PostOwnerForm profile = {postData.profile}/>
+                <PostOwnerForm creator = {postData.creator} creatorUrl = {postData.creator_image_url}/>
                 <PostDescription description = {postData.description} />
                 <input type="submit" value="Report" onClick={reportPost()}/>
-                <PostRequirement requirements = {postData.preferences} />
+                <PostRequirement preferences = {postData.preferences} />
             </div>
         )
     }

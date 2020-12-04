@@ -45,17 +45,14 @@ export const getPosts = (postList) => {
 };
 
 
-export const getPostsById = (id) => {
+export const getPostsById = (post, id) => {
     // the URL for the request
     const url = "http://localhost:5000/posts/" + id;
     // Since this is a GET request, simply call fetch on the URL
     fetch(url)
         .then(res => {
-            // console.log(res)
             if (res.status === 200) {
-                
                 // return a promise that resolves with the JSON body
-                
                 return res.json();
             } else {
                 alert("Could not get posts");
@@ -63,7 +60,22 @@ export const getPostsById = (id) => {
         })
         .then(json => {
             // the resolved promise with the JSON body
-            // postList.setState({ postData: json });
+            const user_url = "http://localhost:5000/users/" + json["creator"]
+
+            fetch(user_url).then(resq => {
+                if (resq.status === 200){
+                    return resq.json();
+                }
+                else{
+                    alert("Could not get User");
+                }
+            }).then(json_user => {
+                json["creator"] = json_user.firstName + " " + json_user.lastName;
+                json["creator_image_url"] = json_user.image_url;
+                post.setState({ postData: json });  
+            }).catch(error =>{
+                console.log(error)
+            })
             console.log(json)
             
         })
