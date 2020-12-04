@@ -90,6 +90,30 @@ const authenticateAdmin = async (req, res, next) => {
     }
 }
 
+const authenticateUserOrAdmin = async (req, res, next) => {
+    if (req.session.user) {
+        try {
+            const admin = await Admin.findById(req.session.user)
+            if (!admin) {
+                const user = await User.findById(req.session.user)
+                if (!user) {
+                    res.status(401).send("Unauthorized")
+                } else {
+                    req.user = user
+                    next()
+                }
+            } else {
+                req.user = admin
+                next()
+            }
+        } catch {
+            res.status(401).send("Unauthorized")
+        }
+    } else {
+        res.status(401).send("Unauthorized")
+    }
+}
+
 /*** Session handling **************************************/
 // Create a session and session cookie
 app.use(
@@ -213,7 +237,7 @@ app.get('/users/:id', mongoChecker, async (req, res) => {
     }
 })
 
-app.post('/users/:id/report', mongoChecker, async (req, res) => {
+app.post('/users/:id/report', mongoChecker, authenticateUserOrAdmin, async (req, res) => {
     try {
         const user = await User.findById(req.params.id)
         if (!user) {
@@ -307,7 +331,7 @@ app.get('/posts/:id', mongoChecker, async (req, res) => {
     }
 })
 
-app.post('/posts/:id/report', mongoChecker, async (req, res) => {
+app.post('/posts/:id/report', mongoChecker, authenticateUserOrAdmin, async (req, res) => {
     try {
         const post = await UserPost.findById(req.params.id)
         if (!post) {
