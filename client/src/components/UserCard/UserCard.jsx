@@ -3,7 +3,7 @@ import './UserCard.css'
 import data from './dummyData'
 import mailIcon from '../../assets/mailicon.svg'
 import phoneIcon from '../../assets/phoneicon.svg'
-import { getUserByIDForCard } from '../../actions/user';
+import { getUserByIDForCard, reportUserByID } from '../../actions/user';
 
 export class UserCard extends Component {
     constructor() {
@@ -30,10 +30,12 @@ export class UserCard extends Component {
         this.setState({ userData: data,  userid: userid})
     }
 
-    reportUser() {
+    reportUser(e) {
+        const { userid } = this.props
 
-
-        alert('User Reported!')
+        reportUserByID(userid)
+        e.target.style.backgroundColor = '#37de1d'
+        e.target.textContent = 'User Reported'
         // call to database will be written here
         // and the admin can retrieve these reported users
     }
@@ -62,7 +64,7 @@ export class UserCard extends Component {
                             </li>
                         </ul>
                         <p id='userCardAboutMe'>{aboutMe}</p>
-                        <button id='reportUser' onClick={this.reportUser}>Report User</button>
+                        <button id='reportUser' onClick={(e)=>this.reportUser(e)}>Report User</button>
                     </div>
                 </div>
             </div>
