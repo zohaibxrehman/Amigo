@@ -43,16 +43,7 @@ export class Filter extends Component {
                     <tbody>
                     <tr>
                         <td className='filterItem'>
-                            <select name="looking" id="looking" value={looking} className='select select1' onChange={ this.changeHandler }>
-                                <option value="">Looking for</option>
-                                <option value="Any">Any</option>
-                                <option value="Student">Student</option>
-                                <option value="Proffesional">Professional</option>
-                                <option value="Elderly">Elderly</option>
-                            </select>
-                        </td>
-                        <td className='filterItem'>
-                            <select name="location" value={location} id="location" className='select select2' onChange={ this.changeHandler }>
+                            <select name="location" value={location} id="location" className='select select1' onChange={ this.changeHandler }>
                                 <option value="">Location</option>
                                 <option value="Toronto">Toronto</option>
                                 <option value="Waterloo">Waterloo</option>
@@ -69,6 +60,9 @@ export class Filter extends Component {
                                 <option value="">Preference</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
+                                <option value="Student">Student</option>
+                                <option value="Proffesional">Professional</option>
+                                <option value="Elderly">Elderly</option>
                                 <option value="No smoking">No smoking</option>
                                 <option value="No drinking">No drinking</option>
                                 <option value="No partying">No partying</option>
