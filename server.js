@@ -114,6 +114,37 @@ const authenticateUserOrAdmin = async (req, res, next) => {
     }
 }
 
+const authenticateCreatorOrAdmin = async (req, res, next) => {
+    if (req.session.user) {
+        try {
+            const admin = await Admin.findById(req.session.user)
+            if (!admin) {
+                const user = await User.findById(req.session.user)
+                if (!user) {
+                    res.status(401).send("Unauthorized")
+                    return;
+                }
+                const post = await UserPost.findById(req.params.id)
+                if (!post) {
+                    res.status(404).send("Resource not found")
+                    return;
+                }
+                if (post.creator.equals(req.session.user)) {
+                    req.user = user
+                    next()
+                }
+            } else {
+                req.user = admin
+                next()
+            }
+        } catch {
+            res.status(401).send("Unauthorized")
+        }
+    } else {
+        res.status(401).send("Unauthorized")
+    }
+}
+
 /*** Session handling **************************************/
 // Create a session and session cookie
 app.use(
@@ -349,7 +380,7 @@ app.post('/posts/:id/report', mongoChecker, authenticateUserOrAdmin, async (req,
     }
 })
 
-app.delete('/posts/:id', mongoChecker, authenticateAdmin, async (req, res) => {
+app.delete('/posts/:id', mongoChecker, authenticateCreatorOrAdmin, async (req, res) => {
     try {
         // remove post
         const post = await UserPost.findByIdAndRemove(req.params.id)
