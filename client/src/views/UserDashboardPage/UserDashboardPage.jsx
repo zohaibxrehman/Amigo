@@ -2,31 +2,49 @@ import React, { Component } from 'react'
 import './UserDashboardPage.css'
 import { UserPanel, NotificationPanel } from "../../components/userDashboardPageComponents/index.js"
 import data from './dummyData'
+import UserActivity from '../../components/userDashboardPageComponents/UserActivity/UserActivity'
+import { getUserByIDForPosts } from './../../actions/post'
+import posts from '../../components/finderPageComponents/MapFinder/dummyData'
 
 export class UserDashboardPage extends Component {
 
     constructor() {
         super()
         this.state = {
+            view: "userActivity",
+            notifications: [],
             dashboardInfo: {
-                profile: {},
-                notifications: []
-            }
+                userName: '',
+                userPhoto: '',
+                posts: []
+            },
         }
+    }
+
+    changeView(viewChange) {
+        this.setState({view: viewChange})
     }
 
     componentDidMount() {
         // when server and database is set up, this data
         // will be retrieved here
-        this.setState({ dashboardInfo: data })
+        getUserByIDForPosts(this)
+        // this.setState({ dashboardInfo: data })
+        
     }
 
     render() {
-        const {dashboardInfo} = this.state;
+        const {view, notifications, dashboardInfo} = this.state;
         return (
             <div>
-                <UserPanel profile={dashboardInfo.profile}/>
-                <NotificationPanel notifications={dashboardInfo.notifications}/>
+                <UserPanel changeView={(viewChange)=>this.changeView(viewChange)} userName={dashboardInfo.userName} userPhoto={dashboardInfo.userPhoto}/>
+                <div id='dashboardView'>
+                    {view==='dashboard' && 
+                        <NotificationPanel notifications={notifications}/>
+                    }
+                    {view==='userActivity' && <UserActivity posts = {dashboardInfo.posts} />}
+                </div>
+                
             </div>
         )
     }

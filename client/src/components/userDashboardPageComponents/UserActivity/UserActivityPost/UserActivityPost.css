@@ -1,0 +1,42 @@
+.post {
+    width: 300px;
+    height: 360px;
+    background-color: white;
+    border-radius: 5%;
+    margin-bottom: 30px;
+    margin-right: 20px;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.1),
+        0 3px 5px 0 rgba(0, 0, 0, 0.15);
+}
+
+.postDesc {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.postTitle {
+    margin-top: 7px;
+}
+
+.postPhoto {
+    object-fit: cover;
+    width: 300px;
+    height: 240px;
+    border-radius: 5%;
+}
+
+.price {
+    margin-top: 0px;
+    font-size: 16px;
+}
+
+.title {
+    margin-bottom: 0px;
+    margin-top: 10px;
+    font-size: 22px;
+}
+
+a {
+    text-decoration: none;
+    color: black !important;
+}
