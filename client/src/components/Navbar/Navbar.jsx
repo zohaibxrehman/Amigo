@@ -1,16 +1,28 @@
 import React, { Component } from 'react'
 import './Navbar.css'
 import logo from '../../assets/logo.svg'
+import { logout } from '../../actions/user'
 
 export class Navbar extends Component {
+    constructor() {
+        super()
+    }
+
+    logoutUserHandler() {
+        const { logoutUser } = this.props
+        logout(logoutUser)
+        window.location.href = '/login'
+
+    }
+
     render() {
         const { isLoggedIn } = this.props
         return (
             <div className="navbarBlack">
                 <img className='logo' src={logo} alt='logo'></img>
                 {
-                    isLoggedIn ? <a className="active loginPageButton" href="/login">Logout</a> :
-                    <a className="active loginPageButton" href="/login">Login</a>
+                    isLoggedIn ? <button className="active loginPageButton" onClick={() => this.logoutUserHandler()}>Logout</button> :
+                    <a className="active loginPageButton" href="/login" >Login</a>
                 }
                 <p className='logoName'>Amigo</p>
                 <a href='mailto: zohaibxrehman@gmail.com'>Contact</a>

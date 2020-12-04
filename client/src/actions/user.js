@@ -57,6 +57,22 @@ export const login = (loginComp, loginUser) => {
 };
 
 
+export const logout = (logoutUser) => {
+    const url = "/users/logout"
+    fetch(url)
+        .then(res => {
+            if (res.status === 200){
+                logoutUser()
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        })
+
+}
+
+
+
 export const registerUser = (registerComp, e) => {
     const data = new FormData()
     data.append('email', registerComp.state.email)

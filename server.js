@@ -209,7 +209,7 @@ app.get("/users/logout", (req, res) => {
 
 app.get("/users/check-session", (req, res) => {
     if (req.session.user) {
-        res.send({ currentUser: req.session.username });
+        res.send({ currentUser: req.session.username, currentUserId: req.session.user });
     } else {
         res.status(401).send();
     }
