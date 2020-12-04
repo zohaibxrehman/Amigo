@@ -9,20 +9,25 @@ import { checkSession } from './actions/user';
 export class App extends Component {
   constructor() {
     super()
+    this.state = {
+      isLoggedIn: false,
+      userType: 'user',
+      currentUser: ''
+    }
+  }
+  
 
+  componentDidMount() {
     checkSession(this);
   }
-  state = {
-    isLoggedIn: false,
-    userType: 'user',
-    currentUser: ''
-}
+
+
   logoutUser() {
-    this.setState({ isLoggedIn: false })
+      this.setState({ isLoggedIn: false })
   }
 
   loginUser = (userType) => {
-    this.setState({ userType: userType })
+      this.setState({ userType: userType })
   }
 
   render() {
@@ -44,8 +49,7 @@ export class App extends Component {
                             (<DashboardPage />)}/>
             <Route exact path='/makepost' render={() => 
                 (<MakePostPage />)}/>
-            <Route exact path='/user' render={() => 
-                (<UserPage />)}/>
+            <Route path='/user/:userid' component={UserPage} />
             <Route exact path='/userdashboard' render={() => 
                 (<UserDashboardPage />)}/>
           </Switch>
