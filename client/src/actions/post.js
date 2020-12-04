@@ -8,6 +8,7 @@ export const getPosts = (postList) => {
             if (res.status === 200) {
                 // return a promise that resolves with the JSON body
                 // console.log(res.json())
+                console.log(">>")
                 return res.json();
             } else {
                 alert("Could not get posts");
@@ -31,10 +32,13 @@ export const getPostsById = (id) => {
     // Since this is a GET request, simply call fetch on the URL
     fetch(url)
         .then(res => {
-            console.log(res)
+            // console.log(res)
+            console.log(">>")
             if (res.status === 200) {
+                
                 // return a promise that resolves with the JSON body
-                // console.log(res.json())
+                console.log(">>" + res.json())
+                
                 return res.json();
             } else {
                 alert("Could not get posts");

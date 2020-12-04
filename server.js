@@ -32,6 +32,10 @@ cloudinary.config({
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 
+// cors
+const cors = require('cors')
+app.use(cors())
+
 // express-session for managing user sessions
 const session = require("express-session");
 const { mongo } = require("mongoose");

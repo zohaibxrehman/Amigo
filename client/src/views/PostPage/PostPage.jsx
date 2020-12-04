@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './PostPage.css'
 import { PostHeader, PostImage, PostOwnerForm, PostDescription, PostRequirement } from "../../components/postPageComponents/index.js"
 import data from './dummyData'
-import { getPostsById } from './../../actions/post'
+import { getPostsById, reportPost } from './../../actions/post'
 
 export class PostPage extends Component {
 
@@ -45,7 +45,7 @@ export class PostPage extends Component {
                 <PostImage img = {postData.image_url}/>
                 <PostOwnerForm profile = {postData.profile}/>
                 <PostDescription description = {postData.description} />
-                <input type="submit" value="Report" />
+                <input type="submit" value="Report" onClick={reportPost()}/>
                 <PostRequirement requirements = {postData.preferences} />
             </div>
         )
