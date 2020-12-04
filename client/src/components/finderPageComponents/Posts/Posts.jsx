@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Post from '../Post/Post'
 import './Posts.css'
 import data from './dummyData'
+import { getPosts } from './../../../actions/post'
 
 export class Posts extends Component {
     constructor() {
@@ -9,32 +10,46 @@ export class Posts extends Component {
         this.state = {
             posts: []
         }
+        // getPosts(this)
     }
 
     componentDidMount() {
         // when server and database is set up, this data
         // will be retrieved here
-        this.setState({ posts: data })
+        // this.setState({ posts: data })
+        getPosts(this)
+        // console.log(this.state)
+    }
+
+    renderPost(start, end){
+        let renderPost = [];
+        for (let i = start; i < Math.min(this.state.posts.length, end); i++){
+            let idName = 'Posts' + i
+            renderPost.push(<td key={idName} className='postWrap'><Post userInfo={this.state.posts[i]}/></td>);
+            
+        }
+        return renderPost
+    }
+
+    renderPosts(){
+        let renderPosts = []
+        for (let i = 0; i <= Math.floor(this.state.posts.length/3); i++){
+            let idName = 'Post' + i
+            renderPosts.push(<tr key={idName}>{this.renderPost(i*3, i*3 + 3)}</tr>)
+        }
+        console.log(">>" + renderPosts)
+        return renderPosts
     }
 
     render() {
         const { posts } = this.state
         return (
             <div>
-                {posts.length !== 0 && <table className='postTable'>
+                {posts.length !== 0 ? <table className='postTable'>
                     <tbody>
-                    <tr>
-                        <td className='postWrap'><Post userInfo={posts[0]} /></td>
-                        <td className='postWrap'><Post userInfo={posts[1]} /></td>
-                        <td className='postWrap'><Post userInfo={posts[2]} /></td>
-                    </tr>
-                    <tr>
-                        <td className='postWrap'><Post userInfo={posts[3]} /></td>
-                        <td className='postWrap'><Post userInfo={posts[4]} /></td>
-                        <td className='postWrap'><Post userInfo={posts[5]} /></td>
-                    </tr>
+                        {this.renderPosts()}
                     </tbody>
-                </table>}
+                </table> : null}
             </div>
         )
     }

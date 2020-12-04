@@ -43,8 +43,7 @@ export class App extends Component {
                             (<LandingPage />)}/>
             <Route exact path='/finder' render={() => 
                             (<FinderPage isLoggedIn={isLoggedIn} />)}/>
-            <Route exact path='/post' render={() => 
-                            (<PostPage />)}/>
+            <Route path='/post/:postid' component={PostPage} />
             <Route exact path='/admindashboard' render={() => 
                             (<DashboardPage />)}/>
             <Route exact path='/makepost' render={() => 

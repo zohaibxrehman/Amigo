@@ -3,15 +3,16 @@ import './Post.css'
 
 export class Post extends Component {
     render() {
-        const { userPhoto, userName, location, postTitle} = this.props.userInfo;
+        const { creator_image_url, creator, location, title, _id} = this.props.userInfo;
+        const post_url = '/post/' + _id 
         return (
             <div className='post'>
-                <a href='/post'>
-                    <img className='userPhoto' src={userPhoto} alt='user' />
+                <a href={post_url}>
+                    <img className='userPhoto' src={creator_image_url} alt='user' />
                     <div className='postDesc'>
-                        <h3 className='userName'>{userName}</h3>
+                        <h3 className='userName'>{creator}</h3>
                         <small className='location'>{location}</small>
-                        <p className='postTitle'>{postTitle}</p>
+                        <p className='postTitle'>{title}</p>
                     </div>
                 </a>
             </div>

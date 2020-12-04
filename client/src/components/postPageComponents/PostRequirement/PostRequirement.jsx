@@ -3,23 +3,23 @@ import './PostRequirement.css'
 
 class PostRequirement extends Component {
 
-    renderRequirements(requirements){
-        let renderRequirements = [];
-        for (let i = 0; i < requirements.length; i++){
+    renderRequirements(preferences){
+        let renderPreferences = [];
+        for (let i = 0; i < preferences.length; i++){
             let idName = 'postRequirement' + i
-            renderRequirements.push(<li key={idName}>{requirements[i]}</li>);
+            renderPreferences.push(<li key={idName}>{preferences[i]}</li>);
         }
-        return renderRequirements
+        return renderPreferences
     }
 
     render() {
-        const {requirements} = this.props
+        const {preferences} = this.props
         return (
             <div id = "requirement">
                 <h2>Requirement</h2>
                 <hr/>
                 <ul>
-                    {this.renderRequirements(requirements)}
+                    {this.renderRequirements(preferences)}
                 </ul>
             </div>
         )

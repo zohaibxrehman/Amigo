@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './PostPage.css'
 import { PostHeader, PostImage, PostOwnerForm, PostDescription, PostRequirement } from "../../components/postPageComponents/index.js"
 import data from './dummyData'
+import { getPostsById, reportPost } from './../../actions/post'
 
 export class PostPage extends Component {
 
@@ -14,21 +15,15 @@ export class PostPage extends Component {
                     profileName: ''
                 },
 
-                photo: '',
+                image_url: '',
+
+                title: '',
+
+                price: '',
         
-                header: {
-                    title: '',
-                    budget: ''
-                },
+                description: '',
         
-                description: {
-                    unit: '',
-                    price: '',
-                    location: '',
-                    leaseTerm: ''
-                },
-        
-                requirements: []
+                preferences: []
             }
         }
     }
@@ -36,21 +31,26 @@ export class PostPage extends Component {
     componentDidMount() {
         // when server and database is set up, this data
         // will be retrieved here
-        this.setState({ postData: data })
+
+        const { postid } = this.props.match.params
+        
+        // this.setState({ postData: data })
+        getPostsById(this, postid)
     }
 
     render() {
 
         const { postData } = this.state
+        const { postid } = this.props.match.params
 
         return (
             <div id="check" >
-                <PostHeader header = {postData.header}/>
-                <PostImage img = {postData.photo}/>
-                <PostOwnerForm profile = {postData.profile}/>
+                <PostHeader title = {postData.title} price={postData.price}/>
+                <PostImage img = {postData.image_url}/>
+                <PostOwnerForm creator = {postData.creator} creatorUrl = {postData.creator_image_url}/>
                 <PostDescription description = {postData.description} />
-                <input type="submit" value="Report" />
-                <PostRequirement requirements = {postData.requirements} />
+                <input type="submit" value="Report" onClick={() => reportPost(postid)}/>
+                <PostRequirement preferences = {postData.preferences} />
             </div>
         )
     }

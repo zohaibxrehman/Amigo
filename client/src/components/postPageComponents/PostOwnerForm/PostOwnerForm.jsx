@@ -34,11 +34,11 @@ export class PostOwnerForm extends Component {
 
     render() {
 
-        const { profile } = this.props;
+        const { creator, creatorUrl } = this.props;
         const { name, phone, email, message } = this.state;
         return (
             <div id="postForm">
-                <PostOwnerProfile profile={profile}/>
+                <PostOwnerProfile creator={creator} creatorUrl={creatorUrl}/>
                 <form onSubmit={this.submitHandler}>
                     <input type="text" id="name" placeholder="Name" value={ name } onChange = { this.changeHandler }/><br/>
                     <input type="text" id="phone" placeholder="Phone" value={ phone } onChange = { this.changeHandler }/><br/>
