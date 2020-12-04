@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { registerUser } from '../../../actions/user';
 import './SignUp.css'
 
 class SignUp extends Component {
@@ -10,17 +11,25 @@ class SignUp extends Component {
             lastname: '',
             email: '',
             password: '',
+            username: '',
+            photo: null
         }
     }
+
 
     changeHandler = (e) => {
         e.preventDefault();
         const target = e.target;
-        const value = target.value;
+        // const value = target.value;
         const name = target.id;
-
+        if(name === "photo"){
+            console.log(target.files[0])
+            this.setState(
+                {[name]: target.files[0]
+                });
+        }
         this.setState({
-            [name]: value 
+            [name]: target.value 
           });
     }
 
@@ -28,6 +37,7 @@ class SignUp extends Component {
         e.preventDefault();
         // let { firstname, lastname, email, password, username  } = this.state
         // We need to make a server call and add this data to the server.
+        registerUser(this,e)
         alert("Successful SignUp")
     }
 
@@ -59,6 +69,12 @@ class SignUp extends Component {
                 <div className="form-group">
                     <label>Password</label>
                     <input type="password" className="form-control" placeholder="Enter a secure password" id='password' value= {password} onChange={this.changeHandler}/>
+                </div>
+                <div className="form-group">
+                    <div className="custom-file">
+                        <label className="custom-file-label">Upload your photo</label>
+                        <input type="file" name="image" className="custom-file-input" id="photo"onChange={this.changeHandler}/>
+                    </div>
                 </div>
 
                 <button type="submit" className="btn btn-warning btn-block" >Sign Up</button>
