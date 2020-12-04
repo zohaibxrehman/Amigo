@@ -115,3 +115,21 @@ export const getUserByIDForCard = (userCardComp, userid) => {
             console.log(error);
         });
 };
+
+export const reportUserByID = (userid) => {
+
+    const request = new Request(`/users/${userid}/report`, {
+        method: "post",
+    });
+    fetch(request)
+        .then(res => {
+            if (res.status === 200){
+            // register successful
+            // decide what to do after user clicks register
+                console.log("User reported!")
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
