@@ -132,6 +132,8 @@ const authenticateCreatorOrAdmin = async (req, res, next) => {
                 if (post.creator.equals(req.session.user)) {
                     req.user = user
                     next()
+                } else {
+                    res.status(401).send("Unauthorized")
                 }
             } else {
                 req.user = admin
