@@ -36,7 +36,7 @@ export class Posts extends Component {
         let renderPosts = []
         for (let i = 0; i <= Math.floor(this.state.posts.length/3); i++){
             let idName = 'Post' + i
-            renderPosts.push(<tr key={idName}> {this.renderPost(i*3, i*3 + 3)}  </tr>)
+            renderPosts.push(<tr key={idName}>{this.renderPost(i*3, i*3 + 3)}</tr>)
         }
         console.log(">>" + renderPosts)
         return renderPosts
@@ -46,11 +46,11 @@ export class Posts extends Component {
         const { posts } = this.state
         return (
             <div>
-                {posts.length !== 0 && <table className='postTable'>
+                {posts.length !== 0 ? <table className='postTable'>
                     <tbody>
                         {this.renderPosts()}
                     </tbody>
-                </table>}
+                </table> : null}
             </div>
         )
     }
