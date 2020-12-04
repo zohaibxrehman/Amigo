@@ -27,11 +27,10 @@ export class Filter extends Component {
     }
 
     render() {
-        const { view, changeView } = this.props
+        const { view, changeView, isLoggedIn } = this.props
         const { looking, location, preference, price } = this.state
-        // the next line will be added later when authentication is implemented
-        // const makePostButtonUrl = isLoggedIn ? '/makepost' : 'login'
-        const makePostButtonUrl = '/makepost'
+        // redirect user to login before making a post
+        const makePostButtonUrl = isLoggedIn ? '/makepost' : 'login'
         return (
             <div>
                 <div id='topHeading'>
@@ -46,10 +45,10 @@ export class Filter extends Component {
                         <td className='filterItem'>
                             <select name="looking" id="looking" value={looking} className='select select1' onChange={ this.changeHandler }>
                                 <option value="">Looking for</option>
-                                <option value="">Any</option>
-                                <option value="">Student</option>
-                                <option value="">Professional</option>
-                                <option value="">Elderly</option>
+                                <option value="Any">Any</option>
+                                <option value="Student">Student</option>
+                                <option value="Proffesional">Professional</option>
+                                <option value="Elderly">Elderly</option>
                             </select>
                         </td>
                         <td className='filterItem'>
