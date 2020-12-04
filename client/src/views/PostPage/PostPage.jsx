@@ -33,7 +33,6 @@ export class PostPage extends Component {
         // will be retrieved here
 
         const { postid } = this.props.match.params
-        console.log(postid)
         
         // this.setState({ postData: data })
         getPostsById(this, postid)
@@ -42,14 +41,15 @@ export class PostPage extends Component {
     render() {
 
         const { postData } = this.state
+        const { postid } = this.props.match.params
 
         return (
             <div id="check" >
-                <PostHeader title = {postData.title} header={postData.price}/>
+                <PostHeader title = {postData.title} price={postData.price}/>
                 <PostImage img = {postData.image_url}/>
                 <PostOwnerForm creator = {postData.creator} creatorUrl = {postData.creator_image_url}/>
                 <PostDescription description = {postData.description} />
-                <input type="submit" value="Report" onClick={reportPost()}/>
+                <input type="submit" value="Report" onClick={() => reportPost(postid)}/>
                 <PostRequirement preferences = {postData.preferences} />
             </div>
         )

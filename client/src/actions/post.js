@@ -1,6 +1,6 @@
 export const getPosts = (postList) => {
     // the URL for the request
-    const url = "http://localhost:5000/posts";
+    const url = "/posts";
 
     // Since this is a GET request, simply call fetch on the URL
     fetch(url)
@@ -17,7 +17,7 @@ export const getPosts = (postList) => {
         .then(json => {
             // the resolved promise with the JSON body
             for (let i = 0; i < json.length; i++){
-                const user_url = "http://localhost:5000/users/" + json[i]["creator"]
+                const user_url = "/users/" + json[i]["creator"]
 
                 fetch(user_url).then(resq => {
                     if (resq.status === 200){
@@ -47,7 +47,7 @@ export const getPosts = (postList) => {
 
 export const getPostsById = (post, id) => {
     // the URL for the request
-    const url = "http://localhost:5000/posts/" + id;
+    const url = "/posts/" + id;
     // Since this is a GET request, simply call fetch on the URL
     fetch(url)
         .then(res => {
@@ -60,7 +60,7 @@ export const getPostsById = (post, id) => {
         })
         .then(json => {
             // the resolved promise with the JSON body
-            const user_url = "http://localhost:5000/users/" + json["creator"]
+            const user_url = "/users/" + json["creator"]
 
             fetch(user_url).then(resq => {
                 if (resq.status === 200){
@@ -87,16 +87,14 @@ export const getPostsById = (post, id) => {
 // A function to send a POST request with a new student
 export const addPost = (makePost) => {
     // the URL for the request
-    const url = "http://localhost:5000/posts/new";
+    const url = "/posts/new";
 
     // The data we are going to send in our request
     const post = makePost.state
 
     // Create our request constructor with all the parameters we need
     const request = new Request(url, {
-        credentials: "include",
         method: "post",
-        mode: 'no-cors',
         body: JSON.stringify(post),
         headers: {
             Accept: "application/json, text/plain, */*",
@@ -126,13 +124,11 @@ export const addPost = (makePost) => {
 
 export const reportPost = (id) => {
     // the URL for the request
-    const url = "http://localhost:5000/posts/" + id + "/report";
+    const url = "/posts/" + id + "/report";
 
     // Create our request constructor with all the parameters we need
     const request = new Request(url, {
-        credentials: "include",
         method: "post",
-        mode: 'no-cors',
         headers: {
             Accept: "application/json, text/plain, */*",
             "Content-Type": "application/json"
@@ -141,7 +137,7 @@ export const reportPost = (id) => {
 
     // Send the request with fetch()
     fetch(request)
-        .then(function (res) {
+        .then(res => {
             // Handle response we get from the API.
             // Usually check the error codes to see what happened.
             if (res.status === 200) {
@@ -162,14 +158,12 @@ export const reportPost = (id) => {
 // A function to send a POST request with a new student
 export const deletePost = (id) => {
     // the URL for the request
-    const url = "http://localhost:5000/posts/" + id;
+    const url = "/posts/" + id;
 
 
     // Create our request constructor with all the parameters we need
     const request = new Request(url, {
-        credentials: "include",
         method: "delete",
-        mode: 'no-cors',
         headers: {
             Accept: "application/json, text/plain, */*",
             "Content-Type": "application/json"
