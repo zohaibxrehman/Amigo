@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Post from '../Post/Post'
 import './Posts.css'
 import data from './dummyData'
+import { getPosts } from './../../../actions/post'
 
 export class Posts extends Component {
     constructor() {
@@ -15,6 +16,7 @@ export class Posts extends Component {
         // when server and database is set up, this data
         // will be retrieved here
         this.setState({ posts: data })
+        // getPosts(this)
     }
 
     render() {
