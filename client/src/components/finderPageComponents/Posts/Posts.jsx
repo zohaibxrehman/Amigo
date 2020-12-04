@@ -10,15 +10,14 @@ export class Posts extends Component {
         this.state = {
             posts: []
         }
-        getPosts(this)
+        // getPosts(this)
     }
 
     componentDidMount() {
         // when server and database is set up, this data
         // will be retrieved here
         // this.setState({ posts: data })
-        // getPosts(this)
-        // getUser()
+        getPosts(this)
         // console.log(this.state)
     }
 

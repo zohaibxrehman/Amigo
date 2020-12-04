@@ -29,14 +29,14 @@ export const getPosts = (postList) => {
                 }).then(json_user => {
                     json[i]["creator"] = json_user.firstName + " " + json_user.lastName;
                     json[i]["creator_image_url"] = json_user.image_url;
+                    postList.setState({ posts: json });
                     
                 }).catch(error =>{
                     console.log(error)
                 })
             }
             console.log(json)
-            postList.setState({ posts: json });
-            console.log(json)
+            
             
         })
         .catch(error => {
