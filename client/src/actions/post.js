@@ -95,7 +95,7 @@ export const getPosts = (postList) => {
                         alert("Could not get User");
                     }
                 }).then(json_user => {
-                    json[i]["creator"] = json_user.firstName + " " + json_user.lastName;
+                    json[i]["creator_name"] = json_user.firstName + " " + json_user.lastName;
                     json[i]["creator_image_url"] = json_user.image_url;
                     postList.setState({ posts: json });
                     
@@ -138,7 +138,7 @@ export const getPostsById = (post, id) => {
                     alert("Could not get User");
                 }
             }).then(json_user => {
-                json["creator"] = json_user.firstName + " " + json_user.lastName;
+                json["creator_name"] = json_user.firstName + " " + json_user.lastName;
                 json["creator_image_url"] = json_user.image_url;
                 post.setState({ postData: json });  
             }).catch(error =>{

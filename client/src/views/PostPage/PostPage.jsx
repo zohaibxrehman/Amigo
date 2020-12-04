@@ -47,7 +47,7 @@ export class PostPage extends Component {
             <div id="check" >
                 <PostHeader title = {postData.title} price={postData.price}/>
                 <PostImage img = {postData.image_url}/>
-                <PostOwnerForm creator = {postData.creator} creatorUrl = {postData.creator_image_url}/>
+                <PostOwnerForm creator = {postData.creator} creatorName={postData.creator_name} creatorUrl = {postData.creator_image_url}/>
                 <PostDescription description = {postData.description} />
                 <input type="submit" value="Report" onClick={() => reportPost(postid)}/>
                 <PostRequirement preferences = {postData.preferences} />
