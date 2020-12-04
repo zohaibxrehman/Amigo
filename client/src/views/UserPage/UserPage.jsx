@@ -4,9 +4,11 @@ import { UserCard } from '../../components/UserCard/UserCard'
 
 export class UserPage extends Component {
     render() {
+        const { userid } = this.props.match.params
+
         return (
             <div>
-                <UserCard />
+                <UserCard userid={userid} />
             </div>
         )
     }

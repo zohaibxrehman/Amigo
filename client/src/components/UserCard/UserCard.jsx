@@ -3,6 +3,7 @@ import './UserCard.css'
 import data from './dummyData'
 import mailIcon from '../../assets/mailicon.svg'
 import phoneIcon from '../../assets/phoneicon.svg'
+import { getUserByIDForCard } from '../../actions/user';
 
 export class UserCard extends Component {
     constructor() {
@@ -24,10 +25,14 @@ export class UserCard extends Component {
     componentDidMount() {
         // when server and database is set up, this data
         // will be retrieved here
-        this.setState({ userData: data })
+        const { userid } = this.props
+        getUserByIDForCard(this, userid)
+        this.setState({ userData: data,  userid: userid})
     }
 
     reportUser() {
+
+
         alert('User Reported!')
         // call to database will be written here
         // and the admin can retrieve these reported users
