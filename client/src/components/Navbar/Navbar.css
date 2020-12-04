@@ -1,39 +1,59 @@
 .navbarBlack {
-    background-color: black;
-    overflow: hidden;
+	background-color: black;
+	overflow: hidden;
+}
+
+.navbarBlack button {
+	float: right;
+	color: white !important;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+	margin-right: 4%;
+	border: none;
 }
 
 .navbarBlack a {
-    float: right;
-    color: white !important;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-    margin-right: 4%;
+	float: right;
+	color: white !important;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+	margin-right: 4%;
+	outline: none;
+}
+
+.navbarBlack button.active {
+	background-color: #ffac12;
+	color: black !important;
+	font-weight: 600;
+	border: none;
+	outline: none;
 }
 
 .navbarBlack a.active {
-    background-color: #ffac12;
-    color: black !important;
-    font-weight: 600;
+	background-color: #ffac12;
+	color: black !important;
+	font-weight: 600;
 }
 
 .logo {
-    height: 35px;
-    margin-left: 20px;
-    float: left;
-    margin-top: 10px;
+	height: 35px;
+	margin-left: 20px;
+	float: left;
+	margin-top: 10px;
 }
 
 .logoName {
-    color: white;
-    font-size: 20px;
-    float: left;
-    margin-bottom: 2px;
-    margin-top: 15px;
+	color: white;
+	font-size: 20px;
+	float: left;
+	margin-bottom: 2px;
+	margin-top: 15px;
 }
 
 .loginPageButton {
-    height: 50px;
+	height: 50px;
 }
