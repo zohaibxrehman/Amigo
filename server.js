@@ -90,6 +90,63 @@ const authenticateAdmin = async (req, res, next) => {
     }
 }
 
+const authenticateUserOrAdmin = async (req, res, next) => {
+    if (req.session.user) {
+        try {
+            const admin = await Admin.findById(req.session.user)
+            if (!admin) {
+                const user = await User.findById(req.session.user)
+                if (!user) {
+                    res.status(401).send("Unauthorized")
+                } else {
+                    req.user = user
+                    next()
+                }
+            } else {
+                req.user = admin
+                next()
+            }
+        } catch {
+            res.status(401).send("Unauthorized")
+        }
+    } else {
+        res.status(401).send("Unauthorized")
+    }
+}
+
+const authenticateCreatorOrAdmin = async (req, res, next) => {
+    if (req.session.user) {
+        try {
+            const admin = await Admin.findById(req.session.user)
+            if (!admin) {
+                const user = await User.findById(req.session.user)
+                if (!user) {
+                    res.status(401).send("Unauthorized")
+                    return;
+                }
+                const post = await UserPost.findById(req.params.id)
+                if (!post) {
+                    res.status(404).send("Resource not found")
+                    return;
+                }
+                if (post.creator.equals(req.session.user)) {
+                    req.user = user
+                    next()
+                } else {
+                    res.status(401).send("Unauthorized")
+                }
+            } else {
+                req.user = admin
+                next()
+            }
+        } catch {
+            res.status(401).send("Unauthorized")
+        }
+    } else {
+        res.status(401).send("Unauthorized")
+    }
+}
+
 /*** Session handling **************************************/
 // Create a session and session cookie
 app.use(
@@ -213,13 +270,31 @@ app.get('/users/:id', mongoChecker, async (req, res) => {
     }
 })
 
-app.post('/users/:id/report', mongoChecker, async (req, res) => {
+app.post('/users/:id/report', mongoChecker, authenticateUserOrAdmin, async (req, res) => {
     try {
         const user = await User.findById(req.params.id)
         if (!user) {
             res.status(404).send("Post not found")
         }
         user.flagged = true
+        user.save()
+        res.send(user)
+    } catch(error) {
+        if (isMongoError(error)) {
+            res.status(500).send('Internal server error')
+        } else {
+            res.status(400).send('Bad Request')
+        }
+    }
+})
+
+app.post('/users/:id/unreport', mongoChecker, authenticateAdmin, async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id)
+        if (!user) {
+            res.status(404).send("Post not found")
+        }
+        user.flagged = false
         user.save()
         res.send(user)
     } catch(error) {
@@ -307,7 +382,7 @@ app.get('/posts/:id', mongoChecker, async (req, res) => {
     }
 })
 
-app.post('/posts/:id/report', mongoChecker, async (req, res) => {
+app.post('/posts/:id/report', mongoChecker, authenticateUserOrAdmin, async (req, res) => {
     try {
         const post = await UserPost.findById(req.params.id)
         if (!post) {
@@ -325,7 +400,25 @@ app.post('/posts/:id/report', mongoChecker, async (req, res) => {
     }
 })
 
-app.delete('/posts/:id', mongoChecker, authenticateAdmin, async (req, res) => {
+app.post('/posts/:id/unreport', mongoChecker, authenticateAdmin, async (req, res) => {
+    try {
+        const post = await UserPost.findById(req.params.id)
+        if (!post) {
+            res.status(404).send("Post not found")
+        }
+        post.flagged = false
+        post.save()
+        res.send(post)
+    } catch(error) {
+        if (isMongoError(error)) {
+            res.status(500).send('Internal server error')
+        } else {
+            res.status(400).send('Bad Request')
+        }
+    }
+})
+
+app.delete('/posts/:id', mongoChecker, authenticateCreatorOrAdmin, async (req, res) => {
     try {
         // remove post
         const post = await UserPost.findByIdAndRemove(req.params.id)
