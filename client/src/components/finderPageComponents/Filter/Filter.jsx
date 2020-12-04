@@ -45,10 +45,10 @@ export class Filter extends Component {
                         <td className='filterItem'>
                             <select name="looking" id="looking" value={looking} className='select select1' onChange={ this.changeHandler }>
                                 <option value="">Looking for</option>
-                                <option value="">Any</option>
-                                <option value="">Student</option>
-                                <option value="">Professional</option>
-                                <option value="">Elderly</option>
+                                <option value="Any">Any</option>
+                                <option value="Student">Student</option>
+                                <option value="Proffesional">Professional</option>
+                                <option value="Elderly">Elderly</option>
                             </select>
                         </td>
                         <td className='filterItem'>
