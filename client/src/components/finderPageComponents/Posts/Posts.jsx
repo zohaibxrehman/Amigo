@@ -25,8 +25,7 @@ export class Posts extends Component {
         let renderPost = [];
         for (let i = start; i < Math.min(this.state.posts.length, end); i++){
             let idName = 'Posts' + i
-            renderPost.push(<td key={idName} className='postWrap'><Post userInfo={this.state.posts[i]}/></td>);
-            
+            renderPost.push(<td key={idName} className='postWrap'><Post userInfo={this.state.posts[i]}/></td>);     
         }
         return renderPost
     }
