@@ -5,33 +5,10 @@ import listIcon from '../../../assets/list-icon.png'
 
 
 export class Filter extends Component {
-    constructor() {
-        super()
-        this.state = {
-            looking: '',
-            location: '',
-            preference: '',   
-            price: ''         
-        }
-    }
-
-    changeHandler = (e) => {
-        e.preventDefault();
-        const target = e.target;
-        const value = target.value;
-        const name = target.id;
-
-        this.setState({
-            [name]: value 
-        });
-    }
-
     render() {
-        const { view, changeView } = this.props
-        const { looking, location, preference, price } = this.state
-        // the next line will be added later when authentication is implemented
-        // const makePostButtonUrl = isLoggedIn ? '/makepost' : 'login'
-        const makePostButtonUrl = '/makepost'
+        const { view, changeView, isLoggedIn, location, preference, price, changeHandler } = this.props
+        // redirect user to login before making a post
+        const makePostButtonUrl = isLoggedIn ? '/makepost' : 'login'
         return (
             <div>
                 <div id='topHeading'>
@@ -44,16 +21,7 @@ export class Filter extends Component {
                     <tbody>
                     <tr>
                         <td className='filterItem'>
-                            <select name="looking" id="looking" value={looking} className='select select1' onChange={ this.changeHandler }>
-                                <option value="">Looking for</option>
-                                <option value="">Any</option>
-                                <option value="">Student</option>
-                                <option value="">Professional</option>
-                                <option value="">Elderly</option>
-                            </select>
-                        </td>
-                        <td className='filterItem'>
-                            <select name="location" value={location} id="location" className='select select2' onChange={ this.changeHandler }>
+                            <select name="location" value={location} id="location" className='select select1' onChange={ changeHandler }>
                                 <option value="">Location</option>
                                 <option value="Toronto">Toronto</option>
                                 <option value="Waterloo">Waterloo</option>
@@ -66,17 +34,20 @@ export class Filter extends Component {
                             </select>
                         </td>
                         <td className='filterItem'>
-                            <select name="preference" value={preference} id="preference" className='select select3' onChange={ this.changeHandler }>
+                            <select name="preference" value={preference} id="preference" className='select select3' onChange={ changeHandler }>
                                 <option value="">Preference</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
+                                <option value="Student">Student</option>
+                                <option value="Proffesional">Professional</option>
+                                <option value="Elderly">Elderly</option>
                                 <option value="No smoking">No smoking</option>
                                 <option value="No drinking">No drinking</option>
                                 <option value="No partying">No partying</option>
                             </select>
                         </td>
                         <td className='filterItem'>
-                            <select name="price" value={price} id="price" className='select select4' onChange={ this.changeHandler }>
+                            <select name="price" value={price} id="price" className='select select4' onChange={ changeHandler }>
                                 <option value="">Price</option>
                                 <option value="$0-$300">$0-$300</option>
                                 <option value="$330-$600">$330-$600</option>

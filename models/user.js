@@ -32,13 +32,13 @@ const UserSchema = new mongoose.Schema({
     },
     phone: {
         type: String,
-		required: false,
+		default: '(XXX)-XXX-XXXX',
 		minlength: 5,
 		trim: true
     },
     location: {
         type: String,
-		required: false,
+		default: 'Canada',
 		minlength: 1,
 		trim: true
     },
@@ -55,7 +55,7 @@ const UserSchema = new mongoose.Schema({
     }, 
     aboutMe: {
         type: String,
-		required: false,
+		default: `Hi, I\'m an Amigo! I\'m actively searching for a roommate. Feel free to contact me by my email or phone.`,
 		trim: true
     },
 	password: {
