@@ -2,11 +2,19 @@ h2 {
     color: orange;
 }
 
+.changeBtn {
+    cursor: pointer;
+}
+
+.changeBtnActive {
+    color: orange;
+}
+
 #userPanel {
     float: left;
     width: 25%;
     margin: 20px;
     padding: 25px;
     border-radius: 10px;
-	background-color: white;
+    background-color: white;
 }

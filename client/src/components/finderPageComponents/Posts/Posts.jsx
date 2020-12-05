@@ -15,26 +15,28 @@ export class Posts extends Component {
         getPosts(this)
     }
 
-    renderPost(start, end){
+    renderPost(start, end, filteredPosts){
         let renderPost = [];
-        for (let i = start; i < Math.min(this.state.posts.length, end); i++){
+        for (let i = start; i < Math.min(filteredPosts.length, end); i++){
             let idName = 'Posts' + i
-            renderPost.push(<td key={idName} className='postWrap'><Post userInfo={this.state.posts[i]}/></td>);     
+            renderPost.push(<td key={idName} className='postWrap'><Post userInfo={filteredPosts[i]}/></td>);     
         }
         return renderPost
     }
 
     renderPosts(){
         let renderPosts = []
-        for (let i = 0; i <= Math.floor(this.state.posts.length/3); i++){
+        const { posts } = this.state
+        const { location, preference, price } = this.props
+        const filteredPosts = this.filterPosts(posts, location, preference, price)
+        for (let i = 0; i <= Math.floor(filteredPosts.length/3); i++){
             let idName = 'Post' + i
-            renderPosts.push(<tr key={idName}>{this.renderPost(i*3, i*3 + 3)}</tr>)
+            renderPosts.push(<tr key={idName}>{this.renderPost(i*3, i*3 + 3, filteredPosts)}</tr>)
         }
         return renderPosts
     }
 
     filterPosts(posts, location, preference, price) {
-        console.log(posts, location, preference, price)
         const filteredPosts = posts.filter(post => {
             let isPreference = false
             let isLocation = false
