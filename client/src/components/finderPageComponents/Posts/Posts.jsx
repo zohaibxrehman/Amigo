@@ -36,15 +36,36 @@ export class Posts extends Component {
             let idName = 'Post' + i
             renderPosts.push(<tr key={idName}>{this.renderPost(i*3, i*3 + 3)}</tr>)
         }
-        console.log(">>" + renderPosts)
         return renderPosts
+    }
+
+    filterPosts(posts, location, preference, price) {
+        // console.log(posts, location, preference, price)
+        const filteredPosts = posts.filter(post => {
+            let isPreference = false
+            let isLocation = false
+            let isPrice = false
+            if (preference==='' || preference===post['preferences']){
+                isPreference = true
+            }
+            if (location==='' || location===post['location']){
+                isLocation = true
+            }
+            if (price==='' || preference===post['price']){
+                isPrice = true
+            }
+            return isPreference && isLocation && isPrice
+        })
+        return filteredPosts
     }
 
     render() {
         const { posts } = this.state
+        const { location, preference, price } = this.props
+        const filteredPosts = this.filterPosts(posts, location, preference, price)
         return (
             <div>
-                {posts.length !== 0 ? <table className='postTable'>
+                {filteredPosts.length !== 0 ? <table className='postTable'>
                     <tbody>
                         {this.renderPosts()}
                     </tbody>

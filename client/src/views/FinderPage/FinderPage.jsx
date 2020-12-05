@@ -34,7 +34,7 @@ export class FinderPage extends Component {
     }
 
     render() {
-        const { view, filters, location, preference, price } = this.state
+        const { view, location, preference, price } = this.state
         const { isLoggedIn } = this.props
         return (
             <div className='finder'>
@@ -50,7 +50,11 @@ export class FinderPage extends Component {
                 <div id='finderView'>
                     {view==='list' && 
                     <React.Fragment>
-                        <Posts filters={filters} />
+                        <Posts 
+                            location={location}
+                            preference={preference}
+                            price={price}
+                        />
                         <Pagination />
                     </React.Fragment>
                     }
