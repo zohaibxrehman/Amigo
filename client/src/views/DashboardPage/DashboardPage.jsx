@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './DashboardPage.css'
-import data from './dummyData'
 import { UserPanel, NotificationPanel } from "../../components/dashboardPageComponents/index.js"
 import {checkSession, getUsers, getPosts} from "./../../actions/admin"
 import PostManagement from "./../../components/dashboardPageComponents/PostManagement/PostManagement"

@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import './UserDashboardPage.css'
 import { UserPanel, NotificationPanel } from "../../components/userDashboardPageComponents/index.js"
-import data from './dummyData'
 import UserActivity from '../../components/userDashboardPageComponents/UserActivity/UserActivity'
 import { getUserByIDForPosts } from './../../actions/post'
-import posts from '../../components/finderPageComponents/MapFinder/dummyData'
 
 export class UserDashboardPage extends Component {
 
