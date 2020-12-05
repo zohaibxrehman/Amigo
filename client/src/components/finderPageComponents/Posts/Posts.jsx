@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Post from '../Post/Post'
 import './Posts.css'
-import data from './dummyData'
 import { getPosts } from './../../../actions/post'
 
 export class Posts extends Component {
@@ -10,15 +9,10 @@ export class Posts extends Component {
         this.state = {
             posts: []
         }
-        // getPosts(this)
     }
 
     componentDidMount() {
-        // when server and database is set up, this data
-        // will be retrieved here
-        // this.setState({ posts: data })
         getPosts(this)
-        // console.log(this.state)
     }
 
     renderPost(start, end){
@@ -45,13 +39,13 @@ export class Posts extends Component {
             let isPreference = false
             let isLocation = false
             let isPrice = false
-            if (preference=='' || preference==post['preferences']){
+            if (preference==='' || preference===post['preferences']){
                 isPreference = true
             }
-            if (location=='' || location==post['location']){
+            if (location==='' || location===post['location']){
                 isLocation = true
             }
-            if (price=='' || price==post['price']){
+            if (price==='' || price===post['price']){
                 isPrice = true
             }
             return isPreference && isLocation && isPrice

@@ -4,10 +4,6 @@ import logo from '../../assets/logo.svg'
 import { logout } from '../../actions/user'
 
 export class Navbar extends Component {
-    constructor() {
-        super()
-    }
-
     logoutUserHandler() {
         const { logoutUser } = this.props
         logout(logoutUser)
