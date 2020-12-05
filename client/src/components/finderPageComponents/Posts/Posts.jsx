@@ -40,18 +40,18 @@ export class Posts extends Component {
     }
 
     filterPosts(posts, location, preference, price) {
-        // console.log(posts, location, preference, price)
+        console.log(posts, location, preference, price)
         const filteredPosts = posts.filter(post => {
             let isPreference = false
             let isLocation = false
             let isPrice = false
-            if (preference==='' || preference===post['preferences']){
+            if (preference=='' || preference==post['preferences']){
                 isPreference = true
             }
-            if (location==='' || location===post['location']){
+            if (location=='' || location==post['location']){
                 isLocation = true
             }
-            if (price==='' || preference===post['price']){
+            if (price=='' || price==post['price']){
                 isPrice = true
             }
             return isPreference && isLocation && isPrice
