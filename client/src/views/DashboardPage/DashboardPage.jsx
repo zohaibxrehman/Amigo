@@ -11,7 +11,7 @@ export class DashboardPage extends Component {
     constructor() {
         super()
         this.state = {
-            view: "postManagement",
+            view: "userManagement",
             notifications: [],
             userName: '',
             userId: '',
