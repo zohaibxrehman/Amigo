@@ -25,8 +25,7 @@ export class Posts extends Component {
         let renderPost = [];
         for (let i = start; i < Math.min(this.state.posts.length, end); i++){
             let idName = 'Posts' + i
-            renderPost.push(<td key={idName} className='postWrap'><Post userInfo={this.state.posts[i]}/></td>);
-            
+            renderPost.push(<td key={idName} className='postWrap'><Post userInfo={this.state.posts[i]}/></td>);     
         }
         return renderPost
     }
@@ -37,15 +36,36 @@ export class Posts extends Component {
             let idName = 'Post' + i
             renderPosts.push(<tr key={idName}>{this.renderPost(i*3, i*3 + 3)}</tr>)
         }
-        console.log(">>" + renderPosts)
         return renderPosts
+    }
+
+    filterPosts(posts, location, preference, price) {
+        console.log(posts, location, preference, price)
+        const filteredPosts = posts.filter(post => {
+            let isPreference = false
+            let isLocation = false
+            let isPrice = false
+            if (preference=='' || preference==post['preferences']){
+                isPreference = true
+            }
+            if (location=='' || location==post['location']){
+                isLocation = true
+            }
+            if (price=='' || price==post['price']){
+                isPrice = true
+            }
+            return isPreference && isLocation && isPrice
+        })
+        return filteredPosts
     }
 
     render() {
         const { posts } = this.state
+        const { location, preference, price } = this.props
+        const filteredPosts = this.filterPosts(posts, location, preference, price)
         return (
             <div>
-                {posts.length !== 0 ? <table className='postTable'>
+                {filteredPosts.length !== 0 ? <table className='postTable'>
                     <tbody>
                         {this.renderPosts()}
                     </tbody>

@@ -6,7 +6,10 @@ export class FinderPage extends Component {
     constructor() {
         super()
         this.state = {
-            view: 'list'
+            view: 'list',
+            location: '',
+            preference: '',   
+            price: '' 
         }
     }
 
@@ -19,16 +22,39 @@ export class FinderPage extends Component {
         }
     }
 
+    changeHandler = (e) => {
+        e.preventDefault();
+        const target = e.target;
+        const value = target.value;
+        const name = target.id;
+
+        this.setState({
+            [name]: value 
+        });
+    }
+
     render() {
-        const { view } = this.state
+        const { view, location, preference, price } = this.state
         const { isLoggedIn } = this.props
         return (
             <div className='finder'>
-                <Filter view={ view } changeView={() => this.changeView()} isLoggedIn={isLoggedIn} />
+                <Filter 
+                    view={ view }
+                    changeView={() => this.changeView()}
+                    isLoggedIn={isLoggedIn}
+                    changeHandler={ e => this.changeHandler(e)}
+                    location={location}
+                    preference={preference}
+                    price={price}
+                />
                 <div id='finderView'>
                     {view==='list' && 
                     <React.Fragment>
-                        <Posts />
+                        <Posts 
+                            location={location}
+                            preference={preference}
+                            price={price}
+                        />
                         <Pagination />
                     </React.Fragment>
                     }
