@@ -5,10 +5,6 @@ import listIcon from '../../../assets/list-icon.png'
 
 
 export class Filter extends Component {
-    constructor() {
-        super()
-    }
-
     render() {
         const { view, changeView, isLoggedIn, location, preference, price, changeHandler } = this.props
         // redirect user to login before making a post
