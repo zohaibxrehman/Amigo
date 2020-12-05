@@ -37,7 +37,7 @@ export class DashboardPage extends Component {
         const {view, notifications, userName, users, posts} = this.state;
         return (
             <div>
-                <UserPanel changeView={(viewChange)=>this.changeView(viewChange)} userName={userName} />
+                <UserPanel changeView={(viewChange)=>this.changeView(viewChange)} userName={userName} view={view} />
                 <div id='dashboardView'>
                     {view==='dashboard' && <NotificationPanel notifications={notifications}/>}
                     {view==='userManagement' && <UserManagement users = {users} />}
