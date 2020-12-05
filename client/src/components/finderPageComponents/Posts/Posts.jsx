@@ -39,7 +39,8 @@ export class Posts extends Component {
             let isPreference = false
             let isLocation = false
             let isPrice = false
-            if (preference==='' || preference===post['preferences']){
+
+            if (preference==='' || post['preferences'].includes(preference)){
                 isPreference = true
             }
             if (location==='' || location===post['location']){
