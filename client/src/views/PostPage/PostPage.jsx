@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import './PostPage.css'
 import { PostHeader, PostImage, PostOwnerForm, PostDescription, PostRequirement } from "../../components/postPageComponents/index.js"
-import data from './dummyData'
 import { getPostsById, reportPost } from './../../actions/post'
 
 export class PostPage extends Component {

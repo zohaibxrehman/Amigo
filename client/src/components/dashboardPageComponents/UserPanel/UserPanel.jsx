@@ -12,16 +12,25 @@ let userPanelMap = {'dashboard': {'name': "Dashboard", 'icon': dashboardIcon}, '
 class UserPanel extends Component {
 
     render() {
-        const { userName, userPhoto } = this.props;
+        const { userName, userPhoto, changeView, view } = this.props;
         return (
             <div id="userPanel">
                 <h2>Dashboard</h2>
                 <hr/>
                 <UserProfile name={userName} photo={userPhoto} admin={'( Admin )'}/>
-                <UserFunctionality userFunction={userPanelMap.dashboard} />
-                <UserFunctionality userFunction={userPanelMap.userManagement} />
-                <UserFunctionality userFunction={userPanelMap.postManagement} />
-                <UserFunctionality userFunction={userPanelMap.setting} />
+                <div onClick={()=>changeView('dashboard')} className={view==='dashboard' ? ' changeBtn changeBtnActive' : 'changeBtn'}>
+                    <UserFunctionality userFunction={userPanelMap.dashboard} />
+                </div>
+                <div onClick={()=>changeView('userManagement')} className={view==='userManagement' ? ' changeBtn changeBtnActive' : 'changeBtn'}>
+                    <UserFunctionality userFunction={userPanelMap.userManagement} />
+                </div>
+                <div onClick={()=>changeView('postManagement')} className={view==='postManagement' ? ' changeBtn changeBtnActive' : 'changeBtn'}>
+                    <UserFunctionality userFunction={userPanelMap.postManagement} />
+                </div>
+                <div className='changeBtn'>
+                    <UserFunctionality userFunction={userPanelMap.setting} />
+                </div>
+                
             </div>
         )
     }
