@@ -228,14 +228,14 @@ app.post('/users/new', mongoChecker, multipartMiddleware, async (req, res) => {
         async function (result) {
             try {
                 const user = new User({
-                email: email,
-                password: password,
-                username: username,
-                firstName: firstName,
-                lastName: lastName,
-                image_id: result.public_id,
-                image_url: result.url,
-                created_at: new Date()
+                    email: email,
+                    password: password,
+                    username: username,
+                    firstName: firstName,
+                    lastName: lastName,
+                    image_id: result.public_id,
+                    image_url: result.url,
+                    created_at: new Date()
                 })
                 const newUser = await user.save()
                 res.send(newUser)
@@ -383,6 +383,26 @@ app.get('/posts/:id', mongoChecker, async (req, res) => {
         res.send(post)
     } catch {
         res.status(500).send("Internal Server Error")
+    }
+})
+
+app.put('/posts/:id', mongoChecker, authenticate, async (req, res) => {
+    const { title, location, price, preferences, description } = req.body
+    try {
+        const updatedUserPost = await UserPost.findOneAndUpdate({ _id: req.params.id }, {$set: {
+            title: title,
+            location: location,
+            price: price,
+            preferences: preferences,
+            description: description
+        }}, { returnOriginal: false })
+        res.send(updatedUserPost)
+    } catch (error) {
+        if (isMongoError(error)) {
+            res.status(500).send('Internal server error')
+        } else {
+            res.status(400).send('Bad Request')
+        }
     }
 })
 
