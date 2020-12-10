@@ -27,6 +27,16 @@ export class PostPage extends Component {
         }
     }
 
+    reportPost(e) {
+        const { postid } = this.props.match.params
+
+        reportPost(postid)
+        e.target.style.backgroundColor = '#37de1d'
+        e.target.value = 'Post Reported'
+        // call to database will be written here
+        // and the admin can retrieve these reported users
+    }
+
     componentDidMount() {
         // when server and database is set up, this data
         // will be retrieved here
@@ -40,7 +50,6 @@ export class PostPage extends Component {
     render() {
 
         const { postData } = this.state
-        const { postid } = this.props.match.params
 
         return (
             <div id="check" >
@@ -48,7 +57,7 @@ export class PostPage extends Component {
                 <PostImage img = {postData.image_url}/>
                 <PostOwnerForm creator = {postData.creator} creatorName={postData.creator_name} creatorUrl = {postData.creator_image_url}/>
                 <PostDescription description = {postData.description} />
-                <input type="submit" value="Report" onClick={() => reportPost(postid)}/>
+                <input type="submit" value="Report" onClick={(e)=>this.reportPost(e)}/>
                 <PostRequirement preferences = {postData.preferences} />
             </div>
         )
