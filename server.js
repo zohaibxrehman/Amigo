@@ -311,6 +311,37 @@ app.put('/users/:id/password', mongoChecker, authenticateUserOrAdmin, async (req
     }
 })
 
+app.put('/users/:id/img', mongoChecker, authenticateUserOrAdmin, multipartMiddleware, async (req, res) => {
+    try {
+        cloudinary.uploader.upload(
+            req.files.image.path, // req.files contains uploaded files
+            async function (result) {
+                try {
+                    const user = await User.findOne({ _id: req.params.id })
+                    cloudinary.uploader.destroy(user.image_id)
+                    const updatedUser = await User.findOneAndUpdate({ _id: req.params.id }, {$set: {
+                        image_id: result.public_id,
+                        image_url: result.url,
+                    }}, { returnOriginal: false })
+                    res.send(updatedUser)
+                } catch (error) {
+                    if (isMongoError(error)) {
+                        res.status(500).send('Internal server error')
+                    } else {
+                        res.status(400).send('Bad Request')
+                    }
+                }
+            }
+        );
+    } catch (error) {
+        if (isMongoError(error)) {
+            res.status(500).send('Internal server error')
+        } else {
+            res.status(400).send('Bad Request')
+        }
+    }
+})
+
 app.post('/users/:id/report', mongoChecker, authenticateUserOrAdmin, async (req, res) => {
     try {
         const user = await User.findById(req.params.id)
