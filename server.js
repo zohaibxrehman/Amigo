@@ -276,7 +276,7 @@ app.get('/users/:id', mongoChecker, async (req, res) => {
 })
 
 app.put('/users/:id', mongoChecker, authenticateUserOrAdmin, async (req, res) => {
-    const { email, password, username, firstName, lastName } = req.body;
+    const { email, username, firstName, lastName } = req.body;
     try {
         const updatedUser = await User.findOneAndUpdate({ _id: req.params.id }, {$set: {
             email: email,
@@ -284,6 +284,22 @@ app.put('/users/:id', mongoChecker, authenticateUserOrAdmin, async (req, res) =>
             firstName: firstName,
             lastName: lastName
         }}, { returnOriginal: false })
+        res.send(updatedUser)
+    } catch (error) {
+        if (isMongoError(error)) {
+            res.status(500).send('Internal server error')
+        } else {
+            res.status(400).send('Bad Request')
+        }
+    }
+})
+
+app.put('/users/:id/password', mongoChecker, authenticateUserOrAdmin, async (req, res) => {
+    const { password } = req.body;
+    try {
+        const user = await User.findOne({ _id: req.params.id })
+        user.password = password
+        const updatedUser = await user.save()
         res.send(updatedUser)
     } catch (error) {
         log(error)
