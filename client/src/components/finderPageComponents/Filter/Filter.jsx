@@ -39,11 +39,12 @@ export class Filter extends Component {
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                                 <option value="Student">Student</option>
-                                <option value="Proffesional">Professional</option>
+                                <option value="Professional">Professional</option>
                                 <option value="Elderly">Elderly</option>
-                                <option value="No smoking">No smoking</option>
-                                <option value="No drinking">No drinking</option>
-                                <option value="No partying">No partying</option>
+                                <option value="No Smoking">No Smoking</option>
+                                <option value="No Drinking">No Drinking</option>
+                                <option value="No Partying">No Partying</option>
+                                <option value="420 Friendly">420 Friendly</option>
                             </select>
                         </td>
                         <td className='filterItem'>
