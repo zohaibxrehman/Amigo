@@ -39,6 +39,7 @@ app.use(cors())
 // express-session for managing user sessions
 const session = require("express-session");
 const { mongo } = require("mongoose");
+const { networkInterfaces } = require("os");
 app.use(bodyParser.urlencoded({ extended: true }));
 
 function isMongoError(error) { // checks for first error returned by promise rejection if Mongo database suddently disconnects
@@ -118,6 +119,30 @@ const authenticateUserOrAdmin = async (req, res, next) => {
     }
 }
 
+const authenticateUserProfileOrAdmin = async (req, res, next) => {
+    if (req.session.user) {
+        try {
+            const admin = await Admin.findById(req.session.user)
+            if (!admin) {
+                const user = await User.findById(req.params.id)
+                if (!user || !user._id.equals(req.session.user)) {
+                    res.status(401).send("Unauthorized")
+                } else {
+                    req.user = user
+                    next()
+                }
+            } else {
+                req.user = admin
+                next()
+            }
+        } catch {
+            res.status(401).send("Unauthorized")
+        }
+    } else {
+        res.status(401).send("Unauthorized")
+    }
+}
+
 const authenticateCreatorOrAdmin = async (req, res, next) => {
     if (req.session.user) {
         try {
@@ -159,7 +184,7 @@ app.use(
         resave: false,
         saveUninitialized: false,
         cookie: {
-            expires: 120000,
+            expires: 300000,
             httpOnly: true
         }
     })
@@ -191,7 +216,6 @@ app.post("/users/login", async (req, res) => {
         if (isMongoError(error)) {
             res.status(500).send('Internal server error')
         } else {
-            log(error)
             res.status(400).send('Bad Request. Could not login user.')
         }
     }
@@ -221,6 +245,7 @@ app.post('/users/new', mongoChecker, multipartMiddleware, async (req, res) => {
 
     if (username === 'admin') {
         res.status(400).send('Bad Request. Cannot create account as admin.')
+        return;
     }
 
     cloudinary.uploader.upload(
@@ -255,6 +280,7 @@ app.get('/users', mongoChecker, async (req, res) => {
         const users = await User.find()
         if (!users) {
             res.send(404).send("No users found")
+            return;
         }
         res.send(users)
     } catch {
@@ -267,6 +293,7 @@ app.get('/users/:id', mongoChecker, async (req, res) => {
         const user = await User.findById(req.params.id)
         if (!user) {
             res.status(404).send("Post not found")
+            return;
         }
         res.send(user)
     } catch {
@@ -274,11 +301,70 @@ app.get('/users/:id', mongoChecker, async (req, res) => {
     }
 })
 
+app.put('/users/:id', mongoChecker, authenticateUserProfileOrAdmin, async (req, res) => {
+    const { email, username, firstName, lastName } = req.body;
+    try {
+        const updatedUser = await User.findOneAndUpdate({ _id: req.params.id }, {$set: {
+            email: email,
+            username: username,
+            firstName: firstName,
+            lastName: lastName
+        }}, { returnOriginal: false })
+        res.send(updatedUser)
+    } catch (error) {
+        if (isMongoError(error)) {
+            res.status(500).send('Internal server error')
+        } else {
+            res.status(400).send('Bad Request')
+        }
+    }
+})
+
+app.put('/users/:id/password', mongoChecker, authenticateUserProfileOrAdmin, async (req, res) => {
+    const { password } = req.body;
+    try {
+        const user = await User.findOne({ _id: req.params.id })
+        user.password = password
+        const updatedUser = await user.save()
+        res.send(updatedUser)
+    } catch (error) {
+        if (isMongoError(error)) {
+            res.status(500).send('Internal server error')
+        } else {
+            res.status(400).send('Bad Request')
+        }
+    }
+})
+
+app.put('/users/:id/img', mongoChecker, authenticateUserProfileOrAdmin, multipartMiddleware, async (req, res) => {
+    try {
+        cloudinary.uploader.upload(
+            req.files.image.path, // req.files contains uploaded files
+            async function (result) {
+                const user = await User.findOne({ _id: req.params.id })
+                cloudinary.uploader.destroy(user.image_id)
+                const updatedUser = await User.findOneAndUpdate({ _id: req.params.id }, {$set: {
+                    image_id: result.public_id,
+                    image_url: result.url,
+                }}, { returnOriginal: false })
+                res.send(updatedUser)
+            }
+        );
+    } catch (error) {
+        if (isMongoError(error)) {
+            res.status(500).send('Internal server error')
+        } else {
+            res.status(400).send('Bad Request')
+        }
+    }
+})
+
 app.post('/users/:id/report', mongoChecker, authenticateUserOrAdmin, async (req, res) => {
     try {
         const user = await User.findById(req.params.id)
         if (!user) {
-            res.status(404).send("Post not found")
+            res.status(404).send("User not found")
+            return;
         }
         user.flagged = true
         user.save()
@@ -296,7 +382,8 @@ app.post('/users/:id/unreport', mongoChecker, authenticateAdmin, async (req, res
     try {
         const user = await User.findById(req.params.id)
         if (!user) {
-            res.status(404).send("Post not found")
+            res.status(404).send("User not found")
+            return;
         }
         user.flagged = false
         user.save()
@@ -316,10 +403,12 @@ app.delete('/users/:id', mongoChecker, authenticateAdmin, async (req, res) => {
         const user = await User.findByIdAndRemove(req.params.id)
         if (!user) {
             res.status(404).send("User not found")
+            return;
         }
         // remove user posts
         user.posts.forEach(async (post) => {
             const removedPost = await UserPost.findByIdAndRemove(post._id)
+            cloudinary.uploader.destroy(removedPost.image_id)
         })
         // remove user profile photo from the cloud
         cloudinary.uploader.destroy(user.image_id)
@@ -331,6 +420,16 @@ app.delete('/users/:id', mongoChecker, authenticateAdmin, async (req, res) => {
 
 app.post('/posts/new', mongoChecker, authenticate, multipartMiddleware, async (req, res) => {
     const { title, location, price, preferences, description } = req.body
+    const locationToGeo = {
+        'Toronto': [43.660910, -79.395569], 
+        'Waterloo': [43.465941, -80.524641],
+        'London': [42.982776, -81.244502],
+        'Vancouver': [49.240009, -123.134548],
+        'Ottawa': [45.415819, -75.702794],
+        'Montreal': [45.499695, -73.593487],
+        'Mississauga': [43.559449, -79.633928],
+        'Scarborough': [43.770763, -79.212965]
+    }
 
     cloudinary.uploader.upload(
         req.files.image.path, // req.files contains uploaded files
@@ -339,6 +438,7 @@ app.post('/posts/new', mongoChecker, authenticate, multipartMiddleware, async (r
                 const userPost = new UserPost({
                     title: title,
                     location: location,
+                    geo: locationToGeo[location],
                     price: price,
                     preferences: preferences,
                     description: description,
@@ -354,7 +454,6 @@ app.post('/posts/new', mongoChecker, authenticate, multipartMiddleware, async (r
                 user.save()
                 res.send(userPostSaved)
             } catch (error) {
-                log(error)
                 if (isMongoError(error)) {
                     res.status(500).send('Internal server error')
                 } else {
@@ -379,6 +478,7 @@ app.get('/posts/:id', mongoChecker, async (req, res) => {
         const post = await UserPost.findById(req.params.id)
         if (!post) {
             res.status(404).send("Post not found")
+            return;
         }
         res.send(post)
     } catch {
@@ -388,10 +488,21 @@ app.get('/posts/:id', mongoChecker, async (req, res) => {
 
 app.put('/posts/:id', mongoChecker, authenticateCreatorOrAdmin, async (req, res) => {
     const { title, location, price, preferences, description } = req.body
+    const locationToGeo = {
+        'Toronto': [43.660910, -79.395569], 
+        'Waterloo': [43.465941, -80.524641],
+        'London': [42.982776, -81.244502],
+        'Vancouver': [49.240009, -123.134548],
+        'Ottawa': [45.415819, -75.702794],
+        'Montreal': [45.499695, -73.593487],
+        'Mississauga': [43.559449, -79.633928],
+        'Scarborough': [43.770763, -79.212965]
+    }
     try {
         const updatedUserPost = await UserPost.findOneAndUpdate({ _id: req.params.id }, {$set: {
             title: title,
             location: location,
+            geo: locationToGeo[location],
             price: price,
             preferences: preferences,
             description: description
@@ -434,6 +545,7 @@ app.post('/posts/:id/report', mongoChecker, authenticateUserOrAdmin, async (req,
         const post = await UserPost.findById(req.params.id)
         if (!post) {
             res.status(404).send("Post not found")
+            return;
         }
         post.flagged = true
         post.save()
@@ -452,6 +564,7 @@ app.post('/posts/:id/unreport', mongoChecker, authenticateAdmin, async (req, res
         const post = await UserPost.findById(req.params.id)
         if (!post) {
             res.status(404).send("Post not found")
+            return;
         }
         post.flagged = false
         post.save()
@@ -471,6 +584,7 @@ app.delete('/posts/:id', mongoChecker, authenticateCreatorOrAdmin, async (req, r
         const post = await UserPost.findByIdAndRemove(req.params.id)
         if (!post) {
             res.status(404).send("Post not found")
+            return;
         }
         // remove posts from creator posts list
         const user = await User.findOne({ _id: post.creator })

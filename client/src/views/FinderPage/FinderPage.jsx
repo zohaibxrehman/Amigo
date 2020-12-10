@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './FinderPage.css'
-import { Filter, Posts, MapFinder, Pagination } from '../../components/finderPageComponents/index.js'
+import { Filter, Posts, MapFinder } from '../../components/finderPageComponents/index.js'
 
 export class FinderPage extends Component {
     constructor() {
@@ -55,7 +55,7 @@ export class FinderPage extends Component {
                             preference={preference}
                             price={price}
                         />
-                        <Pagination />
+                        {/* <Pagination /> */}
                     </React.Fragment>
                     }
                     {view==='map' && <MapFinder />}

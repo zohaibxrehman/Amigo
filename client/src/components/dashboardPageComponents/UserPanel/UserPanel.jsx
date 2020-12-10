@@ -5,9 +5,8 @@ import UserProfile from './UserProfile/UserProfile'
 import dashboardIcon from '../../../assets/dashboard-icon.png'
 import userManagementIcon from '../../../assets/user-management.png'
 import postManagementIcon from '../../../assets/post-management.png'
-import settingIcon from '../../../assets/settings.png'
 
-let userPanelMap = {'dashboard': {'name': "Dashboard", 'icon': dashboardIcon}, 'userManagement': {'name': "User Management", 'icon': userManagementIcon}, 'postManagement': {'name': "Post Management", 'icon': postManagementIcon}, 'setting': {'name': "Settings", 'icon': settingIcon}};
+let userPanelMap = {'dashboard': {'name': "Dashboard", 'icon': dashboardIcon}, 'userManagement': {'name': "User Management", 'icon': userManagementIcon}, 'postManagement': {'name': "Post Management", 'icon': postManagementIcon}};
 
 class UserPanel extends Component {
 
@@ -27,10 +26,6 @@ class UserPanel extends Component {
                 <div onClick={()=>changeView('postManagement')} className={view==='postManagement' ? ' changeBtn changeBtnActive' : 'changeBtn'}>
                     <UserFunctionality userFunction={userPanelMap.postManagement} />
                 </div>
-                <div className='changeBtn'>
-                    <UserFunctionality userFunction={userPanelMap.setting} />
-                </div>
-                
             </div>
         )
     }

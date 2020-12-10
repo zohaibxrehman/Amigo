@@ -103,9 +103,7 @@ export const getPosts = (postList) => {
                     console.log(error)
                 })
             }
-            console.log(json)
-            
-            
+            postList.setState({ posts: json });
         })
         .catch(error => {
             console.log(error);
@@ -228,7 +226,7 @@ export const reportPost = (id) => {
 
 
 // A function to send a POST request with a new student
-export const deletePost = (id) => {
+export const deletePost = (id, updateInfo) => {
     // the URL for the request
     const url = "/posts/" + id;
 
@@ -249,7 +247,8 @@ export const deletePost = (id) => {
             // Usually check the error codes to see what happened.
             if (res.status === 200) {
                 // If student was added successfully, tell the user.
-                console.log('loaded post sucessfully')
+                console.log('deleted sucessfully')
+                updateInfo();
             } else {
                 // If server couldn't add the student, tell the user.
                 // Here we are adding a generic message, but you could be more specific in your app.
