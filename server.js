@@ -159,7 +159,7 @@ app.use(
         resave: false,
         saveUninitialized: false,
         cookie: {
-            expires: 120000,
+            expires: 300000,
             httpOnly: true
         }
     })
