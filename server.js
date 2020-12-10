@@ -423,6 +423,16 @@ app.delete('/users/:id', mongoChecker, authenticateAdmin, async (req, res) => {
 
 app.post('/posts/new', mongoChecker, authenticate, multipartMiddleware, async (req, res) => {
     const { title, location, price, preferences, description } = req.body
+    const locationToGeo = {
+        'Toronto': [43.660910, -79.395569], 
+        'Waterloo': [43.465941, -80.524641],
+        'London': [42.982776, -81.244502],
+        'Vancouver': [49.240009, -123.134548],
+        'Ottawa': [45.415819, -75.702794],
+        'Montreal': [45.499695, -73.593487],
+        'Mississauga': [43.559449, -79.633928],
+        'Scarborough': [43.770763, -79.212965]
+    }
 
     cloudinary.uploader.upload(
         req.files.image.path, // req.files contains uploaded files
@@ -431,6 +441,7 @@ app.post('/posts/new', mongoChecker, authenticate, multipartMiddleware, async (r
                 const userPost = new UserPost({
                     title: title,
                     location: location,
+                    geo: locationToGeo[location],
                     price: price,
                     preferences: preferences,
                     description: description,
@@ -480,10 +491,21 @@ app.get('/posts/:id', mongoChecker, async (req, res) => {
 
 app.put('/posts/:id', mongoChecker, authenticateCreatorOrAdmin, async (req, res) => {
     const { title, location, price, preferences, description } = req.body
+    const locationToGeo = {
+        'Toronto': [43.660910, -79.395569], 
+        'Waterloo': [43.465941, -80.524641],
+        'London': [42.982776, -81.244502],
+        'Vancouver': [49.240009, -123.134548],
+        'Ottawa': [45.415819, -75.702794],
+        'Montreal': [45.499695, -73.593487],
+        'Mississauga': [43.559449, -79.633928],
+        'Scarborough': [43.770763, -79.212965]
+    }
     try {
         const updatedUserPost = await UserPost.findOneAndUpdate({ _id: req.params.id }, {$set: {
             title: title,
             location: location,
+            geo: locationToGeo[location],
             price: price,
             preferences: preferences,
             description: description

@@ -4,7 +4,6 @@ import { Icon } from "leaflet";
 import './MapFinder.css'
 import 'leaflet/dist/leaflet.css';
 import { getPosts } from './../../../actions/post'
-import data from './dummyData'
 
 export class MapFinder extends Component {
     constructor() {
