@@ -183,16 +183,26 @@ export const editProfileInfo = (editProfileComp) => {
     const { firstname, lastname, email, username } = editProfileComp.state
     // The data we are going to send in our request
     
-    const data = new FormData()
-    data.append('email', email)
-    data.append('username', username)
-    data.append('firstName', firstname)
-    data.append('lastName', lastname)
+    // const data = new FormData()
+    // data.append('email', email)
+    // data.append('username', username)
+    // data.append('firstName', firstname)
+    // data.append('lastName', lastname)
+    const data = {
+        email: email,
+        username: username,
+        firstName: firstname,
+        lastName: lastname
+    }
 
 
     const request = new Request(url, {
         method: "put",
-        body: data
+        body: JSON.stringify(data),
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
     });
 
     // Send the request with fetch()

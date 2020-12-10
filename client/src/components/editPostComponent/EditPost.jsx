@@ -30,6 +30,7 @@ class EditPost extends Component {
     submitHandler = (e) => {
         e.preventDefault();
         editPostInfo(this)
+        console.log(this)
         if(this.state.photo != null){
             editPostPhoto(e, this.state.postid)
         }
@@ -77,9 +78,9 @@ class EditPost extends Component {
 
     
     render() { 
-        const { inputTitle, inputPrice, inputLocation, inputDescription } = this.state
+        const { inputTitle, inputPrice, inputLocation, inputDescription, preferences } = this.state
         const checked_attr = (pref) =>{
-            if(this.state.preferences.includes(pref)){
+            if(preferences.includes(pref)){
                 return {"checked":true}
             }
         }

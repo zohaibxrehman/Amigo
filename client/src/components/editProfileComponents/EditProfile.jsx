@@ -19,6 +19,7 @@ class EditProfile extends Component {
     componentDidMount() {
         // userid passed via props
         const { userid } = this.props
+        console.log(userid)
         getUserByIDForEdit(this,userid)
         this.setState({ userid: userid})
     }

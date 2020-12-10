@@ -267,21 +267,34 @@ export const deletePost = (id, updateInfo) => {
 export const editPostInfo = (editPost) => {
     // the URL for the request
     const url = `/posts/${editPost.state.postid}`;
+    console.log(editPost)
     const { inputTitle, inputPrice, inputLocation, inputDescription, preferences } = editPost.state
     // The data we are going to send in our request
+    // console.log(inputLocation)
+    // const data = new FormData()
+    // data.append('title', inputTitle)
+    // data.append('location', inputLocation)
+    // data.append('price', inputPrice)
+    // data.append('description', inputDescription)
+    // preferences.forEach((item) => data.append("preferences[]", item))
     
-    const data = new FormData()
-    data.append('title', inputTitle)
-    data.append('location', inputLocation)
-    data.append('price', inputPrice)
-    data.append('description', inputDescription)
-    preferences.forEach((item) => data.append("preferences[]", item))
-    // data.append('image', e.target.image.files[0])
-
-
+    // // data.append('image', e.target.image.files[0])
+    // console.log(data)
+    const data = { 
+        title: inputTitle , 
+        location: inputLocation, 
+        price: inputPrice, 
+        preferences: preferences, 
+        description: inputDescription
+    }
+    console.log(data)
     const request = new Request(url, {
-        method: "put",
-        body: data
+        method: 'put',
+        body: JSON.stringify(data),
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
     });
 
     // Send the request with fetch()

@@ -13,8 +13,7 @@ class MakePostPage extends Component {
                 <h2>Make a New Post</h2>
                 <MakePost />
             </div>
-
-
+            
         );
     }
 }

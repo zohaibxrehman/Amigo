@@ -6,14 +6,15 @@ import EditProfile from '../../components/editProfileComponents/EditProfile';
 class EditProfilePage extends Component {
     state = {  }
     render() { 
+        const {userid } = this.props.match.params
         return ( 
 
             <div>
             <div className='EditBox'>
                 <div className='ProfileBox'>
                     {/* pass down user id  */}
-                <EditProfile />
-                <EditPassword />
+                <EditProfile userid={userid}/>
+                <EditPassword userid={userid}/>
                 </div>
             </div> 
             </div> 
