@@ -39,6 +39,7 @@ app.use(cors())
 // express-session for managing user sessions
 const session = require("express-session");
 const { mongo } = require("mongoose");
+const { networkInterfaces } = require("os");
 app.use(bodyParser.urlencoded({ extended: true }));
 
 function isMongoError(error) { // checks for first error returned by promise rejection if Mongo database suddently disconnects
@@ -118,6 +119,30 @@ const authenticateUserOrAdmin = async (req, res, next) => {
     }
 }
 
+const authenticateUserProfileOrAdmin = async (req, res, next) => {
+    if (req.session.user) {
+        try {
+            const admin = await Admin.findById(req.session.user)
+            if (!admin) {
+                const user = await User.findById(req.params.id)
+                if (!user || !user._id.equals(req.session.user)) {
+                    res.status(401).send("Unauthorized")
+                } else {
+                    req.user = user
+                    next()
+                }
+            } else {
+                req.user = admin
+                next()
+            }
+        } catch {
+            res.status(401).send("Unauthorized")
+        }
+    } else {
+        res.status(401).send("Unauthorized")
+    }
+}
+
 const authenticateCreatorOrAdmin = async (req, res, next) => {
     if (req.session.user) {
         try {
@@ -159,7 +184,7 @@ app.use(
         resave: false,
         saveUninitialized: false,
         cookie: {
-            expires: 120000,
+            expires: 300000,
             httpOnly: true
         }
     })
@@ -271,6 +296,73 @@ app.get('/users/:id', mongoChecker, async (req, res) => {
         res.send(user)
     } catch {
         res.status(500).send("Internal Server Error")
+    }
+})
+
+app.put('/users/:id', mongoChecker, authenticateUserProfileOrAdmin, async (req, res) => {
+    const { email, username, firstName, lastName } = req.body;
+    try {
+        const updatedUser = await User.findOneAndUpdate({ _id: req.params.id }, {$set: {
+            email: email,
+            username: username,
+            firstName: firstName,
+            lastName: lastName
+        }}, { returnOriginal: false })
+        res.send(updatedUser)
+    } catch (error) {
+        if (isMongoError(error)) {
+            res.status(500).send('Internal server error')
+        } else {
+            res.status(400).send('Bad Request')
+        }
+    }
+})
+
+app.put('/users/:id/password', mongoChecker, authenticateUserProfileOrAdmin, async (req, res) => {
+    const { password } = req.body;
+    try {
+        const user = await User.findOne({ _id: req.params.id })
+        user.password = password
+        const updatedUser = await user.save()
+        res.send(updatedUser)
+    } catch (error) {
+        log(error)
+        if (isMongoError(error)) {
+            res.status(500).send('Internal server error')
+        } else {
+            res.status(400).send('Bad Request')
+        }
+    }
+})
+
+app.put('/users/:id/img', mongoChecker, authenticateUserProfileOrAdmin, multipartMiddleware, async (req, res) => {
+    try {
+        cloudinary.uploader.upload(
+            req.files.image.path, // req.files contains uploaded files
+            async function (result) {
+                try {
+                    const user = await User.findOne({ _id: req.params.id })
+                    cloudinary.uploader.destroy(user.image_id)
+                    const updatedUser = await User.findOneAndUpdate({ _id: req.params.id }, {$set: {
+                        image_id: result.public_id,
+                        image_url: result.url,
+                    }}, { returnOriginal: false })
+                    res.send(updatedUser)
+                } catch (error) {
+                    if (isMongoError(error)) {
+                        res.status(500).send('Internal server error')
+                    } else {
+                        res.status(400).send('Bad Request')
+                    }
+                }
+            }
+        );
+    } catch (error) {
+        if (isMongoError(error)) {
+            res.status(500).send('Internal server error')
+        } else {
+            res.status(400).send('Bad Request')
+        }
     }
 })
 
