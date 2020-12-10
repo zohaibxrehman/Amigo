@@ -24,6 +24,8 @@ export class Posts extends Component {
         const { image_url, price, title, _id} = this.props.userInfo;
         
         const post_url = '/post/' + _id 
+        const editpost_url = '/editpost/' + _id 
+
         return (
             <div className='adminUserPost'>
                 <a href={post_url}>
@@ -37,7 +39,7 @@ export class Posts extends Component {
                     <ul>
                         {this.displayFlagged()}
                         <li className="cursorDesignPosts">
-                            <a href=""> 
+                            <a href={editpost_url}> 
                                 <img className="img-decoration" src={ editImg } alt=""/>
                             </a>
                         </li>
