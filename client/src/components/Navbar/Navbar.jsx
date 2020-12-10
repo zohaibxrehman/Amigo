@@ -7,7 +7,7 @@ export class Navbar extends Component {
     logoutUserHandler() {
         const { logoutUser } = this.props
         logout(logoutUser)
-        window.location.href = '/login'
+        window.location.href = '/'
 
     }
 
