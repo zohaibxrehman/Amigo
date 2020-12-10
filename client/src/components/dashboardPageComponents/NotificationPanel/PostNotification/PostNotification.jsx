@@ -9,7 +9,7 @@ class PostNotification extends Component {
     render() {
         const { notification } = this.props;
         return (
-            <div id="postNotification">
+            <div id="adminNotificationPanel">
                 <h3>{notification[1].msg}</h3>
                 <div className="spaceBtw">
                     <span>

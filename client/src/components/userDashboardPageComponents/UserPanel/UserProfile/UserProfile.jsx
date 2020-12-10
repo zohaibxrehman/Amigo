@@ -3,7 +3,7 @@ import './UserProfile.css'
 
 class UserProfile extends Component {
     render() {
-        const { name, photo } = this.props;
+        const { name, photo, id } = this.props;
 
         return (
             <div id="userProfile">
@@ -17,7 +17,7 @@ class UserProfile extends Component {
                                 <strong> {name} </strong>
                             </li>
                             <li>
-                                <a id="profile-style" href="/user">View Profile</a>
+                                <a id="profile-style" href={"/user/" + id}>View Profile</a>
                             </li>
                         </ul>
                     </li>

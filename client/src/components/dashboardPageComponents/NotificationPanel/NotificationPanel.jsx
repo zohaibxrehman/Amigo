@@ -15,7 +15,7 @@ class NotificationPanel extends Component {
     render() {
         const { notifications } = this.props;
         return (
-            <div id="notificationPanel">
+            <div id="adminNotificationPanel">
                 <h2>Notifications</h2>
                 <hr/>
                 {this.renderPostNotifications(notifications)}

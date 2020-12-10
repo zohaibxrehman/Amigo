@@ -11,12 +11,12 @@ let userPanelMap = {'dashboard': {'name': "Dashboard", 'icon': dashboardIcon}, '
 class UserPanel extends Component {
 
     render() {
-        const { userName, userPhoto } = this.props;
+        const { userName, userPhoto, userId } = this.props;
         return (
             <div id="userPanel">
                 <h2>Dashboard</h2>
                 <hr/>
-                <UserProfile name={userName} photo={userPhoto}/>
+                <UserProfile name={userName} photo={userPhoto} id={userId}/>
                 <UserFunctionality userFunction={userPanelMap.dashboard} />
                 <UserFunctionality userFunction={userPanelMap.activity} />
                 <UserFunctionality userFunction={userPanelMap.setting} />

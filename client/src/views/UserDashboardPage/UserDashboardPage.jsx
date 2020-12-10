@@ -39,7 +39,7 @@ export class UserDashboardPage extends Component {
         const {view, notifications, dashboardInfo} = this.state;
         return (
             <div>
-                <UserPanel changeView={(viewChange)=>this.changeView(viewChange)} userName={dashboardInfo.userName} userPhoto={dashboardInfo.userPhoto}/>
+                <UserPanel changeView={(viewChange)=>this.changeView(viewChange)} userName={dashboardInfo.userName} userPhoto={dashboardInfo.userPhoto} userId={dashboardInfo._id}/>
                 <div id='dashboardView'>
                     {view==='dashboard' && 
                         <NotificationPanel notifications={notifications}/>
