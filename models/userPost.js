@@ -13,6 +13,10 @@ const UserPost = mongoose.model('UserPost', {
 		minlength: 1,
 		trim: true
 	},
+	geo: {
+		type: [Number],
+		required: true
+	},
 	price: {
 		type: String,
 		required: true,
