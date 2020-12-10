@@ -18,13 +18,10 @@ export class Users extends Component {
                             <h3 id='user_CardLocation'>{location}</h3>
                             <ul id='user_CardContact'>
                                 <li className='user_CardContactInfo'>
-                                    <img src={mailIcon} alt="mail icon"/>{' '}<a href={`mailto:${email}`}>
-                                        {email}
-                                    </a>
+                                    <img src={mailIcon} alt="mail icon"/>{' '} {email}
                                 </li>
                                 <li className='user_CardContactInfo'>
-                                    <img src={phoneIcon} alt="phone icon"/>{' '}
-                                    {phone}
+                                    <img src={phoneIcon} alt="phone icon"/>{' '} {phone}
                                 </li>
                             </ul>
                             <p id='user_CardAboutMe'>{aboutMe}</p>

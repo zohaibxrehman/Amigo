@@ -23,10 +23,14 @@ export class UserDashboardPage extends Component {
         this.setState({view: viewChange})
     }
 
+    updatePosts(){
+        getUserByIDForPosts(this)
+    }
+
     componentDidMount() {
         // when server and database is set up, this data
         // will be retrieved here
-        getUserByIDForPosts(this)
+        this.updatePosts()
         // this.setState({ dashboardInfo: data })
         
     }
@@ -40,7 +44,7 @@ export class UserDashboardPage extends Component {
                     {view==='dashboard' && 
                         <NotificationPanel notifications={notifications}/>
                     }
-                    {view==='userActivity' && <UserActivity posts = {dashboardInfo.posts} />}
+                    {view==='userActivity' && <UserActivity parentState = {() =>  this.updatePosts()}  posts = {dashboardInfo.posts} />}
                 </div>
                 
             </div>

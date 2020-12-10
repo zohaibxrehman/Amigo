@@ -8,7 +8,7 @@ class UserManagement extends Component {
         let renderUser = []
         for (let i = 0; i < users.length; i++){
             let idName = 'Users' + i
-            renderUser.push(<tr key={idName} className='postWrap'><Users userInfo={users[i]}/></tr>);
+            renderUser.push(<tr key={'User' + i}><td key={idName} className='postWrap'><Users userInfo={users[i]}/></td></tr>);
         }
         return renderUser;
     }
@@ -19,7 +19,11 @@ class UserManagement extends Component {
             <div id="postPanel">
                 <h2>User Profiles</h2>
                 <hr/>
-                {this.renderUsers(users)}
+                {users.length !== 0 ? <table className='userTable'>
+                    <tbody>
+                    { this.renderUsers(users) }
+                    </tbody>
+                </table> : null}
             </div>
         )
     }
