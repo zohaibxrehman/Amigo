@@ -54,9 +54,7 @@ export const getPosts = (postList) => {
                     console.log(error)
                 })
             }
-            console.log(json)
-            
-            
+            postList.setState({ posts: json });
         })
         .catch(error => {
             console.log(error);

@@ -23,7 +23,7 @@ export class Posts extends Component {
                         <small className='price'>{price}</small>
                     </div>
                 </a>
-                <div id="userPostModify">
+                <div id="userPostModifyAdmin">
                     <ul>
                         <li>
                             <a href=""> 
