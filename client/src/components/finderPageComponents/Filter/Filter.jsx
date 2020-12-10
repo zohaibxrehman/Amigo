@@ -44,6 +44,7 @@ export class Filter extends Component {
                                 <option value="No Smoking">No Smoking</option>
                                 <option value="No Drinking">No Drinking</option>
                                 <option value="No Partying">No Partying</option>
+                                <option value="No Pets">No Pets</option>
                                 <option value="420 Friendly">420 Friendly</option>
                             </select>
                         </td>
