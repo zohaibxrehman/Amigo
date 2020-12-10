@@ -216,7 +216,6 @@ app.post("/users/login", async (req, res) => {
         if (isMongoError(error)) {
             res.status(500).send('Internal server error')
         } else {
-            log(error)
             res.status(400).send('Bad Request. Could not login user.')
         }
     }
@@ -246,6 +245,7 @@ app.post('/users/new', mongoChecker, multipartMiddleware, async (req, res) => {
 
     if (username === 'admin') {
         res.status(400).send('Bad Request. Cannot create account as admin.')
+        return;
     }
 
     cloudinary.uploader.upload(
@@ -280,6 +280,7 @@ app.get('/users', mongoChecker, async (req, res) => {
         const users = await User.find()
         if (!users) {
             res.send(404).send("No users found")
+            return;
         }
         res.send(users)
     } catch {
@@ -292,6 +293,7 @@ app.get('/users/:id', mongoChecker, async (req, res) => {
         const user = await User.findById(req.params.id)
         if (!user) {
             res.status(404).send("Post not found")
+            return;
         }
         res.send(user)
     } catch {
@@ -326,7 +328,6 @@ app.put('/users/:id/password', mongoChecker, authenticateUserProfileOrAdmin, asy
         const updatedUser = await user.save()
         res.send(updatedUser)
     } catch (error) {
-        log(error)
         if (isMongoError(error)) {
             res.status(500).send('Internal server error')
         } else {
@@ -340,21 +341,13 @@ app.put('/users/:id/img', mongoChecker, authenticateUserProfileOrAdmin, multipar
         cloudinary.uploader.upload(
             req.files.image.path, // req.files contains uploaded files
             async function (result) {
-                try {
-                    const user = await User.findOne({ _id: req.params.id })
-                    cloudinary.uploader.destroy(user.image_id)
-                    const updatedUser = await User.findOneAndUpdate({ _id: req.params.id }, {$set: {
-                        image_id: result.public_id,
-                        image_url: result.url,
-                    }}, { returnOriginal: false })
-                    res.send(updatedUser)
-                } catch (error) {
-                    if (isMongoError(error)) {
-                        res.status(500).send('Internal server error')
-                    } else {
-                        res.status(400).send('Bad Request')
-                    }
-                }
+                const user = await User.findOne({ _id: req.params.id })
+                cloudinary.uploader.destroy(user.image_id)
+                const updatedUser = await User.findOneAndUpdate({ _id: req.params.id }, {$set: {
+                    image_id: result.public_id,
+                    image_url: result.url,
+                }}, { returnOriginal: false })
+                res.send(updatedUser)
             }
         );
     } catch (error) {
@@ -370,7 +363,8 @@ app.post('/users/:id/report', mongoChecker, authenticateUserOrAdmin, async (req,
     try {
         const user = await User.findById(req.params.id)
         if (!user) {
-            res.status(404).send("Post not found")
+            res.status(404).send("User not found")
+            return;
         }
         user.flagged = true
         user.save()
@@ -388,7 +382,8 @@ app.post('/users/:id/unreport', mongoChecker, authenticateAdmin, async (req, res
     try {
         const user = await User.findById(req.params.id)
         if (!user) {
-            res.status(404).send("Post not found")
+            res.status(404).send("User not found")
+            return;
         }
         user.flagged = false
         user.save()
@@ -408,10 +403,12 @@ app.delete('/users/:id', mongoChecker, authenticateAdmin, async (req, res) => {
         const user = await User.findByIdAndRemove(req.params.id)
         if (!user) {
             res.status(404).send("User not found")
+            return;
         }
         // remove user posts
         user.posts.forEach(async (post) => {
             const removedPost = await UserPost.findByIdAndRemove(post._id)
+            cloudinary.uploader.destroy(removedPost.image_id)
         })
         // remove user profile photo from the cloud
         cloudinary.uploader.destroy(user.image_id)
@@ -457,7 +454,6 @@ app.post('/posts/new', mongoChecker, authenticate, multipartMiddleware, async (r
                 user.save()
                 res.send(userPostSaved)
             } catch (error) {
-                log(error)
                 if (isMongoError(error)) {
                     res.status(500).send('Internal server error')
                 } else {
@@ -482,6 +478,7 @@ app.get('/posts/:id', mongoChecker, async (req, res) => {
         const post = await UserPost.findById(req.params.id)
         if (!post) {
             res.status(404).send("Post not found")
+            return;
         }
         res.send(post)
     } catch {
@@ -548,6 +545,7 @@ app.post('/posts/:id/report', mongoChecker, authenticateUserOrAdmin, async (req,
         const post = await UserPost.findById(req.params.id)
         if (!post) {
             res.status(404).send("Post not found")
+            return;
         }
         post.flagged = true
         post.save()
@@ -566,6 +564,7 @@ app.post('/posts/:id/unreport', mongoChecker, authenticateAdmin, async (req, res
         const post = await UserPost.findById(req.params.id)
         if (!post) {
             res.status(404).send("Post not found")
+            return;
         }
         post.flagged = false
         post.save()
@@ -585,6 +584,7 @@ app.delete('/posts/:id', mongoChecker, authenticateCreatorOrAdmin, async (req, r
         const post = await UserPost.findByIdAndRemove(req.params.id)
         if (!post) {
             res.status(404).send("Post not found")
+            return;
         }
         // remove posts from creator posts list
         const user = await User.findOne({ _id: post.creator })
