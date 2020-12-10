@@ -2,8 +2,18 @@ import React, { Component } from 'react'
 import './Users.css'
 import mailIcon from '../../../../assets/mailicon.svg'
 import phoneIcon from './../../../../assets/phoneicon.svg'
+import editIcon from '../../../../assets/edit-icon.svg'
+import deleteIcon from './../../../../assets/delete-icon.svg'
+import { deleteUser } from './../../../../actions/admin'
 
 export class Users extends Component {
+
+    updateInfo() {
+        const {_id} = this.props.userInfo
+        const updateUsers = this.props.updateUsers;
+        deleteUser(_id, updateUsers)
+    }
+
     render() {
         const { image_url, firstName, lastName, location, email, phone, aboutMe, _id} = this.props.userInfo;
         const user_url = '/user/' + _id 
@@ -28,6 +38,18 @@ export class Users extends Component {
                         </div>
                     </div>
                 </a>
+                <div id="userModify">
+                    <ul>
+                        <li>
+                            <a href=""> 
+                                <img className="img-decoration" src={ editIcon } alt=""/>
+                            </a>
+                        </li>
+                        <li onClick={() => { this.updateInfo() }}>
+                            <img className="img-decoration" src={ deleteIcon } alt=""/>
+                        </li>
+                    </ul>
+                </div>
             </div>
         )
 

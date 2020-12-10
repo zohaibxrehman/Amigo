@@ -81,3 +81,38 @@ export const getUsers= (userList) => {
             console.log(error);
         });
 };
+
+
+export const deleteUser = (id, updateInfo) => {
+    // the URL for the request
+    const url = "/users/" + id;
+
+
+    // Create our request constructor with all the parameters we need
+    const request = new Request(url, {
+        method: "delete",
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    });
+
+    // Send the request with fetch()
+    fetch(request)
+        .then(function (res) {
+            // Handle response we get from the API.
+            // Usually check the error codes to see what happened.
+            if (res.status === 200) {
+                // If student was added successfully, tell the user.
+                console.log('deleted sucessfully')
+                updateInfo();
+            } else {
+                // If server couldn't add the student, tell the user.
+                // Here we are adding a generic message, but you could be more specific in your app.
+                console.log('error loading')
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+};
