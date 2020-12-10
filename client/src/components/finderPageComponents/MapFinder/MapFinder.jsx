@@ -19,7 +19,7 @@ export class MapFinder extends Component {
 
     render() {
         const { posts } = this.state
-
+        
         return (
             <div>
             <MapContainer center={[43.642566, -79.387056]} zoom={13} scrollWheelZoom={true} className='mapContainer'>
@@ -43,7 +43,7 @@ export class MapFinder extends Component {
                         icon={icon}
                         >
                             <Popup>
-                            <a href='/post'>
+                            <a href={`/post/${post._id}`}>
                                     <h3 className='userName'>{post['creator_name']}</h3>
                                     <small className='location'>{post.location}</small>
                                     <p>{post.title}</p>

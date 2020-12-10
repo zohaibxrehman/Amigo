@@ -31,10 +31,10 @@ export class App extends Component {
   }
 
   render() {
-    const { isLoggedIn } = this.state
+    const { isLoggedIn, currentUser } = this.state
     return (
       <div className='amigo'>
-        <Navbar isLoggedIn={isLoggedIn} logoutUser={this.logoutUser} />
+        <Navbar isLoggedIn={isLoggedIn} currentUser={currentUser} logoutUser={this.logoutUser} />
         <BrowserRouter>
           <Switch> 
           <Route exact path='/login' render={() => 
@@ -44,13 +44,13 @@ export class App extends Component {
             <Route exact path='/finder' render={() => 
                             (<FinderPage isLoggedIn={isLoggedIn} />)}/>
             <Route path='/post/:postid' component={PostPage} />
-            <Route exact path='/admindashboard' render={() => 
-                            (<DashboardPage />)}/>
+            {currentUser === 'admin' && <Route exact path='/admindashboard' render={() => 
+                            (<DashboardPage />)}/>}
             <Route exact path='/makepost' render={() => 
                 (<MakePostPage />)}/>
             <Route path='/user/:userid' component={UserPage} />
-            <Route exact path='/userdashboard' render={() => 
-                (<UserDashboardPage />)}/>
+            {isLoggedIn && <Route exact path='/userdashboard' render={() => 
+                (<UserDashboardPage />)}/>}
           </Switch>
         </BrowserRouter>       
       </div>
