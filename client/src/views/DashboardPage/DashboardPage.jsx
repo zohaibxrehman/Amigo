@@ -23,13 +23,21 @@ export class DashboardPage extends Component {
         this.setState({view: viewChange})
     }
 
+    updatePosts(){
+        getPosts(this);
+    }
+    
+    updateUsers(){
+        getUsers(this);
+    }
+
     componentDidMount() {
         // when server and database is set up, this data
         // will be retrieved here
         // this.setState({ dashboardInfo: data })
         checkSession(this);
-        getUsers(this);
-        getPosts(this);
+        this.updateUsers()
+        this.updatePosts()
     }
 
     render() {
@@ -39,8 +47,8 @@ export class DashboardPage extends Component {
                 <UserPanel changeView={(viewChange)=>this.changeView(viewChange)} userName={userName} view={view} />
                 <div id='dashboardView'>
                     {view==='dashboard' && <NotificationPanel notifications={notifications}/>}
-                    {view==='userManagement' && <UserManagement users = {users} />}
-                    {view==='postManagement' && <PostManagement posts = {posts} />}
+                    {view==='userManagement' && <UserManagement updateUsers = {() => this.updateUsers()} users = {users} />}
+                    {view==='postManagement' && <PostManagement updatePosts = {() => this.updatePosts()} posts = {posts} />}
                 </div>
                 
             </div>

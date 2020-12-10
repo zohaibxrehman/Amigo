@@ -55,3 +55,31 @@
     font-weight: 200;
     color: black;
 }
+
+#userModify {
+    margin-left:auto;
+    margin-right:30px;
+}
+
+#userModify ul {
+    margin-bottom: 15px;
+    margin-right: 0px;
+    float: right;
+}
+
+#userModify ul li {
+    cursor: pointer;
+    margin-bottom: 15px;
+    margin-left: 25px;
+    padding: 5px;
+    border-radius: 10%;
+    box-shadow: 2px 4px 4px 2px rgba(0, 0, 0, 0.1),
+        0 5px 7px 0 rgba(0, 0, 0, 0.15);
+    display: inline-block;
+    background-color: #f1f1f1;
+    list-style: none; /* Gets rid of list bullet points */		
+}
+
+.img-decoration-user {
+    width: 20px;
+}
