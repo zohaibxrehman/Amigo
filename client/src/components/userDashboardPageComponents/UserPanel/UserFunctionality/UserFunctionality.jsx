@@ -4,21 +4,26 @@ import './UserFunctionality.css'
 
 class UserFunctionality extends Component {
 
-    setDivId(functionality){
-        let divId = "userFunctionality";
-        if (functionality === "Settings"){
-            divId = "userFunctionalitySettings";
+    setDiv(userFunction, userId){
+        if (userFunction.name === "Settings"){
+            return (<a href={'/edituser/' + userId}><div id="userFunctionalitySettings">
+            <span className="design-fuction"><img src= { userFunction.icon } alt=""/></span>
+            <span className="design-fuction"> {userFunction.name } </span>
+            </div></a>)
         }
-        return divId;
+        else{
+            return (<div id="userFunctionality">
+            <span className="design-fuction"><img src= { userFunction.icon } alt=""/></span>
+            <span className="design-fuction"> {userFunction.name } </span>
+            </div>)
+        }
     }
 
+
     render() {
-        const { userFunction } = this.props
+        const { userFunction, userId } = this.props
         return (
-            <div id={this.setDivId(userFunction.name)}>
-                <span className="design-fuction"><img src= { userFunction.icon } alt=""/></span>
-                <span className="design-fuction"> {userFunction.name } </span>
-            </div>
+            this.setDiv(userFunction, userId)
         )
     }
 }
