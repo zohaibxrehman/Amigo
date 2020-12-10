@@ -20,36 +20,39 @@ export class Users extends Component {
 
         return (
             <div id='user_CardContainer'>
-                <a href={user_url}>
                     <div id='user_Card'>
-                        <img src={image_url} alt="user" id='user_CardPhoto'/>
-                        <div id='user_CardInfo'>
-                            <h2 id='user_CardName'>{firstName} {lastName}</h2>
-                            <h3 id='user_CardLocation'>{location}</h3>
-                            <ul id='user_CardContact'>
-                                <li className='user_CardContactInfo'>
-                                    <img src={mailIcon} alt="mail icon"/>{' '} {email}
+                        <a href={user_url}>
+                            <img src={image_url} alt="user" id='user_CardPhoto'/>
+                            <div id='user_CardInfo'>
+                                <h2 id='user_CardName'>{firstName} {lastName}</h2>
+                                <h3 id='user_CardLocation'>{location}</h3>
+                                <ul id='user_CardContact'>
+                                    <li className='user_CardContactInfo'>
+                                        <img src={mailIcon} alt="mail icon"/>{' '} {email}
+                                    </li>
+                                    <li className='user_CardContactInfo'>
+                                        <img src={phoneIcon} alt="phone icon"/>{' '} {phone}
+                                    </li>
+                                </ul>
+                                <p id='user_CardAboutMe'>{aboutMe}</p>
+                            </div>
+                        </a>
+                        <div id="userModify">
+                            <ul>
+                                <li>
+                                    <a href=""> 
+                                        <img className="img-decoration-user" src={ editIcon } alt=""/>
+                                    </a>
                                 </li>
-                                <li className='user_CardContactInfo'>
-                                    <img src={phoneIcon} alt="phone icon"/>{' '} {phone}
+                                <li onClick={() => { this.updateInfo() }}>
+                                    <img className="img-decoration-user" src={ deleteIcon } alt=""/>
                                 </li>
                             </ul>
-                            <p id='user_CardAboutMe'>{aboutMe}</p>
                         </div>
                     </div>
-                </a>
-                <div id="userModify">
-                    <ul>
-                        <li>
-                            <a href=""> 
-                                <img className="img-decoration" src={ editIcon } alt=""/>
-                            </a>
-                        </li>
-                        <li onClick={() => { this.updateInfo() }}>
-                            <img className="img-decoration" src={ deleteIcon } alt=""/>
-                        </li>
-                    </ul>
-                </div>
+                    
+                    
+                
             </div>
         )
 
