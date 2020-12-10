@@ -12,7 +12,7 @@ export class Navbar extends Component {
     }
 
     render() {
-        const { isLoggedIn } = this.props
+        const { isLoggedIn, currentUser } = this.props
         return (
             <div className="navbarBlack">
                 <img className='logo' src={logo} alt='logo'></img>
@@ -27,7 +27,15 @@ export class Navbar extends Component {
                 To have a look at admin dashboard, go to http://localhost:3000/admindashboard OR log in as admin
                 To have a look at user dashboard, just click on the dashboard button OR log in as user
                 */}
-                <a href="/userdashboard">Dashboard</a>
+                {
+                    (!isLoggedIn) && <a href="/login">Dashboard</a>
+                }
+                {
+                    (isLoggedIn && currentUser==='admin') && <a href="/admindashboard">Dashboard</a>
+                }
+                {
+                    (isLoggedIn && currentUser!=='admin') && <a href="/userdashboard">Dashboard</a>
+                }
                 <a href="/finder">Posting</a>
                 <a href="/">Home</a>
             </div>
