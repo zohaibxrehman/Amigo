@@ -119,6 +119,30 @@ const authenticateUserOrAdmin = async (req, res, next) => {
     }
 }
 
+const authenticateUserProfileOrAdmin = async (req, res, next) => {
+    if (req.session.user) {
+        try {
+            const admin = await Admin.findById(req.session.user)
+            if (!admin) {
+                const user = await User.findById(req.params.id)
+                if (!user || !user._id.equals(req.session.user)) {
+                    res.status(401).send("Unauthorized")
+                } else {
+                    req.user = user
+                    next()
+                }
+            } else {
+                req.user = admin
+                next()
+            }
+        } catch {
+            res.status(401).send("Unauthorized")
+        }
+    } else {
+        res.status(401).send("Unauthorized")
+    }
+}
+
 const authenticateCreatorOrAdmin = async (req, res, next) => {
     if (req.session.user) {
         try {
@@ -275,7 +299,7 @@ app.get('/users/:id', mongoChecker, async (req, res) => {
     }
 })
 
-app.put('/users/:id', mongoChecker, authenticateUserOrAdmin, async (req, res) => {
+app.put('/users/:id', mongoChecker, authenticateUserProfileOrAdmin, async (req, res) => {
     const { email, username, firstName, lastName } = req.body;
     try {
         const updatedUser = await User.findOneAndUpdate({ _id: req.params.id }, {$set: {
@@ -294,7 +318,7 @@ app.put('/users/:id', mongoChecker, authenticateUserOrAdmin, async (req, res) =>
     }
 })
 
-app.put('/users/:id/password', mongoChecker, authenticateUserOrAdmin, async (req, res) => {
+app.put('/users/:id/password', mongoChecker, authenticateUserProfileOrAdmin, async (req, res) => {
     const { password } = req.body;
     try {
         const user = await User.findOne({ _id: req.params.id })
@@ -311,7 +335,7 @@ app.put('/users/:id/password', mongoChecker, authenticateUserOrAdmin, async (req
     }
 })
 
-app.put('/users/:id/img', mongoChecker, authenticateUserOrAdmin, multipartMiddleware, async (req, res) => {
+app.put('/users/:id/img', mongoChecker, authenticateUserProfileOrAdmin, multipartMiddleware, async (req, res) => {
     try {
         cloudinary.uploader.upload(
             req.files.image.path, // req.files contains uploaded files
