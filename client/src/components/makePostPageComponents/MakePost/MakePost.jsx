@@ -20,7 +20,8 @@ class MakePost extends Component {
         addPost(this,e)
         // let { inputTitle, inputPrice, inputLocation, preferences, inputDescription } = this.state
         // We need to make a server call and add this data to the server.
-        alert("Post successfully made.")
+        // alert("Post successfully made.")
+
     }
 
     // changeHandler = (e) => {
@@ -129,13 +130,13 @@ class MakePost extends Component {
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="Student" onChange={this.checkboxChangeHandler}/>
+                                <input className="form-check-input" type="checkbox" value="Professional" onChange={this.checkboxChangeHandler}/>
                                 <label className="form-check-label" >
                                     Professional
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="Student" onChange={this.checkboxChangeHandler}/>
+                                <input className="form-check-input" type="checkbox" value="Elderly" onChange={this.checkboxChangeHandler}/>
                                 <label className="form-check-label" >
                                     Elderly
                                 </label>
