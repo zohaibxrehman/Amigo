@@ -39,6 +39,7 @@ app.use(cors())
 // express-session for managing user sessions
 const session = require("express-session");
 const { mongo } = require("mongoose");
+const { networkInterfaces } = require("os");
 app.use(bodyParser.urlencoded({ extended: true }));
 
 function isMongoError(error) { // checks for first error returned by promise rejection if Mongo database suddently disconnects
@@ -271,6 +272,26 @@ app.get('/users/:id', mongoChecker, async (req, res) => {
         res.send(user)
     } catch {
         res.status(500).send("Internal Server Error")
+    }
+})
+
+app.put('/users/:id', mongoChecker, authenticateUserOrAdmin, async (req, res) => {
+    const { email, password, username, firstName, lastName } = req.body;
+    try {
+        const updatedUser = await User.findOneAndUpdate({ _id: req.params.id }, {$set: {
+            email: email,
+            username: username,
+            firstName: firstName,
+            lastName: lastName
+        }}, { returnOriginal: false })
+        res.send(updatedUser)
+    } catch (error) {
+        log(error)
+        if (isMongoError(error)) {
+            res.status(500).send('Internal server error')
+        } else {
+            res.status(400).send('Bad Request')
+        }
     }
 })
 
