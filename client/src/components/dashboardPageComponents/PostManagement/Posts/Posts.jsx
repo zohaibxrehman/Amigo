@@ -15,7 +15,7 @@ export class Posts extends Component {
         
         const post_url = '/post/' + _id 
         return (
-            <div className='post'>
+            <div className='adminUserPost'>
                 <a href={post_url}>
                     <img className='postPhoto' src={image_url} alt='user' />
                     <div className='postDesc'>
