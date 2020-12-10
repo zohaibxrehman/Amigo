@@ -27,7 +27,7 @@ class PostManagement extends Component {
     render() {
         const { updatePosts, posts } = this.props;
         return (
-            <div id="postPanel">
+            <div id="adminPostPanel">
                 <h2>User Posts</h2>
                 <hr/>
                 {posts.length !== 0 ? <table className='postTable'>

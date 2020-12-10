@@ -16,7 +16,7 @@ class UserPanel extends Component {
             <div id="userPanel">
                 <h2>Dashboard</h2>
                 <hr/>
-                <UserProfile name={userName} photo={userPhoto} admin={'( Admin )'}/>
+                <UserProfile name={userName} photo={userPhoto} />
                 <div onClick={()=>changeView('dashboard')} className={view==='dashboard' ? ' changeBtn changeBtnActive' : 'changeBtn'}>
                     <UserFunctionality userFunction={userPanelMap.dashboard} />
                 </div>

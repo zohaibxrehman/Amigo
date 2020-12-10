@@ -149,3 +149,133 @@ export const reportUserByID = (userid) => {
             console.log(error);
         })
 }
+
+
+export const getUserByIDForEdit = (editProfileComp, userid) => {
+    const url = `/users/${userid}`;
+
+    fetch(url)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            }
+        })
+        .then(json => {
+            if (json) {
+                editProfileComp.setState({
+                    firstname: json.firstName,
+                    lastname: json.lastName,
+                    username: json.location,
+                    email: json.email
+                    }  
+               );
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+};
+
+// A function to send a PUT request with edit
+export const editProfileInfo = (editProfileComp) => {
+    // the URL for the request
+    const url = `/users/${editProfileComp.state.userid}`;
+    const { firstname, lastname, email, username } = editProfileComp.state
+    // The data we are going to send in our request
+    
+    const data = new FormData()
+    data.append('email', email)
+    data.append('username', username)
+    data.append('firstName', firstname)
+    data.append('lastName', lastname)
+
+
+    const request = new Request(url, {
+        method: "put",
+        body: data
+    });
+
+    // Send the request with fetch()
+    fetch(request)
+        .then(function (res) {
+            // Handle response we get from the API.
+            // Usually check the error codes to see what happened.
+            if (res.status === 200) {
+ 
+                console.log('edit user sucessfully')
+            } else {
+
+                console.log('error loading')
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+};
+
+
+export const editUserPhoto = (e,userid) => {
+    // the URL for the request
+    const url = `/users/${userid}/img`;
+
+    // The data we are going to send in our request
+    
+    const data = new FormData()
+    data.append('image', e.target.image.files[0])
+
+
+    const request = new Request(url, {
+        method: "put",
+        body: data
+    });
+
+    // Send the request with fetch()
+    fetch(request)
+        .then(function (res) {
+            // Handle response we get from the API.
+            // Usually check the error codes to see what happened.
+            if (res.status === 200) {
+                // If student was added successfully, tell the user.
+                console.log('edit user photo sucessfully')
+            } else {
+                // If server couldn't add the student, tell the user.
+                // Here we are adding a generic message, but you could be more specific in your app.
+                console.log('error loading')
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+};
+
+
+export const editUserPassword = (editPassComp) => {
+    // the URL for the request
+    const url = `/users/${editPassComp.state.userid}/password`;
+
+    const request = new Request(url, {
+        method: "put",
+        body: JSON.stringify(editPassComp.state),
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    });
+
+    // Send the request with fetch()
+    fetch(request)
+        .then(function (res) {
+            // Handle response we get from the API.
+            // Usually check the error codes to see what happened.
+            if (res.status === 200) {
+
+                console.log('changed password successfully')
+            } else {
+
+                console.log('error loading')
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+};

@@ -1,10 +1,11 @@
-.post {
+.adminUserPost {
     width: 300px;
-    height: 360px;
+    height: 380px;
     background-color: white;
     border-radius: 5%;
     margin-bottom: 30px;
-    margin-right: 20px;
+    margin-right: 25px;
+    margin-left: 10px;
     box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.1),
         0 3px 5px 0 rgba(0, 0, 0, 0.15);
 }
@@ -52,18 +53,24 @@ a {
 }
 
 #userPostModifyAdmin ul li {
-    cursor: pointer;
     border-radius: 10%;
     padding: 5px;
-    box-shadow: 2px 4px 4px 2px rgba(0, 0, 0, 0.1),
-        0 5px 7px 0 rgba(0, 0, 0, 0.15);
     margin-bottom: 15px;
     margin-left: 25px;
-    background-color: #f1f1f1;
     display: inline-block;
     list-style: none; /* Gets rid of list bullet points */		
 }
 
+.cursorDesignPosts{
+    cursor: pointer;
+    box-shadow: 2px 4px 4px 2px rgba(0, 0, 0, 0.1),
+        0 5px 7px 0 rgba(0, 0, 0, 0.15);
+    
+    background-color: #f1f1f1;
+}
+.reported{
+    height: 5px;
+}
 .img-decoration {
     width: 20px;
 }

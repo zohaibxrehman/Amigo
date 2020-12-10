@@ -15,6 +15,7 @@ export class UserActivityPost extends Component {
     render() {
         const { image_url, price, title, _id} = this.props.userInfo;
         const post_url = '/post/' + _id 
+        const editpost_url = '/editpost/' + _id 
         return (
             <div className='post'>
                 <a href={post_url}>
@@ -27,7 +28,7 @@ export class UserActivityPost extends Component {
                 <div id="userPostModify">
                     <ul>
                         <li>
-                            <a href=""> 
+                            <a href={editpost_url}> 
                                 <img className="img-decoration" src={ editImg } alt=""/>
                             </a>
                         </li>

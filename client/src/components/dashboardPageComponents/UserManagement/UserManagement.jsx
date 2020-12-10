@@ -16,7 +16,7 @@ class UserManagement extends Component {
     render() {
         const { users, updateUsers } = this.props;
         return (
-            <div id="postPanel">
+            <div id="adminUserPanel">
                 <h2>User Profiles</h2>
                 <hr/>
                 {users.length !== 0 ? <table className='userTable'>

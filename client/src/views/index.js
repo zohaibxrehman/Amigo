@@ -6,4 +6,5 @@ export {default as DashboardPage} from './DashboardPage/DashboardPage'
 export {default as UserDashboardPage} from './UserDashboardPage/UserDashboardPage'
 export {default as MakePostPage} from './MakePostPage/MakePostPage'
 export {default as UserPage} from './UserPage/UserPage'
-
+export {default as EditPostPage} from './EditPostPage/EditPostPage'
+export {default as EditProfilePage} from './EditProfilePage/EditProfilePage'

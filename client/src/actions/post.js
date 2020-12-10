@@ -19,6 +19,7 @@ export const getUserByIDForPosts = (userComp) => {
                     .then(json => {
                         if (json) {
                             const newData = {
+                                _id: json._id,
                                 userName: json.firstName+ ' '+json.lastName,
                                 location: json.location,
                                 aboutMe: json.aboutMe,
@@ -323,11 +324,10 @@ export const editPostPhoto = (e,postid) => {
             // Handle response we get from the API.
             // Usually check the error codes to see what happened.
             if (res.status === 200) {
-                // If student was added successfully, tell the user.
+
                 console.log('edit post sucessfully')
             } else {
-                // If server couldn't add the student, tell the user.
-                // Here we are adding a generic message, but you could be more specific in your app.
+
                 console.log('error loading')
             }
         })
