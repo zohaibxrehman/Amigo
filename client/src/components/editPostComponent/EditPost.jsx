@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { addPost } from '../../../actions/post';
+import { editPostInfo, getPostByIDForEdit, editPostPhoto } from '../../actions/post';
 
-class MakePost extends Component {
+
+class EditPost extends Component {
 
     constructor() {
         super()
@@ -11,28 +12,30 @@ class MakePost extends Component {
             inputLocation: '',
             preferences: [],
             inputDescription: '',
-            photo: null
+            photo: null,
+            postid: ''
         }
     }
 
-    submitHandler = (e) => {
-        e.preventDefault();
-        addPost(this,e)
-        // let { inputTitle, inputPrice, inputLocation, preferences, inputDescription } = this.state
-        // We need to make a server call and add this data to the server.
-        alert("Post successfully made.")
+    componentDidMount() {
+        // when server and database is set up, this data
+        // will be retrieved here
+        const { postid } = this.props
+        getPostByIDForEdit(this,postid)
+        this.setState({ postid: postid})
     }
 
-    // changeHandler = (e) => {
-    //     e.preventDefault();
-    //     const target = e.target;
-    //     const value = target.value;
-    //     const name = target.id;
 
-    //     this.setState({
-    //         [name]: value 
-    //       });
-    // }
+
+
+    submitHandler = (e) => {
+        e.preventDefault();
+        editPostInfo(this)
+        editPostPhoto(e, this.postid)
+        // We need to make a server call and add this data to the server.
+        alert("Post successfully edited.")
+    }
+
     changeHandler = (e) => {
         e.preventDefault();
         const target = e.target;
@@ -66,10 +69,16 @@ class MakePost extends Component {
             preferences: updatedPreferences
         });
     }
-    
 
+    
     render() { 
         const { inputTitle, inputPrice, inputLocation, inputDescription } = this.state
+        const qq = ["Male"]
+        const checked_attr = (pref) =>{
+            if(this.state.preferences.includes(pref)){
+                return {"checked":true}
+            }
+        }
         return ( 
 
             <form onSubmit={this.submitHandler}>
@@ -111,61 +120,61 @@ class MakePost extends Component {
                         <div className="col-sm-2">Preferences</div>
                         <div className="col-sm-10">
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox"  value="Male" onChange={this.checkboxChangeHandler}/>
+                                <input className="form-check-input" type="checkbox"  value="Male" {...checked_attr("Male")} onChange={this.checkboxChangeHandler} />
                                 <label className="form-check-label" >
                                     Male
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="Female" onChange={this.checkboxChangeHandler}/>
+                                <input className="form-check-input" type="checkbox" value="Female" {...checked_attr("Female")} onChange={this.checkboxChangeHandler}/>
                                 <label className="form-check-label" >
                                     Female
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="Student" onChange={this.checkboxChangeHandler}/>
+                                <input className="form-check-input" type="checkbox" value="Student" {...checked_attr("Student")} onChange={this.checkboxChangeHandler}/>
                                 <label className="form-check-label" >
                                     Student
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="Student" onChange={this.checkboxChangeHandler}/>
+                                <input className="form-check-input" type="checkbox" value="Professional" {...checked_attr("Professional")}onChange={this.checkboxChangeHandler}/>
                                 <label className="form-check-label" >
                                     Professional
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="Student" onChange={this.checkboxChangeHandler}/>
+                                <input className="form-check-input" type="checkbox" value="Elderly" {...checked_attr("Elderly")} onChange={this.checkboxChangeHandler}/>
                                 <label className="form-check-label" >
                                     Elderly
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="No Smoking" onChange={this.checkboxChangeHandler}/>
+                                <input className="form-check-input" type="checkbox" value="No Smoking" {...checked_attr("No Smoking")}onChange={this.checkboxChangeHandler}/>
                                 <label className="form-check-label" >
                                     No Smoking
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="No Drinking" onChange={this.checkboxChangeHandler}/>
+                                <input className="form-check-input" type="checkbox" value="No Drinking" {...checked_attr("No Drinking")} onChange={this.checkboxChangeHandler}/>
                                 <label className="form-check-label" >
                                     No Drinking
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="No Partying" onChange={this.checkboxChangeHandler}/>
+                                <input className="form-check-input" type="checkbox" value="No Partying" {...checked_attr("No Partying")} onChange={this.checkboxChangeHandler}/>
                                 <label className="form-check-label" >
                                     No Partying
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="No Pets" onChange={this.checkboxChangeHandler} />
+                                <input className="form-check-input" type="checkbox" value="No Pets" {...checked_attr("No Pets")} onChange={this.checkboxChangeHandler} />
                                 <label className="form-check-label" >
                                     No Pets
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="420 Friendly" onChange={this.checkboxChangeHandler}/>
+                                <input className="form-check-input" type="checkbox" value="420 Friendly" {...checked_attr("420 Friendly")}onChange={this.checkboxChangeHandler}/>
                                 <label className="form-check-label" >
                                     420 Friendly
                                 </label>
@@ -179,7 +188,7 @@ class MakePost extends Component {
                 </div>
                 <div className="form-group">
                     <label htmlFor="uploadFile">Upload photos</label>
-                    <input type="file" name='image' className="  form-control-file" id="photo" onChange={this.changeHandler}/>
+                    <input type="file" name='image' className="form-control-file" id="photo" onChange={this.changeHandler}/>
                 </div>
                 <button type="submit" className="btn btn-warning btn-block">Submit</button>
             </form>
@@ -187,4 +196,4 @@ class MakePost extends Component {
     }
 }
  
-export default MakePost;
+export default EditPost;

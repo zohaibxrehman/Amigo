@@ -153,21 +153,25 @@ export const getPostsById = (post, id) => {
 };
 
 // A function to send a POST request with a new student
-export const addPost = (makePost) => {
+export const addPost = (makePost,e) => {
     // the URL for the request
     const url = "/posts/new";
-
+    const { inputTitle, inputPrice, inputLocation, inputDescription, preferences } = makePost.state
     // The data we are going to send in our request
-    const post = makePost.state
+    // const post = makePost.state
+    const data = new FormData()
+    data.append('title', inputTitle)
+    data.append('location', inputLocation)
+    data.append('price', inputPrice)
+    data.append('description', inputDescription)
+    preferences.forEach((item) => data.append("preferences[]", item))
+    data.append('image', e.target.image.files[0])
 
-    // Create our request constructor with all the parameters we need
+
     const request = new Request(url, {
         method: "post",
-        body: JSON.stringify(post),
-        headers: {
-            Accept: "application/json, text/plain, */*",
-            "Content-Type": "application/json"
-        }
+        body: data,
+
     });
 
     // Send the request with fetch()
@@ -256,3 +260,108 @@ export const deletePost = (id) => {
             console.log(error);
         });
 };
+
+
+
+// A function to send a PUT request with edit
+export const editPostInfo = (editPost) => {
+    // the URL for the request
+    const url = `/posts/${editPost.state.postid}`;
+    const { inputTitle, inputPrice, inputLocation, inputDescription, preferences } = editPost.state
+    // The data we are going to send in our request
+    
+    const data = new FormData()
+    data.append('title', inputTitle)
+    data.append('location', inputLocation)
+    data.append('price', inputPrice)
+    data.append('description', inputDescription)
+    preferences.forEach((item) => data.append("preferences[]", item))
+    // data.append('image', e.target.image.files[0])
+
+
+    const request = new Request(url, {
+        method: "put",
+        body: data
+    });
+
+    // Send the request with fetch()
+    fetch(request)
+        .then(function (res) {
+            // Handle response we get from the API.
+            // Usually check the error codes to see what happened.
+            if (res.status === 200) {
+                // If student was added successfully, tell the user.
+                console.log('edit post sucessfully')
+            } else {
+                // If server couldn't add the student, tell the user.
+                // Here we are adding a generic message, but you could be more specific in your app.
+                console.log('error loading')
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+};
+
+export const editPostPhoto = (e,postid) => {
+    // the URL for the request
+    const url = `/posts/${postid}/img`;
+
+    // The data we are going to send in our request
+    
+    const data = new FormData()
+    data.append('image', e.target.image.files[0])
+
+
+    const request = new Request(url, {
+        method: "put",
+        body: data
+    });
+
+    // Send the request with fetch()
+    fetch(request)
+        .then(function (res) {
+            // Handle response we get from the API.
+            // Usually check the error codes to see what happened.
+            if (res.status === 200) {
+                // If student was added successfully, tell the user.
+                console.log('edit post sucessfully')
+            } else {
+                // If server couldn't add the student, tell the user.
+                // Here we are adding a generic message, but you could be more specific in your app.
+                console.log('error loading')
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+};
+
+export const getPostByIDForEdit = (editPost, postid) => {
+    const url = `/posts/${postid}`;
+
+
+    fetch(url)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            }
+        })
+        .then(json => {
+            if (json) {
+                editPost.setState(
+                    {
+                    inputTitle: json.title,
+                    inputPrice: json.price, 
+                    inputLocation: json.location, inputDescription: json.description, preferences: json.preferences
+                    }
+                )
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+};
+
+
+

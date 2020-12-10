@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './UserCard.css'
-import data from './dummyData'
 import mailIcon from '../../assets/mailicon.svg'
 import phoneIcon from '../../assets/phoneicon.svg'
 import { getUserByIDForCard, reportUserByID } from '../../actions/user';
@@ -27,7 +26,7 @@ export class UserCard extends Component {
         // will be retrieved here
         const { userid } = this.props
         getUserByIDForCard(this, userid)
-        this.setState({ userData: data,  userid: userid})
+        this.setState({ userid: userid})
     }
 
     reportUser(e) {
