@@ -15,10 +15,19 @@
     width: 70%;
 }
 
+#message {
+    height: 100px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #d3d3d3;
+    width: 70%;
+}
+
 #textarea {
     height: 80px;
 }
-#postForm input[type="submit"] {
+#postForm input[type="button"] {
     padding: 20px;
     margin: 30px;
     background-color: black;

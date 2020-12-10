@@ -137,6 +137,7 @@ export const getPostsById = (post, id) => {
                     alert("Could not get User");
                 }
             }).then(json_user => {
+                json["creator_email"] = json_user.email;
                 json["creator_name"] = json_user.firstName + " " + json_user.lastName;
                 json["creator_image_url"] = json_user.image_url;
                 post.setState({ postData: json });  
