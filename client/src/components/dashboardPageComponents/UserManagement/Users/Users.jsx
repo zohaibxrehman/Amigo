@@ -4,6 +4,7 @@ import mailIcon from '../../../../assets/mailicon.svg'
 import phoneIcon from './../../../../assets/phoneicon.svg'
 import editIcon from '../../../../assets/edit-icon.svg'
 import deleteIcon from './../../../../assets/delete-icon.svg'
+import flaggedIcon from './../../../../assets/flagged.png'
 import { deleteUser } from './../../../../actions/admin'
 
 export class Users extends Component {
@@ -12,6 +13,13 @@ export class Users extends Component {
         const {_id} = this.props.userInfo
         const updateUsers = this.props.updateUsers;
         deleteUser(_id, updateUsers)
+    }
+
+    displayFlagged(){
+        const {flagged} = this.props.userInfo
+        if (flagged){
+            return <li><img src={flaggedIcon} alt=""/></li>
+        }
     }
 
     render() {
@@ -39,12 +47,13 @@ export class Users extends Component {
                         </a>
                         <div id="userModify">
                             <ul>
-                                <li>
+                                {this.displayFlagged()}
+                                <li className="cursorDesignUsers">
                                     <a href=""> 
                                         <img className="img-decoration-user" src={ editIcon } alt=""/>
                                     </a>
                                 </li>
-                                <li onClick={() => { this.updateInfo() }}>
+                                <li className="cursorDesignUsers" onClick={() => { this.updateInfo() }}>
                                     <img className="img-decoration-user" src={ deleteIcon } alt=""/>
                                 </li>
                             </ul>

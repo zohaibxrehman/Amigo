@@ -3,7 +3,7 @@ import './UserProfile.css'
 
 class UserProfile extends Component {
     render() {
-        const { name, photo, admin } = this.props;
+        const { name, photo} = this.props;
         return (
             <div id="userProfile">
                 <ul>
@@ -13,10 +13,10 @@ class UserProfile extends Component {
                     <li>
                         <ul>
                             <li> 
-                                <strong> {name} {admin} </strong>
+                                <strong> {name.toUpperCase()} </strong>
                             </li>
-                            <li>
-                                <a id="profile-style" href="/user">View Profile</a>
+                            <li className="mainAd">
+                                (Main Adminstrator)
                             </li>
                         </ul>
                     </li>

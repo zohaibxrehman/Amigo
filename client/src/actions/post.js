@@ -19,6 +19,7 @@ export const getUserByIDForPosts = (userComp) => {
                     .then(json => {
                         if (json) {
                             const newData = {
+                                _id: json._id,
                                 userName: json.firstName+ ' '+json.lastName,
                                 location: json.location,
                                 aboutMe: json.aboutMe,
