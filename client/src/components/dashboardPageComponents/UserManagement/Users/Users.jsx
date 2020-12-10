@@ -48,12 +48,12 @@ export class Users extends Component {
                         <div id="userModify">
                             <ul>
                                 {this.displayFlagged()}
-                                <li className="cursorDesign">
+                                <li className="cursorDesignUsers">
                                     <a href=""> 
                                         <img className="img-decoration-user" src={ editIcon } alt=""/>
                                     </a>
                                 </li>
-                                <li className="cursorDesign" onClick={() => { this.updateInfo() }}>
+                                <li className="cursorDesignUsers" onClick={() => { this.updateInfo() }}>
                                     <img className="img-decoration-user" src={ deleteIcon } alt=""/>
                                 </li>
                             </ul>
