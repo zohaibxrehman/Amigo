@@ -228,14 +228,14 @@ app.post('/users/new', mongoChecker, multipartMiddleware, async (req, res) => {
         async function (result) {
             try {
                 const user = new User({
-                email: email,
-                password: password,
-                username: username,
-                firstName: firstName,
-                lastName: lastName,
-                image_id: result.public_id,
-                image_url: result.url,
-                created_at: new Date()
+                    email: email,
+                    password: password,
+                    username: username,
+                    firstName: firstName,
+                    lastName: lastName,
+                    image_id: result.public_id,
+                    image_url: result.url,
+                    created_at: new Date()
                 })
                 const newUser = await user.save()
                 res.send(newUser)
@@ -384,6 +384,49 @@ app.get('/posts/:id', mongoChecker, async (req, res) => {
     } catch {
         res.status(500).send("Internal Server Error")
     }
+})
+
+app.put('/posts/:id', mongoChecker, authenticateCreatorOrAdmin, async (req, res) => {
+    const { title, location, price, preferences, description } = req.body
+    try {
+        const updatedUserPost = await UserPost.findOneAndUpdate({ _id: req.params.id }, {$set: {
+            title: title,
+            location: location,
+            price: price,
+            preferences: preferences,
+            description: description
+        }}, { returnOriginal: false })
+        res.send(updatedUserPost)
+    } catch (error) {
+        if (isMongoError(error)) {
+            res.status(500).send('Internal server error')
+        } else {
+            res.status(400).send('Bad Request')
+        }
+    }
+})
+
+app.put('/posts/:id/img', mongoChecker, authenticateCreatorOrAdmin, multipartMiddleware, async (req, res) => {
+    cloudinary.uploader.upload(
+        req.files.image.path, // req.files contains uploaded files
+        async function (result) {
+            try {
+                const userPost = await UserPost.findOne({ _id: req.params.id })
+                cloudinary.uploader.destroy(userPost.image_id)
+                const updatedUserPost = await UserPost.findOneAndUpdate({ _id: req.params.id }, {$set: {
+                    image_id: result.public_id,
+                    image_url: result.url,
+                }}, { returnOriginal: false })
+                res.send(updatedUserPost)
+            } catch (error) {
+                if (isMongoError(error)) {
+                    res.status(500).send('Internal server error')
+                } else {
+                    res.status(400).send('Bad Request')
+                }
+            }
+        }
+    );
 })
 
 app.post('/posts/:id/report', mongoChecker, authenticateUserOrAdmin, async (req, res) => {
