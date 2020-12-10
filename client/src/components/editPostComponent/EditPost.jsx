@@ -18,8 +18,7 @@ class EditPost extends Component {
     }
 
     componentDidMount() {
-        // when server and database is set up, this data
-        // will be retrieved here
+
         const { postid } = this.props
         getPostByIDForEdit(this,postid)
         this.setState({ postid: postid})
@@ -31,7 +30,10 @@ class EditPost extends Component {
     submitHandler = (e) => {
         e.preventDefault();
         editPostInfo(this)
-        editPostPhoto(e, this.postid)
+        if(this.state.photo != null){
+            editPostPhoto(e, this.state.postid)
+        }
+
         // We need to make a server call and add this data to the server.
         alert("Post successfully edited.")
     }
@@ -47,9 +49,12 @@ class EditPost extends Component {
                 {[name]: target.files[0]
                 });
         }
-        this.setState({
-            [name]: target.value 
-          });
+        else{
+            this.setState({
+                [name]: target.value 
+              });
+        }
+
     }
 
     checkboxChangeHandler = (e) => {
@@ -73,7 +78,6 @@ class EditPost extends Component {
     
     render() { 
         const { inputTitle, inputPrice, inputLocation, inputDescription } = this.state
-        const qq = ["Male"]
         const checked_attr = (pref) =>{
             if(this.state.preferences.includes(pref)){
                 return {"checked":true}
