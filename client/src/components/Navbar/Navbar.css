@@ -14,7 +14,7 @@
     border: none;
 }
 
-.navbarBlack a {
+.navfloatright {
     float: right;
     color: white !important;
     text-align: center;
@@ -46,8 +46,8 @@
     margin-top: 10px;
 }
 
-.logoName {
-    color: white;
+.navLogoName {
+    color: white !important;
     font-size: 20px;
     float: left;
     margin-bottom: 2px;
