@@ -30,18 +30,14 @@ class SignUp extends Component {
         }
         this.setState({
             [name]: target.value 
-          });
+        });
     }
 
     submitHandler = (e) => {
         e.preventDefault();
-        // let { firstname, lastname, email, password, username  } = this.state
-        // We need to make a server call and add this data to the server.
         registerUser(this,e)
-        alert("Successful SignUp")
+        window.location.href = '/login'
     }
-
-
 
     render() { 
         const { firstname, lastname, email, password, username } = this.state
