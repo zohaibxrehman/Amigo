@@ -25,8 +25,7 @@ class EditPost extends Component {
 
     submitHandler = (e) => {
         e.preventDefault();
-        editPostInfo(this)
-
+        editPostInfo(this, this.state.photo)
         if(this.state.photo != null){
             editPostPhoto(e, this.state.postid)
         }
