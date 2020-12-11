@@ -198,7 +198,7 @@ app.use(
     })
 );
 
-app.post("/users/login", async (req, res) => {
+app.post("/api/users/login", async (req, res) => {
     const { username, password } = req.body;
     try {
         if (username === 'admin') {
@@ -229,7 +229,7 @@ app.post("/users/login", async (req, res) => {
     }
 });
 
-app.get("/users/logout", (req, res) => {
+app.get("/api/users/logout", (req, res) => {
     req.session.destroy(error => {
         if (error) {
             res.status(500).send(error);
@@ -239,7 +239,7 @@ app.get("/users/logout", (req, res) => {
     });
 });
 
-app.get("/users/check-session", (req, res) => {
+app.get("/api/users/check-session", (req, res) => {
     if (req.session.user) {
         res.send({ currentUser: req.session.username, currentUserId: req.session.user });
     } else {
@@ -248,7 +248,7 @@ app.get("/users/check-session", (req, res) => {
 });
 
 // User API Route
-app.post('/users/new', mongoChecker, multipartMiddleware, async (req, res) => {
+app.post('/api/users/new', mongoChecker, multipartMiddleware, async (req, res) => {
     const { email, password, username, firstName, lastName } = req.body;
 
     if (username === 'admin') {
@@ -283,7 +283,7 @@ app.post('/users/new', mongoChecker, multipartMiddleware, async (req, res) => {
     );
 })
 
-app.get('/users', mongoChecker, async (req, res) => {
+app.get('/api/users', mongoChecker, async (req, res) => {
     try {
         const users = await User.find()
         if (!users) {
@@ -296,7 +296,7 @@ app.get('/users', mongoChecker, async (req, res) => {
     }
 })
 
-app.get('/users/:id', mongoChecker, async (req, res) => {
+app.get('/api/users/:id', mongoChecker, async (req, res) => {
     try {
         const user = await User.findById(req.params.id)
         if (!user) {
@@ -309,7 +309,7 @@ app.get('/users/:id', mongoChecker, async (req, res) => {
     }
 })
 
-app.put('/users/:id', mongoChecker, authenticateUserProfileOrAdmin, async (req, res) => {
+app.put('/api/users/:id', mongoChecker, authenticateUserProfileOrAdmin, async (req, res) => {
     const { email, username, firstName, lastName } = req.body;
     try {
         const updatedUser = await User.findOneAndUpdate({ _id: req.params.id }, {$set: {
@@ -328,7 +328,7 @@ app.put('/users/:id', mongoChecker, authenticateUserProfileOrAdmin, async (req, 
     }
 })
 
-app.put('/users/:id/password', mongoChecker, authenticateUserProfileOrAdmin, async (req, res) => {
+app.put('/api/users/:id/password', mongoChecker, authenticateUserProfileOrAdmin, async (req, res) => {
     const { password } = req.body;
     try {
         const user = await User.findOne({ _id: req.params.id })
@@ -344,7 +344,7 @@ app.put('/users/:id/password', mongoChecker, authenticateUserProfileOrAdmin, asy
     }
 })
 
-app.put('/users/:id/img', mongoChecker, authenticateUserProfileOrAdmin, multipartMiddleware, async (req, res) => {
+app.put('/api/users/:id/img', mongoChecker, authenticateUserProfileOrAdmin, multipartMiddleware, async (req, res) => {
     try {
         cloudinary.uploader.upload(
             req.files.image.path, // req.files contains uploaded files
@@ -367,7 +367,7 @@ app.put('/users/:id/img', mongoChecker, authenticateUserProfileOrAdmin, multipar
     }
 })
 
-app.post('/users/:id/report', mongoChecker, authenticateUserOrAdmin, async (req, res) => {
+app.post('/api/users/:id/report', mongoChecker, authenticateUserOrAdmin, async (req, res) => {
     try {
         const user = await User.findById(req.params.id)
         if (!user) {
@@ -386,7 +386,7 @@ app.post('/users/:id/report', mongoChecker, authenticateUserOrAdmin, async (req,
     }
 })
 
-app.post('/users/:id/unreport', mongoChecker, authenticateAdmin, async (req, res) => {
+app.post('/api/users/:id/unreport', mongoChecker, authenticateAdmin, async (req, res) => {
     try {
         const user = await User.findById(req.params.id)
         if (!user) {
@@ -405,7 +405,7 @@ app.post('/users/:id/unreport', mongoChecker, authenticateAdmin, async (req, res
     }
 })
 
-app.delete('/users/:id', mongoChecker, authenticateAdmin, async (req, res) => {
+app.delete('/api/users/:id', mongoChecker, authenticateAdmin, async (req, res) => {
     try {
         // remove user
         const user = await User.findByIdAndRemove(req.params.id)
@@ -426,7 +426,7 @@ app.delete('/users/:id', mongoChecker, authenticateAdmin, async (req, res) => {
     }
 })
 
-app.post('/posts/new', mongoChecker, authenticate, multipartMiddleware, async (req, res) => {
+app.post('/api/posts/new', mongoChecker, authenticate, multipartMiddleware, async (req, res) => {
     const { title, location, price, preferences, description } = req.body
     const locationToGeo = {
         'Toronto': [43.660910, -79.395569], 
@@ -472,7 +472,7 @@ app.post('/posts/new', mongoChecker, authenticate, multipartMiddleware, async (r
     );
 })
 
-app.get('/posts', mongoChecker, async (req, res) => {
+app.get('/api/posts', mongoChecker, async (req, res) => {
     try {
         const posts = await UserPost.find()
         res.send(posts)
@@ -481,7 +481,7 @@ app.get('/posts', mongoChecker, async (req, res) => {
     }
 })
 
-app.get('/posts/:id', mongoChecker, async (req, res) => {
+app.get('/api/posts/:id', mongoChecker, async (req, res) => {
     try {
         const post = await UserPost.findById(req.params.id)
         if (!post) {
@@ -494,7 +494,7 @@ app.get('/posts/:id', mongoChecker, async (req, res) => {
     }
 })
 
-app.put('/posts/:id', mongoChecker, authenticateCreatorOrAdmin, async (req, res) => {
+app.put('/api/posts/:id', mongoChecker, authenticateCreatorOrAdmin, async (req, res) => {
     const { title, location, price, preferences, description } = req.body
     const locationToGeo = {
         'Toronto': [43.660910, -79.395569], 
@@ -525,7 +525,7 @@ app.put('/posts/:id', mongoChecker, authenticateCreatorOrAdmin, async (req, res)
     }
 })
 
-app.put('/posts/:id/img', mongoChecker, authenticateCreatorOrAdmin, multipartMiddleware, async (req, res) => {
+app.put('/api/posts/:id/img', mongoChecker, authenticateCreatorOrAdmin, multipartMiddleware, async (req, res) => {
     cloudinary.uploader.upload(
         req.files.image.path, // req.files contains uploaded files
         async function (result) {
@@ -548,7 +548,7 @@ app.put('/posts/:id/img', mongoChecker, authenticateCreatorOrAdmin, multipartMid
     );
 })
 
-app.post('/posts/:id/report', mongoChecker, authenticateUserOrAdmin, async (req, res) => {
+app.post('/api/posts/:id/report', mongoChecker, authenticateUserOrAdmin, async (req, res) => {
     try {
         const post = await UserPost.findById(req.params.id)
         if (!post) {
@@ -567,7 +567,7 @@ app.post('/posts/:id/report', mongoChecker, authenticateUserOrAdmin, async (req,
     }
 })
 
-app.post('/posts/:id/unreport', mongoChecker, authenticateAdmin, async (req, res) => {
+app.post('/api/posts/:id/unreport', mongoChecker, authenticateAdmin, async (req, res) => {
     try {
         const post = await UserPost.findById(req.params.id)
         if (!post) {
@@ -586,7 +586,7 @@ app.post('/posts/:id/unreport', mongoChecker, authenticateAdmin, async (req, res
     }
 })
 
-app.delete('/posts/:id', mongoChecker, authenticateCreatorOrAdmin, async (req, res) => {
+app.delete('/api/posts/:id', mongoChecker, authenticateCreatorOrAdmin, async (req, res) => {
     try {
         // remove post
         const post = await UserPost.findByIdAndRemove(req.params.id)
@@ -610,6 +610,22 @@ app.delete('/posts/:id', mongoChecker, authenticateCreatorOrAdmin, async (req, r
 
 // Serve the build
 app.use(express.static(path.join(__dirname, "/client/build")));
+
+// All routes other than above will go to index.html
+app.get("*", (req, res) => {
+    // check for page routes that we expect in the frontend to provide correct status code.
+    const goodPageRoutes = ["/", "/login", "/posts",
+            "/userdashboard", "/admindashboard", "/makepost",
+            "/editpost/", "/edituser/", "/post/", "/user/", "/finder"];
+
+    if (!goodPageRoutes.includes(req.url)) {
+        // if url not in expected page routes, set status to 404.
+        res.status(404);
+    }
+
+    // send index.html
+    res.sendFile(path.join(__dirname, "/client/build/index.html"));
+});
 
 app.listen(port, () => {
     log(`Listening on port ${port}...`);
