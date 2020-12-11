@@ -18,14 +18,10 @@ class EditPost extends Component {
     }
 
     componentDidMount() {
-
         const { postid } = this.props
         getPostByIDForEdit(this,postid)
         this.setState({ postid: postid})
     }
-
-
-
 
     submitHandler = (e) => {
         e.preventDefault();
@@ -35,8 +31,11 @@ class EditPost extends Component {
             editPostPhoto(e, this.state.postid)
         }
 
-        // We need to make a server call and add this data to the server.
-        alert("Post successfully edited.")
+        if (this.state.postid) {
+            window.location.href = `/post/${this.state.postid}`
+        } else {
+            window.location.href = `/userdashboard`
+        }
     }
 
     changeHandler = (e) => {

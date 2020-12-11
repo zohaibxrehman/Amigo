@@ -12,7 +12,7 @@ export class Post extends Component {
                     <div className='postDesc'>
                         <h3 className='userName'>{creator_name}</h3>
                         <small className='location'>{location}</small>
-                        <p className='postTitle'>{title}</p>
+                        <p className='postTitleAdmin'>{title}</p>
                     </div>
                 </a>
             </div>

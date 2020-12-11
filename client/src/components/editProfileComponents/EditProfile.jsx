@@ -19,8 +19,7 @@ class EditProfile extends Component {
     componentDidMount() {
         // userid passed via props
         const { userid } = this.props
-        console.log(userid)
-        getUserByIDForEdit(this,userid)
+        getUserByIDForEdit(this, userid)
         this.setState({ userid: userid})
     }
 
@@ -50,15 +49,16 @@ class EditProfile extends Component {
             editUserPhoto(e,this.state.userid)
         }
 
-        alert("Successful EditProfile")
+        if (this.state.userid) {
+            window.location.href = `/user/${this.state.userid}`
+        } else {
+            window.location.href = `/userdashboard`
+        }
     }
 
-
-
     render() { 
-        const { firstname, lastname, email, password, username } = this.state
+        const { firstname, lastname, email, username } = this.state
         return ( 
-
             <form onSubmit={ this.submitHandler }>
                 <div className="form-group">
                     <label>First name</label>
@@ -70,17 +70,17 @@ class EditProfile extends Component {
                     <input type="text" className="form-control" placeholder="Last Name" id='lastname' value={lastname} onChange={this.changeHandler}/>
                 </div>
                 <div className="form-group">
-                    <label>Change your username</label>
+                    <label>Username</label>
                     <input type="text" className="form-control" id='username' placeholder="Enter a username" value= {username} onChange={this.changeHandler}/>
                 </div>
                 <div className="form-group">
-                    <label>Change your email address</label>
+                    <label>Email address</label>
                     <input type="email" className="form-control" placeholder="Enter your email" id='email' value = {email} onChange={this.changeHandler}/>
                 </div>
 
                 <div className="form-group">
                     <div className="custom-file">
-                        <label className="custom-file-label">Upload your photo</label>
+                        <label className="custom-file-label">Upload your photo <small>(may take a few seconds for changes to reflect)</small></label>
                         <input type="file" name="image" className="custom-file-input" id="photo"onChange={this.changeHandler}/>
                     </div>
                 </div>

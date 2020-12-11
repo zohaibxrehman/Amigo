@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import EditPassword from '../../components/editProfileComponents/EditPassword';
 import EditProfile from '../../components/editProfileComponents/EditProfile';
+import './EditProfilePage.css'
 
 
 class EditProfilePage extends Component {
@@ -10,13 +11,19 @@ class EditProfilePage extends Component {
         return ( 
 
             <div>
-            <div className='EditBox'>
-                <div className='ProfileBox'>
-                    {/* pass down user id  */}
-                <EditProfile userid={userid}/>
-                <EditPassword userid={userid}/>
+                <div className='EditBox'>
+                <h2>User Settings</h2>
+                    <div className='ProfileBox'>
+                        <EditProfile userid={userid}/>
+                    </div>
                 </div>
-            </div> 
+
+                <div className='EditBox'>
+                    <h2>Change Password</h2>
+                    <div className='ProfileBox'>
+                        <EditPassword userid={userid}/>
+                    </div>
+                </div>
             </div> 
 
          );

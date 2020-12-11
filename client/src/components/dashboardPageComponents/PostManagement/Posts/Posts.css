@@ -15,8 +15,11 @@
     padding-right: 10px;
 }
 
-.postTitle {
+.postTitleAdmin {
     margin-top: 7px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .postPhoto {
@@ -35,6 +38,9 @@
     margin-bottom: 0px;
     margin-top: 10px;
     font-size: 22px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 a {
@@ -43,8 +49,8 @@ a {
 }
 
 #userPostModifyAdmin {
-    margin-left:auto;
-    margin-right:30px;
+    margin-left: auto;
+    margin-right: 30px;
 }
 
 #userPostModifyAdmin ul {
@@ -58,17 +64,17 @@ a {
     margin-bottom: 15px;
     margin-left: 25px;
     display: inline-block;
-    list-style: none; /* Gets rid of list bullet points */		
+    list-style: none; /* Gets rid of list bullet points */
 }
 
-.cursorDesignPosts{
+.cursorDesignPosts {
     cursor: pointer;
     box-shadow: 2px 4px 4px 2px rgba(0, 0, 0, 0.1),
         0 5px 7px 0 rgba(0, 0, 0, 0.15);
-    
+
     background-color: #f1f1f1;
 }
-.reported{
+.reported {
     height: 5px;
 }
 .img-decoration {

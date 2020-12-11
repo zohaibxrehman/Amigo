@@ -165,7 +165,7 @@ export const getUserByIDForEdit = (editProfileComp, userid) => {
                 editProfileComp.setState({
                     firstname: json.firstName,
                     lastname: json.lastName,
-                    username: json.location,
+                    username: json.username,
                     email: json.email
                     }  
                );

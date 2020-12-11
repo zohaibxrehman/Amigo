@@ -14,7 +14,7 @@
     border: none;
 }
 
-.navbarBlack a {
+.navfloatright {
     float: right;
     color: white !important;
     text-align: center;
@@ -46,8 +46,8 @@
     margin-top: 10px;
 }
 
-.logoName {
-    color: white;
+.navLogoName {
+    color: white !important;
     font-size: 20px;
     float: left;
     margin-bottom: 2px;
@@ -56,4 +56,13 @@
 
 .loginPageButton {
     height: 50px;
+    border-radius: 10px;
+    transition: 0.5s;
+    text-decoration: none !important;
+}
+
+.loginPageButton:hover {
+    transform: scale(1.2);
+    z-index: 2;
+    transition: 0.5s;
 }
