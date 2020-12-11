@@ -24,6 +24,9 @@
 
 .postTitle {
     margin-top: 7px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .userPhoto {
