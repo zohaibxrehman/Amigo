@@ -601,7 +601,7 @@ app.delete('/posts/:id', mongoChecker, authenticateCreatorOrAdmin, async (req, r
 })
 
 // Serve the build
-// app.use(express.static(path.join(__dirname, "/client/build")));
+app.use(express.static(path.join(__dirname, "/client/build")));
 
 app.listen(port, () => {
     log(`Listening on port ${port}...`);
