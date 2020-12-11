@@ -17,18 +17,6 @@ class Login extends Component {
         const { loginUser } = this.props
         //  We need check credentials with the server with a callback and authorise user.
         login(this,loginUser)
-
-
-        // if(username==='user' && password === 'user'){
-        //     // link to user dashboard
-        //     loginUser('user')
-        //     window.location.href='/userdashboard'
-        // } else if (username==='admin' && password === 'admin'){
-        //     loginUser('user')
-        //     window.location.href='/admindashboard'
-        // } else{
-        //     alert("Please enter a valid credential")
-        // }
     }
 
     usernameHandler = (e) => {
@@ -40,6 +28,7 @@ class Login extends Component {
         e.preventDefault();
         this.setState({password: e.target.value})
     }
+    
     render() { 
         const { username, password } = this.state
         return (

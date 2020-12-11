@@ -32,7 +32,12 @@ class EditPassword extends Component {
         e.preventDefault();
 
         editUserPassword(this)
-        alert("Successful updated password")
+        
+        if (this.state.userid) {
+            window.location.href = `/user/${this.state.userid}`
+        } else {
+            window.location.href = `/userdashboard`
+        }
     }
 
 
