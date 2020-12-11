@@ -247,6 +247,23 @@ app.get("/api/users/check-session", (req, res) => {
     }
 });
 
+app.post('/api/create-admin', mongoChecker, async (req, res) => {
+    try {
+        const admin = new Admin({
+            username: 'admin',
+            password: 'admin'
+        })
+        const newAdmin = await admin.save()
+        res.send(newAdmin)
+    } catch(error) {
+        if (isMongoError(error)) {
+            res.status(500).send('Internal server error')
+        } else {
+            res.status(400).send('Bad Request')
+        }
+    }
+})
+
 // User API Route
 app.post('/api/users/new', mongoChecker, multipartMiddleware, async (req, res) => {
     const { email, password, username, firstName, lastName } = req.body;
