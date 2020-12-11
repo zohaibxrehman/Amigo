@@ -62,7 +62,6 @@ export const logout = (logoutUser) => {
         .then(res => {
             if (res.status === 200){
                 logoutUser()
-                window.location.href = '/'
             }
         })
         .catch(error => {
