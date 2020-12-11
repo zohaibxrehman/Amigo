@@ -17,9 +17,9 @@ class UserPanel extends Component {
                 <h2>Dashboard</h2>
                 <hr/>
                 <UserProfile name={userName} photo={userPhoto} />
-                <div onClick={()=>changeView('dashboard')} className={view==='dashboard' ? ' changeBtn changeBtnActive' : 'changeBtn'}>
+                {/* <div onClick={()=>changeView('dashboard')} className={view==='dashboard' ? ' changeBtn changeBtnActive' : 'changeBtn'}>
                     <UserFunctionality userFunction={userPanelMap.dashboard} />
-                </div>
+                </div> */}
                 <div onClick={()=>changeView('userManagement')} className={view==='userManagement' ? ' changeBtn changeBtnActive' : 'changeBtn'}>
                     <UserFunctionality userFunction={userPanelMap.userManagement} />
                 </div>

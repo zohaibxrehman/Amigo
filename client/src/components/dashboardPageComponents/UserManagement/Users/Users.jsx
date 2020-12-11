@@ -25,7 +25,7 @@ export class Users extends Component {
     render() {
         const { image_url, firstName, lastName, location, email, phone, aboutMe, _id} = this.props.userInfo;
         const user_url = '/user/' + _id 
-
+        const edituser_url = '/edituser/' + _id 
         return (
             <div id='user_CardContainer'>
                     <div id='user_Card'>
@@ -49,7 +49,7 @@ export class Users extends Component {
                             <ul>
                                 {this.displayFlagged()}
                                 <li className="cursorDesignUsers">
-                                    <a href=""> 
+                                    <a href={edituser_url}> 
                                         <img className="img-decoration-user" src={ editIcon } alt=""/>
                                     </a>
                                 </li>

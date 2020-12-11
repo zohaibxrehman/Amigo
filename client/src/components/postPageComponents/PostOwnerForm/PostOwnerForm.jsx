@@ -9,16 +9,8 @@ export class PostOwnerForm extends Component {
         this.state = {
             name: '',
             phone: '',
-            email: '',
             message: ''
         }
-    }
-
-    submitHandler = (e) => {
-        e.preventDefault();
-        // let { name, phone, email, message } = this.state
-        // We need to make a server call and add this data to the server.
-        alert("Post successfully made.")
     }
 
     changeHandler = (e) => {
@@ -34,17 +26,16 @@ export class PostOwnerForm extends Component {
 
     render() {
 
-        const { creator, creatorName, creatorUrl } = this.props;
-        const { name, phone, email, message } = this.state;
+        const { creator, creatorName, creatorEmail, creatorUrl } = this.props;
+        const { name, phone, message } = this.state;
         return (
             <div id="postForm">
                 <PostOwnerProfile creator={creator} creatorName={creatorName} creatorUrl={creatorUrl}/>
-                <form onSubmit={this.submitHandler}>
+                <form>
                     <input type="text" id="name" placeholder="Name" value={ name } onChange = { this.changeHandler }/><br/>
                     <input type="text" id="phone" placeholder="Phone" value={ phone } onChange = { this.changeHandler }/><br/>
-                    <input type="text" id="email" placeholder="Email" value={ email } onChange = { this.changeHandler }/><br/>
                     <input type="text" id="message" placeholder="Hello, I am interested in.." value={ message } onChange = { this.changeHandler }/><br/>
-                    <input type="submit" value="Contact" />
+                    <a href={`mailto: ${creatorEmail}?subject=Amigo Notification [Posting]&body= Hi ${creatorName},%0D%0A%0D%0A ${message}%0D%0A%0D%0A Best Regards,%0D%0A ${name}%0D%0A${phone}`}><input type="button" value="Contact" /></a>
                 </form>
             </div>
         )
