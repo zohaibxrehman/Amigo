@@ -1,5 +1,9 @@
 "use strict";
+
+// read the environment variable (will be 'production' in production mode)
 const log = console.log;
+
+const env = process.env.NODE_ENV
 
 const express = require("express");
 // starting the express server
@@ -34,10 +38,12 @@ app.use(bodyParser.json());
 
 // cors
 const cors = require('cors')
-app.use(cors())
+if (env !== 'production') { app.use(cors()) }
 
 // express-session for managing user sessions
 const session = require("express-session");
+// to store session information on the database in production
+const MongoStore = require('connect-mongo')(session)
 const { mongo } = require("mongoose");
 const { networkInterfaces } = require("os");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -186,7 +192,9 @@ app.use(
         cookie: {
             expires: 300000,
             httpOnly: true
-        }
+        },
+        // store the sessions on the database in production
+        store: env === 'production' ? new MongoStore({ mongooseConnection: mongoose.connection }) : null
     })
 );
 
