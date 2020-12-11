@@ -16,7 +16,6 @@ class EditProfilePage extends Component {
                     <div className='ProfileBox'>
                         <EditProfile userid={userid}/>
                     </div>
-                    
                 </div>
 
                 <div className='EditBox'>

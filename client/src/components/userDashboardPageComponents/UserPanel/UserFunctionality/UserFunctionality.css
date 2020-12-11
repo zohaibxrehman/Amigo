@@ -4,9 +4,12 @@
 
 #userFunctionality {
     margin-bottom: 25px;
+    cursor: pointer;
+    color: darkorange;
 }
 
 #userFunctionalitySettings {
     margin-top: 50px;
     margin-bottom: 5px;
+    cursor: pointer;
 }
