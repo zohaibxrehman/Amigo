@@ -25,8 +25,7 @@ class EditPost extends Component {
 
     submitHandler = (e) => {
         e.preventDefault();
-        editPostInfo(this)
-
+        editPostInfo(this, this.state.photo)
         if(this.state.photo != null){
             editPostPhoto(e, this.state.postid)
         }
@@ -71,11 +70,7 @@ class EditPost extends Component {
     
     render() { 
         const { inputTitle, inputPrice, inputLocation, inputDescription, preferences } = this.state
-        const checked_attr = (pref) =>{
-            if(preferences.includes(pref)){
-                return {"checked":true}
-            }
-        }
+
         return ( 
 
             <form onSubmit={this.submitHandler}>
@@ -117,61 +112,61 @@ class EditPost extends Component {
                         <div className="col-sm-2">Preferences</div>
                         <div className="col-sm-10">
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox"  value="Male" {...checked_attr("Male")} onChange={this.checkboxChangeHandler} />
+                                <input className="form-check-input" type="checkbox"  value="Male" checked={preferences.includes("Male")} onChange={this.checkboxChangeHandler} />
                                 <label className="form-check-label" >
                                     Male
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="Female" {...checked_attr("Female")} onChange={this.checkboxChangeHandler}/>
+                                <input className="form-check-input" type="checkbox" value="Female" checked={preferences.includes("Female")} onChange={this.checkboxChangeHandler}/>
                                 <label className="form-check-label" >
                                     Female
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="Student" {...checked_attr("Student")} onChange={this.checkboxChangeHandler}/>
+                                <input className="form-check-input" type="checkbox" value="Student" checked={preferences.includes("Student")} onChange={this.checkboxChangeHandler}/>
                                 <label className="form-check-label" >
                                     Student
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="Professional" {...checked_attr("Professional")}onChange={this.checkboxChangeHandler}/>
+                                <input className="form-check-input" type="checkbox" value="Professional" checked={preferences.includes("Professional")}onChange={this.checkboxChangeHandler}/>
                                 <label className="form-check-label" >
                                     Professional
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="Elderly" {...checked_attr("Elderly")} onChange={this.checkboxChangeHandler}/>
+                                <input className="form-check-input" type="checkbox" value="Elderly" checked={preferences.includes("Elderly")} onChange={this.checkboxChangeHandler}/>
                                 <label className="form-check-label" >
                                     Elderly
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="No Smoking" {...checked_attr("No Smoking")}onChange={this.checkboxChangeHandler}/>
+                                <input className="form-check-input" type="checkbox" value="No Smoking" checked={preferences.includes("No Smoking")}onChange={this.checkboxChangeHandler}/>
                                 <label className="form-check-label" >
                                     No Smoking
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="No Drinking" {...checked_attr("No Drinking")} onChange={this.checkboxChangeHandler}/>
+                                <input className="form-check-input" type="checkbox" value="No Drinking" checked={preferences.includes("No Drinking")} onChange={this.checkboxChangeHandler}/>
                                 <label className="form-check-label" >
                                     No Drinking
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="No Partying" {...checked_attr("No Partying")} onChange={this.checkboxChangeHandler}/>
+                                <input className="form-check-input" type="checkbox" value="No Partying" checked={preferences.includes("No Partying")} onChange={this.checkboxChangeHandler}/>
                                 <label className="form-check-label" >
                                     No Partying
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="No Pets" {...checked_attr("No Pets")} onChange={this.checkboxChangeHandler} />
+                                <input className="form-check-input" type="checkbox" value="No Pets" checked={preferences.includes("No Pets")} onChange={this.checkboxChangeHandler} />
                                 <label className="form-check-label" >
                                     No Pets
                                 </label>
                             </div>
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="420 Friendly" {...checked_attr("420 Friendly")}onChange={this.checkboxChangeHandler}/>
+                                <input className="form-check-input" type="checkbox" value="420 Friendly" checked={preferences.includes("420 Friendly")}onChange={this.checkboxChangeHandler}/>
                                 <label className="form-check-label" >
                                     420 Friendly
                                 </label>

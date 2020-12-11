@@ -5,9 +5,9 @@ import './UserFunctionality.css'
 class UserFunctionality extends Component {
 
     setDivId(functionality){
-        let divId = "userFunctionality";
+        let divId = "userFunctionalityAdmin";
         if (functionality === "Settings"){
-            divId = "userFunctionalitySettings";
+            divId = "userFunctionalitySettingsAdmin";
         }
         return divId;
     }

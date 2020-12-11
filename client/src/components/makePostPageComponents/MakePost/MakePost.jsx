@@ -18,22 +18,8 @@ class MakePost extends Component {
     submitHandler = (e) => {
         e.preventDefault();
         addPost(this,e)
-        // let { inputTitle, inputPrice, inputLocation, preferences, inputDescription } = this.state
-        // We need to make a server call and add this data to the server.
-        // alert("Post successfully made.")
-
     }
 
-    // changeHandler = (e) => {
-    //     e.preventDefault();
-    //     const target = e.target;
-    //     const value = target.value;
-    //     const name = target.id;
-
-    //     this.setState({
-    //         [name]: value 
-    //       });
-    // }
     changeHandler = (e) => {
         e.preventDefault();
         const target = e.target;

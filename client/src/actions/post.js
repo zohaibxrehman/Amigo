@@ -177,6 +177,7 @@ export const addPost = (makePost,e) => {
             if (res.status === 200) {
                 // If student was added successfully, tell the user.
                 console.log('loaded post sucessfully')
+                window.location.href = '/finder'
             } else {
                 // If server couldn't add the student, tell the user.
                 // Here we are adding a generic message, but you could be more specific in your app.
@@ -260,21 +261,11 @@ export const deletePost = (id, updateInfo) => {
 
 
 // A function to send a PUT request with edit
-export const editPostInfo = (editPost) => {
+export const editPostInfo = (editPost, photo) => {
     // the URL for the request
     const url = `/api/posts/${editPost.state.postid}`;
     const { inputTitle, inputPrice, inputLocation, inputDescription, preferences } = editPost.state
-    // The data we are going to send in our request
-    // console.log(inputLocation)
-    // const data = new FormData()
-    // data.append('title', inputTitle)
-    // data.append('location', inputLocation)
-    // data.append('price', inputPrice)
-    // data.append('description', inputDescription)
-    // preferences.forEach((item) => data.append("preferences[]", item))
-    
-    // // data.append('image', e.target.image.files[0])
-    // console.log(data)
+
     const data = { 
         title: inputTitle , 
         location: inputLocation, 
@@ -282,7 +273,7 @@ export const editPostInfo = (editPost) => {
         preferences: preferences, 
         description: inputDescription
     }
-    console.log(data)
+
     const request = new Request(url, {
         method: 'put',
         body: JSON.stringify(data),
@@ -300,6 +291,9 @@ export const editPostInfo = (editPost) => {
             if (res.status === 200) {
                 // If student was added successfully, tell the user.
                 console.log('edit post sucessfully')
+                if (photo == null) {
+                    window.location.href = `/post/${editPost.state.postid}`
+                }
             } else {
                 // If server couldn't add the student, tell the user.
                 // Here we are adding a generic message, but you could be more specific in your app.

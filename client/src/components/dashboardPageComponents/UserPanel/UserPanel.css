@@ -2,11 +2,11 @@ h2 {
     color: orange;
 }
 
-.changeBtn {
+.changeBtnAdmin {
     cursor: pointer;
 }
 
-.changeBtnActive {
+.changeBtnActiveAdmin {
     color: orange;
 }
 
