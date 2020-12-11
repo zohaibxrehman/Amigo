@@ -62,6 +62,7 @@ export const logout = (logoutUser) => {
         .then(res => {
             if (res.status === 200){
                 logoutUser()
+                window.location.href = '/'
             }
         })
         .catch(error => {
@@ -247,6 +248,7 @@ export const editUserPhoto = (e,userid) => {
             if (res.status === 200) {
                 // If student was added successfully, tell the user.
                 console.log('edit user photo sucessfully')
+                window.location.href = `/user/${userid}`
             } else {
                 // If server couldn't add the student, tell the user.
                 // Here we are adding a generic message, but you could be more specific in your app.
@@ -278,8 +280,8 @@ export const editUserPassword = (editPassComp) => {
             // Handle response we get from the API.
             // Usually check the error codes to see what happened.
             if (res.status === 200) {
-
                 console.log('changed password successfully')
+                window.location.href = `/user/${editPassComp.state.userid}`
             } else {
 
                 console.log('error loading')

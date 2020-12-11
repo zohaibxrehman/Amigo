@@ -48,12 +48,6 @@ class EditProfile extends Component {
         if(this.state.photo != null){
             editUserPhoto(e,this.state.userid)
         }
-
-        if (this.state.userid) {
-            window.location.href = `/user/${this.state.userid}`
-        } else {
-            window.location.href = `/userdashboard`
-        }
     }
 
     render() { 

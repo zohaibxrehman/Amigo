@@ -30,17 +30,8 @@ class EditPassword extends Component {
 
     submitHandler = (e) => {
         e.preventDefault();
-
         editUserPassword(this)
-        
-        if (this.state.userid) {
-            window.location.href = `/user/${this.state.userid}`
-        } else {
-            window.location.href = `/userdashboard`
-        }
     }
-
-
 
     render() { 
         const {  password } = this.state
