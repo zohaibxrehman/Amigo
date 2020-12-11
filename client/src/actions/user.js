@@ -2,7 +2,7 @@
 
 
 export const checkSession = (app) => {
-    const url = "/users/check-session";
+    const url = "/api/users/check-session";
 
     fetch(url)
         .then(res => {
@@ -28,7 +28,7 @@ export const checkSession = (app) => {
 export const login = (loginComp, loginUser) => {
     // Create our request constructor with all the parameters we need
     // console.log(JSON.stringify(loginComp.state))
-    const request = new Request("/users/login", {
+    const request = new Request("/api/users/login", {
         method: "post",
         body: JSON.stringify(loginComp.state),
         headers: {
@@ -58,7 +58,7 @@ export const login = (loginComp, loginUser) => {
 
 
 export const logout = (logoutUser) => {
-    const url = "/users/logout"
+    const url = "/api/users/logout"
     fetch(url)
         .then(res => {
             if (res.status === 200){
@@ -82,7 +82,7 @@ export const registerUser = (registerComp, e) => {
     data.append('username', registerComp.state.username)
     data.append('image', e.target.image.files[0])
     console.log(e.target.image.files[0])
-    const request = new Request("/users/new", {
+    const request = new Request("/api/users/new", {
         method: "post",
         body: data,
 
@@ -104,7 +104,7 @@ export const registerUser = (registerComp, e) => {
 
 
 export const getUserByIDForCard = (userCardComp, userid) => {
-    const url = `/users/${userid}`;
+    const url = `/api/users/${userid}`;
 
     fetch(url)
         .then(res => {
@@ -134,7 +134,7 @@ export const getUserByIDForCard = (userCardComp, userid) => {
 
 export const reportUserByID = (userid) => {
 
-    const request = new Request(`/users/${userid}/report`, {
+    const request = new Request(`/api/users/${userid}/report`, {
         method: "post",
     });
     fetch(request)
@@ -152,7 +152,7 @@ export const reportUserByID = (userid) => {
 
 
 export const getUserByIDForEdit = (editProfileComp, userid) => {
-    const url = `/users/${userid}`;
+    const url = `/api/users/${userid}`;
 
     fetch(url)
         .then(res => {
@@ -179,7 +179,7 @@ export const getUserByIDForEdit = (editProfileComp, userid) => {
 // A function to send a PUT request with edit
 export const editProfileInfo = (editProfileComp) => {
     // the URL for the request
-    const url = `/users/${editProfileComp.state.userid}`;
+    const url = `/api/users/${editProfileComp.state.userid}`;
     const { firstname, lastname, email, username } = editProfileComp.state
     // The data we are going to send in our request
     
@@ -226,7 +226,7 @@ export const editProfileInfo = (editProfileComp) => {
 
 export const editUserPhoto = (e,userid) => {
     // the URL for the request
-    const url = `/users/${userid}/img`;
+    const url = `/api/users/${userid}/img`;
 
     // The data we are going to send in our request
     
@@ -261,7 +261,7 @@ export const editUserPhoto = (e,userid) => {
 
 export const editUserPassword = (editPassComp) => {
     // the URL for the request
-    const url = `/users/${editPassComp.state.userid}/password`;
+    const url = `/api/users/${editPassComp.state.userid}/password`;
 
     const request = new Request(url, {
         method: "put",

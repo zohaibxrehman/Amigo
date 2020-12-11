@@ -1,5 +1,5 @@
 export const checkSession = (admin) => {
-    const url = "/users/check-session";
+    const url = "/api/users/check-session";
 
     fetch(url)
         .then(res => {
@@ -19,7 +19,7 @@ export const checkSession = (admin) => {
 
 export const getPosts = (postList) => {
     // the URL for the request
-    const url = "/posts";
+    const url = "/api/posts";
 
     // Since this is a GET request, simply call fetch on the URL
     fetch(url)
@@ -62,7 +62,7 @@ export const getPosts = (postList) => {
 };
 
 export const getUsers= (userList) => {
-    const url = "/users";
+    const url = "/api/users";
 
     fetch(url)
         .then(res => {
@@ -83,7 +83,7 @@ export const getUsers= (userList) => {
 
 export const deleteUser = (id, updateInfo) => {
     // the URL for the request
-    const url = "/users/" + id;
+    const url = "/api/users/" + id;
 
 
     // Create our request constructor with all the parameters we need
