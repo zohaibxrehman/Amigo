@@ -53,12 +53,9 @@ class EditProfile extends Component {
         alert("Successful EditProfile")
     }
 
-
-
     render() { 
-        const { firstname, lastname, email, password, username } = this.state
+        const { firstname, lastname, email, username } = this.state
         return ( 
-
             <form onSubmit={ this.submitHandler }>
                 <div className="form-group">
                     <label>First name</label>
