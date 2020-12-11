@@ -39,8 +39,6 @@ export const getUserByIDForPosts = (userComp) => {
                                         if (res.status === 200) {
                                             // return a promise that resolves with the JSON body
                                             return res.json();
-                                        } else {
-                                            alert("Could not get posts");
                                         }
                                     })
                                     .then(json => {
