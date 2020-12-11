@@ -29,7 +29,7 @@ class EditProfile extends Component {
         // const value = target.value;
         const name = target.id;
         if(name === "photo"){
-            console.log(target.files[0])
+
             this.setState(
                 {[name]: target.files[0]
                 });

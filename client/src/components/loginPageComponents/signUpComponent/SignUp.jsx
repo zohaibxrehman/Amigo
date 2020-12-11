@@ -23,7 +23,6 @@ class SignUp extends Component {
         // const value = target.value;
         const name = target.id;
         if(name === "photo"){
-            console.log(target.files[0])
             this.setState(
                 {[name]: target.files[0]
                 });
@@ -36,7 +35,6 @@ class SignUp extends Component {
     submitHandler = (e) => {
         e.preventDefault();
         registerUser(this,e)
-        window.location.href = '/login'
     }
 
     render() { 

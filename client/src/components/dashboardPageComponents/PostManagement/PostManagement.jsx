@@ -20,7 +20,7 @@ class PostManagement extends Component {
             let idName = 'Post' + i
             renderPosts.push(<tr key={idName}>{this.renderPost(posts, updatePosts, i*3, i*3 + 3)}</tr>)
         }
-        console.log(">>" + renderPosts)
+
         return renderPosts
     }
 

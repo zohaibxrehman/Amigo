@@ -72,7 +72,6 @@ export const getPosts = (postList) => {
     // Since this is a GET request, simply call fetch on the URL
     fetch(url)
         .then(res => {
-            console.log(res)
             if (res.status === 200) {
                 // return a promise that resolves with the JSON body
                 // console.log(res.json())
@@ -142,8 +141,6 @@ export const getPostsById = (post, id) => {
             }).catch(error =>{
                 console.log(error)
             })
-            console.log(json)
-            
         })
         .catch(error => {
             console.log(error);
@@ -266,7 +263,6 @@ export const deletePost = (id, updateInfo) => {
 export const editPostInfo = (editPost) => {
     // the URL for the request
     const url = `/api/posts/${editPost.state.postid}`;
-    console.log(editPost)
     const { inputTitle, inputPrice, inputLocation, inputDescription, preferences } = editPost.state
     // The data we are going to send in our request
     // console.log(inputLocation)
@@ -336,10 +332,9 @@ export const editPostPhoto = (e,postid) => {
             // Handle response we get from the API.
             // Usually check the error codes to see what happened.
             if (res.status === 200) {
-
                 console.log('edit post sucessfully')
+                window.location.href = `/post/${postid}`
             } else {
-
                 console.log('error loading')
             }
         })

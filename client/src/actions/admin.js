@@ -24,7 +24,6 @@ export const getPosts = (postList) => {
     // Since this is a GET request, simply call fetch on the URL
     fetch(url)
         .then(res => {
-            console.log(res)
             if (res.status === 200) {
                 // return a promise that resolves with the JSON body
                 // console.log(res.json())

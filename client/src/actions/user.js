@@ -48,7 +48,6 @@ export const login = (loginComp, loginUser) => {
             if (json.currentUser !== undefined) {
                 loginUser(json.currentUser);
                 window.location.href = '/finder'
-
             }
         })
         .catch(error => {
@@ -81,7 +80,7 @@ export const registerUser = (registerComp, e) => {
     data.append('password', registerComp.state.password)
     data.append('username', registerComp.state.username)
     data.append('image', e.target.image.files[0])
-    console.log(e.target.image.files[0])
+
     const request = new Request("/api/users/new", {
         method: "post",
         body: data,
@@ -95,6 +94,7 @@ export const registerUser = (registerComp, e) => {
             // decide what to do after user clicks register
                 console.log("User registered")
             }
+            window.location.href = '/login'
         })
         .catch(error => {
             console.log(error);

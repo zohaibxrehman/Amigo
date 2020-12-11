@@ -26,15 +26,9 @@ class EditPost extends Component {
     submitHandler = (e) => {
         e.preventDefault();
         editPostInfo(this)
-        console.log(this)
+
         if(this.state.photo != null){
             editPostPhoto(e, this.state.postid)
-        }
-
-        if (this.state.postid) {
-            window.location.href = `/post/${this.state.postid}`
-        } else {
-            window.location.href = `/userdashboard`
         }
     }
 
@@ -44,7 +38,6 @@ class EditPost extends Component {
         // const value = target.value;
         const name = target.id;
         if(name === "photo"){
-            console.log(target.files[0])
             this.setState(
                 {[name]: target.files[0]
                 });
