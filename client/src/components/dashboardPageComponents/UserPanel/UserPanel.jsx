@@ -17,13 +17,10 @@ class UserPanel extends Component {
                 <h2>Dashboard</h2>
                 <hr/>
                 <UserProfile name={userName} photo={userPhoto} />
-                {/* <div onClick={()=>changeView('dashboard')} className={view==='dashboard' ? ' changeBtn changeBtnActive' : 'changeBtn'}>
-                    <UserFunctionality userFunction={userPanelMap.dashboard} />
-                </div> */}
-                <div onClick={()=>changeView('userManagement')} className={view==='userManagement' ? ' changeBtn changeBtnActive' : 'changeBtn'}>
+                <div onClick={()=>changeView('userManagement')} className={view==='userManagement' ? ' changeBtnAdmin changeBtnActiveAdmin' : 'changeBtnAdmin'}>
                     <UserFunctionality userFunction={userPanelMap.userManagement} />
                 </div>
-                <div onClick={()=>changeView('postManagement')} className={view==='postManagement' ? ' changeBtn changeBtnActive' : 'changeBtn'}>
+                <div onClick={()=>changeView('postManagement')} className={view==='postManagement' ? ' changeBtnAdmin changeBtnActiveAdmin' : 'changeBtnAdmin'}>
                     <UserFunctionality userFunction={userPanelMap.postManagement} />
                 </div>
             </div>
