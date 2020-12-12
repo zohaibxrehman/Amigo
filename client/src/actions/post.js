@@ -77,7 +77,7 @@ export const getPosts = (postList) => {
                 // console.log(res.json())
                 return res.json();
             } else {
-                alert("Could not get posts");
+                console.log('unable to get posts')
             }
         })
         .then(json => {
@@ -90,7 +90,7 @@ export const getPosts = (postList) => {
                         return resq.json();
                     }
                     else{
-                        alert("Could not get User");
+                        console.log('unable to get users')
                     }
                 }).then(json_user => {
                     json[i]["creator_name"] = json_user.firstName + " " + json_user.lastName;
@@ -119,7 +119,7 @@ export const getPostsById = (post, id) => {
                 // return a promise that resolves with the JSON body
                 return res.json();
             } else {
-                alert("Could not get posts");
+                console.log('unable to get posts')
             }
         })
         .then(json => {
@@ -131,7 +131,7 @@ export const getPostsById = (post, id) => {
                     return resq.json();
                 }
                 else{
-                    alert("Could not get User");
+                    console.log('unable to get users')
                 }
             }).then(json_user => {
                 json["creator_email"] = json_user.email;
