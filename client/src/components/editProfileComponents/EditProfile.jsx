@@ -44,7 +44,7 @@ class EditProfile extends Component {
 
     submitHandler = (e) => {
         e.preventDefault();
-        editProfileInfo(this)
+        editProfileInfo(this, this.state.photo)
         if(this.state.photo != null){
             editUserPhoto(e,this.state.userid)
         }
