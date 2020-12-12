@@ -177,17 +177,12 @@ export const getUserByIDForEdit = (editProfileComp, userid) => {
 };
 
 // A function to send a PUT request with edit
-export const editProfileInfo = (editProfileComp) => {
+export const editProfileInfo = (editProfileComp, photo) => {
     // the URL for the request
     const url = `/api/users/${editProfileComp.state.userid}`;
     const { firstname, lastname, email, username } = editProfileComp.state
     // The data we are going to send in our request
-    
-    // const data = new FormData()
-    // data.append('email', email)
-    // data.append('username', username)
-    // data.append('firstName', firstname)
-    // data.append('lastName', lastname)
+  
     const data = {
         email: email,
         username: username,
@@ -211,8 +206,10 @@ export const editProfileInfo = (editProfileComp) => {
             // Handle response we get from the API.
             // Usually check the error codes to see what happened.
             if (res.status === 200) {
- 
                 console.log('edit user sucessfully')
+                if (photo==null) {
+                    window.location.href = `/user/${editProfileComp.state.userid}`
+                }
             } else {
 
                 console.log('error loading')
