@@ -53,7 +53,7 @@ Here, you will be able to view all the postings made on Amigo. You will be able 
 ### Make a New Post View - https://dry-spire-46880.herokuapp.com/makepost
 Once logged in as a user you will be able to create a post by clicking on Make a Post on the postings page. 
 
-<img src='./screenshots/make-a-post.png' width=70%>
+<img src='./screenshots/makepost.png' width=70%>
 
 ### Post View - https://dry-spire-46880.herokuapp.com/post/<:postid>
 Once you click on a post in postings page, you will be taken to another page with post details and ability to contact the user who made the post by filling the form, which will prefill email with information based on your form input with the post creator's email as the sender. 
