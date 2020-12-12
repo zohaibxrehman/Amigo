@@ -98,6 +98,8 @@ The base URL will precede all the routes listed below.
 ```
 POST /api/users/login
 
+Purpose: Logging in a user
+
 Expected Type: raw JSON
 
 Expected Data: {
@@ -105,20 +107,16 @@ Expected Data: {
     "password": "user"
 }
 
-Returns:
+Returns: {
+    "currentUser": "user"
+}
 
-1) If admin not in database:
-code: 404, message: Admin does not exist
-2) If user not in database:
-code: 404, message: User does not exist
-3) If MongoDB error:
-code: 500, message: Internal Server Error
-4) Otherwise:
-code: 400, message: Bad Request. Could not login user
 ```
 
 ```
 POST /api/users/new
+
+Purpose: Creating a new user
 
 Expected Type: form-data
 
@@ -133,47 +131,74 @@ Expected Data:
 | lastName  | Text | Rehman           |
 | password  | Text | user             |
 
+Returns: the mongodb document of the newly created user
+
 ```
 ```
 POST /api/create-admin
 
-This route exists to initialise an admin with 
-username of admin and password of admin.
+Purpose : Initialises an admin with username of admin and password of admin.
+
+No expected data
+
+Returns: mongodb document of the created admin
 
 ```
 ```
 POST /api/posts/new
 
+Purpose: Creating a new post
+
+Authorization: need to be logged in as a user
+
 Expected Type: form-data
 
 Expected Data:
 
-| key         | type | value                                         |
-|-------------|------|-----------------------------------------------|
-| image       | File | housePhoto.jpg                                |
-| title       | Text | Seeking two roommates                         |
-| location    | Text | Waterloo                                      |
-| price       | Text | $330-$600                                     |
-| description | Text | Let's look for a nice place close to campus.  |
-|             |      | I found one place. Look at the photo.         |
+| key         | type       | value                                         |
+|-------------|------------|-----------------------------------------------|
+| image       | File       | housePhoto.jpg                                |
+| title       | Text       | Seeking two roommates                         |
+| location    | Text       | Waterloo                                      |
+| price       | Text       | $330-$600                                     |
+| description | Text       | Let's look for a nice place close to campus.  |
+| preferences | List[Text] | ["No Smoking", "No Drinking"]                 |
 
+- location should be one of the following cities: [Toronto, Waterloo, London, Vancouver, Ottawa, Montreal, Mississauga, "Scarborough]
 
+- price should be one of the the following ranges: [$0-$300, $330-$600, $600-$900, $900-$1200, $1200-$1500, $1500-$2000, $2000-$3000, $3000+]
+
+- preferences should be a subset of [Male, Female Student, Professional, Elderly, No Smoking, No Drinking, No Partying, No Pets, 420 Friendly]
+
+Returns: mongodb document of the newly created post
 ```
 ```
 POST /api/posts/:id/report
 
+Purpose: Reporting an innaproriate post
 
+Authorization: need to be logged in as a user or admin
+
+Expects a valid post id in the url
+
+Returns: updated post document where the flagged parameter will be true
 
 ```
 ```
 POST /api/users/:id/report
 
-Expected Type: raw JSON
+Purpose: Reporting an innaproriate user
 
+Authorization: need to be logged in as a user or admin
 
+Expects valid id in the url
+
+Returns: updated user document where the flagged parameter will be true
 ```
 ```
 PUT /api/users/:id
+
+Purpose: Updating user information
 
 Expected Type: raw JSON
 
@@ -184,10 +209,16 @@ Expected Data: {
     "lastName": "Rehman"
 }
 
+Returns: updated user document
+
 
 ```
 ```
 PUT /api/users/:id/password
+
+Purpose: Updating user password
+
+Authorization: need to be logged in as the user with user _id = id
 
 Expected Type: raw JSON
 
@@ -195,91 +226,122 @@ Expected Data: {
     "password": "dino123"
 }
 
+Returns: updated user document where the password parameter will be the updated password
+
 
 ```
 ```
 PUT /api/users/:id/img
 
+Purpose: Updating user profile photo
+
+Authorization: need to be logged in as as the user with user _id = id
+
 Expected Type: form-data
 
 Expected Data: 
 
+| key         | type | value                                         |
+|-------------|------|-----------------------------------------------|
+| image       | File | newUserPhoto.jpg                              |
 
-
+Returns: updated user document
 
 ```
 ```
 PUT /api/posts/:id
 
+Purpose: Updating post information
+
+Authorization: need to be logged in as as the creator of the post with _id = id or as admin
+
 Expected Type: raw JSON
 
+Expected Data: a valid post id is needed in the url
 
+{
+    "title": "Seeking four bedroom house",
+    "location": "Waterloo",
+    "price": "$1200-$1500",
+    "preferences": ["No smoking", "No drinking"],
+    "description": "Looking for two friendly university students. If this sounds like you then hit me up. Looking forward to meeting you amigo! :)"
+}
+
+Returns: updated post document
 ```
 ```
 PUT /api/posts/:id/img
 
-Expected Type: raw JSON
+Purpose: Updating post image
 
+Authorization: need to be logged in as as the creator of the post with _id = id or as admin
 
-```
-```
-PUT /api/users/:id
+Expected Type: form-data
 
-Expected Type: raw JSON
+Expected Data:
 
-
-```
-```
-PUT /api/posts/:id
-
-Expected Type: raw JSON
-
+| key         | type       | value                                         |
+|-------------|------------|-----------------------------------------------|
+| image       | File       | newPostPhoto.jpg                              |
 
 ```
 ```
 GET /api/users/logout
 
-Expected Type: raw JSON
+Purpose: Logging out a user
 
-
+Expects a logged in session to exist.
+Will Destroy this session and send a 200 status code.
 ```
 ```
 GET /api/posts
 
-Expected Type: raw JSON
+Purpose: Retrieving post information of all posts
+
+Returns: post document of all the posts
 
 
 ```
 ```
 GET /api/users/:id
 
+Purpose: Retrieving a particular user's information
+
 Expected Type: raw JSON
 
-
+Returns: user document of the user with user's _id = id
 ```
 ```
 GET /api/users
 
+Purpose: Retrieving user information of all users
+
 Expected Type: raw JSON
 
-
+Returns: user document of all the users
 ```
 ```
 GET /api/posts/:id
 
+Purpose: Retrieing post information of a particular post
+
 Expected Type: raw JSON
 
-
+Returns: post document of the post where post's _id = id
 ```
 ```
 GET /api/users/check-session
 
+Purpose: Checking is user's session still exists
+
 Expected Type: raw JSON
 
+Returns: {
+    "currentUser": "user",
+    "currentUserId": "5fd3e4a6772ba1148ab9f355" (this is mongodb ObjectId)
+}
 
 ```
-
-
 
 ### Install dependencies and run
 
