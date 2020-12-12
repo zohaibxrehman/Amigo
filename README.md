@@ -93,6 +93,7 @@ Base URL = http://localhost:5000
 ```
 The base URL will precede all the routes listed below.
 
+
 ### Routes
 
 ```
@@ -110,7 +111,6 @@ Expected Data: {
 Returns: {
     "currentUser": "user"
 }
-
 ```
 
 ```
@@ -132,7 +132,6 @@ Expected Data:
 | password  | Text | user             |
 
 Returns: the mongodb document of the newly created user
-
 ```
 ```
 POST /api/create-admin
@@ -142,7 +141,6 @@ Purpose : Initialises an admin with username of admin and password of admin.
 No expected data
 
 Returns: mongodb document of the created admin
-
 ```
 ```
 POST /api/posts/new
@@ -182,7 +180,6 @@ Authorization: need to be logged in as a user or admin
 Expects a valid post id in the url
 
 Returns: updated post document where the flagged parameter will be true
-
 ```
 ```
 POST /api/users/:id/report
@@ -210,8 +207,6 @@ Expected Data: {
 }
 
 Returns: updated user document
-
-
 ```
 ```
 PUT /api/users/:id/password
@@ -227,8 +222,6 @@ Expected Data: {
 }
 
 Returns: updated user document where the password parameter will be the updated password
-
-
 ```
 ```
 PUT /api/users/:id/img
@@ -246,7 +239,6 @@ Expected Data:
 | image       | File | newUserPhoto.jpg                              |
 
 Returns: updated user document
-
 ```
 ```
 PUT /api/posts/:id
@@ -267,6 +259,12 @@ Expected Data: a valid post id is needed in the url
     "description": "Looking for two friendly university students. If this sounds like you then hit me up. Looking forward to meeting you amigo! :)"
 }
 
+- location should be one of the following cities: [Toronto, Waterloo, London, Vancouver, Ottawa, Montreal, Mississauga, "Scarborough]
+
+- price should be one of the the following ranges: [$0-$300, $330-$600, $600-$900, $900-$1200, $1200-$1500, $1500-$2000, $2000-$3000, $3000+]
+
+- preferences should be a subset of [Male, Female Student, Professional, Elderly, No Smoking, No Drinking, No Partying, No Pets, 420 Friendly]
+
 Returns: updated post document
 ```
 ```
@@ -283,7 +281,6 @@ Expected Data:
 | key         | type       | value                                         |
 |-------------|------------|-----------------------------------------------|
 | image       | File       | newPostPhoto.jpg                              |
-
 ```
 ```
 GET /api/users/logout
@@ -299,8 +296,6 @@ GET /api/posts
 Purpose: Retrieving post information of all posts
 
 Returns: post document of all the posts
-
-
 ```
 ```
 GET /api/users/:id
@@ -343,32 +338,42 @@ Returns: {
 
 ```
 
-### Install dependencies and run
 
+### Install dependencies and run on your local machine
+
+React, NodeJS and MongoDB database should be installed on your machine.
 Clone the project onto your local machine.
-```bash
+```bash=1
 git clone https://github.com/csc309-fall-2020/team39.git
 ```
 
 Install all the npm packages. Go into the project folder and install all npm packages:
 
-```bash
-cd team39/amigo/
+```bash=2
+cd team39
 npm install
+cd client/
+npm install
+cd ../
 ```
 
 To run the application:
 
-```bash
+```bash=7
+mkdir mongo-data
+mongod --dbpath mongo-data
+npm start
+cd client/
 npm start
 ```
 
-The application runs on **localhost:3000** on your local machine.
+The application runs on **localhost:3000** on your local machine. The server runs on **localhost:5000** on your local machine.
 
 ## External Libraries Used:
-React
-
-Leafleft (Maps)
+- React
+- Leafleft (Maps)
+- bcryptjs
+- cloudinary
 
 Bootstrap 4 (Very limited use. Only used for fonts and login page.)
 
