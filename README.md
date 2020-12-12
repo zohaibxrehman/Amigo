@@ -369,6 +369,252 @@ npm start
 
 The application runs on **localhost:3000** on your local machine. The server runs on **localhost:5000** on your local machine.
 
+## Repository Map
+
+```bash
+.
+└── team39
+    ├── README.md
+    ├── client
+    │   ├── README.md
+    │   ├── package-lock.json
+    │   ├── package.json
+    │   ├── public
+    │   │   ├── favicon.ico
+    │   │   ├── index.html
+    │   │   ├── logo.svg
+    │   │   ├── logo192.png
+    │   │   ├── logo512.png
+    │   │   ├── manifest.json
+    │   │   └── robots.txt
+    │   └── src
+    │       ├── App.css
+    │       ├── App.js
+    │       ├── App.test.js
+    │       ├── actions
+    │       │   ├── admin.js
+    │       │   ├── post.js
+    │       │   └── user.js
+    │       ├── assets
+    │       │   ├── admin-icon.png
+    │       │   ├── dashboard-icon.png
+    │       │   ├── delete-icon.svg
+    │       │   ├── delete.png
+    │       │   ├── edit-icon.svg
+    │       │   ├── edit.png
+    │       │   ├── flagged.png
+    │       │   ├── houseBanner.jpg
+    │       │   ├── interior-1.jpg
+    │       │   ├── list-icon.png
+    │       │   ├── logo.svg
+    │       │   ├── mailicon.svg
+    │       │   ├── map-icon.png
+    │       │   ├── motto.jpg
+    │       │   ├── phoneicon.svg
+    │       │   ├── post-management.png
+    │       │   ├── potrait2.jpg
+    │       │   ├── potrait3.jpg
+    │       │   ├── potrait4.png
+    │       │   ├── settings.png
+    │       │   ├── user-activity.png
+    │       │   └── user-management.png
+    │       ├── components
+    │       │   ├── Navbar
+    │       │   │   ├── Navbar.css
+    │       │   │   └── Navbar.jsx
+    │       │   ├── UserCard
+    │       │   │   ├── UserCard.css
+    │       │   │   └── UserCard.jsx
+    │       │   ├── dashboardPageComponents
+    │       │   │   ├── NotificationPanel
+    │       │   │   │   ├── NotificationPanel.css
+    │       │   │   │   ├── NotificationPanel.jsx
+    │       │   │   │   └── PostNotification
+    │       │   │   │       ├── EditPost
+    │       │   │   │       │   ├── EditPost.css
+    │       │   │   │       │   └── EditPost.jsx
+    │       │   │   │       ├── PostNotification.css
+    │       │   │   │       └── PostNotification.jsx
+    │       │   │   ├── PostManagement
+    │       │   │   │   ├── PostManagement.css
+    │       │   │   │   ├── PostManagement.jsx
+    │       │   │   │   └── Posts
+    │       │   │   │       ├── Posts.css
+    │       │   │   │       └── Posts.jsx
+    │       │   │   ├── UserManagement
+    │       │   │   │   ├── UserManagement.css
+    │       │   │   │   ├── UserManagement.jsx
+    │       │   │   │   └── Users
+    │       │   │   │       ├── Users.css
+    │       │   │   │       └── Users.jsx
+    │       │   │   ├── UserPanel
+    │       │   │   │   ├── UserFunctionality
+    │       │   │   │   │   ├── UserFunctionality.css
+    │       │   │   │   │   └── UserFunctionality.jsx
+    │       │   │   │   ├── UserPanel.css
+    │       │   │   │   ├── UserPanel.jsx
+    │       │   │   │   └── UserProfile
+    │       │   │   │       ├── UserProfile.css
+    │       │   │   │       └── UserProfile.jsx
+    │       │   │   └── index.js
+    │       │   ├── editPostComponent
+    │       │   │   ├── EditPost.jsx
+    │       │   │   └── MakePost.css
+    │       │   ├── editProfileComponents
+    │       │   │   ├── EditPassword.jsx
+    │       │   │   ├── EditProfile.css
+    │       │   │   └── EditProfile.jsx
+    │       │   ├── finderPageComponents
+    │       │   │   ├── Filter
+    │       │   │   │   ├── Filter.css
+    │       │   │   │   └── Filter.jsx
+    │       │   │   ├── MapFinder
+    │       │   │   │   ├── MapFinder.css
+    │       │   │   │   └── MapFinder.jsx
+    │       │   │   ├── Pagination
+    │       │   │   │   ├── Pagination.css
+    │       │   │   │   └── Pagination.jsx
+    │       │   │   ├── Post
+    │       │   │   │   ├── Post.css
+    │       │   │   │   └── Post.jsx
+    │       │   │   ├── Posts
+    │       │   │   │   ├── Posts.css
+    │       │   │   │   └── Posts.jsx
+    │       │   │   └── index.js
+    │       │   ├── landingPageComponents
+    │       │   │   ├── bannerComponent
+    │       │   │   │   ├── Banner.css
+    │       │   │   │   └── Banner.jsx
+    │       │   │   ├── index.js
+    │       │   │   ├── mottoComponent
+    │       │   │   │   ├── Motto.css
+    │       │   │   │   ├── Motto.jsx
+    │       │   │   │   └── MottoText.jsx
+    │       │   │   └── reviewsComponent
+    │       │   │       ├── Review.css
+    │       │   │       ├── Review.jsx
+    │       │   │       └── Reviews.jsx
+    │       │   ├── loginPageComponents
+    │       │   │   ├── loginComponent
+    │       │   │   │   ├── Login.css
+    │       │   │   │   └── Login.jsx
+    │       │   │   └── signUpComponent
+    │       │   │       ├── SignUp.css
+    │       │   │       └── SignUp.jsx
+    │       │   ├── makePostPageComponents
+    │       │   │   └── MakePost
+    │       │   │       ├── MakePost.css
+    │       │   │       └── MakePost.jsx
+    │       │   ├── postPageComponents
+    │       │   │   ├── PostDescription
+    │       │   │   │   ├── PostDescription.css
+    │       │   │   │   └── PostDescription.jsx
+    │       │   │   ├── PostHeader
+    │       │   │   │   ├── PostHeader.css
+    │       │   │   │   └── PostHeader.jsx
+    │       │   │   ├── PostImage
+    │       │   │   │   ├── PostImage.css
+    │       │   │   │   └── PostImage.jsx
+    │       │   │   ├── PostOwnerForm
+    │       │   │   │   ├── PostOwnerForm.css
+    │       │   │   │   ├── PostOwnerForm.jsx
+    │       │   │   │   └── PostOwnerProfile
+    │       │   │   │       ├── PostOwnerProfile.css
+    │       │   │   │       └── PostOwnerProfile.jsx
+    │       │   │   ├── PostRequirement
+    │       │   │   │   ├── PostRequirement.css
+    │       │   │   │   └── PostRequirement.jsx
+    │       │   │   └── index.js
+    │       │   └── userDashboardPageComponents
+    │       │       ├── NotificationPanel
+    │       │       │   ├── NotificationPanel.css
+    │       │       │   ├── NotificationPanel.jsx
+    │       │       │   └── PostNotification
+    │       │       │       ├── EditPost
+    │       │       │       │   ├── EditPost.css
+    │       │       │       │   └── EditPost.jsx
+    │       │       │       ├── PostNotification.css
+    │       │       │       └── PostNotification.jsx
+    │       │       ├── UserActivity
+    │       │       │   ├── UserActivity.css
+    │       │       │   ├── UserActivity.jsx
+    │       │       │   └── UserActivityPost
+    │       │       │       ├── UserActivityPost.css
+    │       │       │       └── UserActivityPost.jsx
+    │       │       ├── UserPanel
+    │       │       │   ├── UserFunctionality
+    │       │       │   │   ├── UserFunctionality.css
+    │       │       │   │   └── UserFunctionality.jsx
+    │       │       │   ├── UserPanel.css
+    │       │       │   ├── UserPanel.jsx
+    │       │       │   └── UserProfile
+    │       │       │       ├── UserProfile.css
+    │       │       │       └── UserProfile.jsx
+    │       │       └── index.js
+    │       ├── index.css
+    │       ├── index.js
+    │       ├── logo.svg
+    │       ├── reportWebVitals.js
+    │       ├── setupTests.js
+    │       └── views
+    │           ├── DashboardPage
+    │           │   ├── DashboardPage.css
+    │           │   └── DashboardPage.jsx
+    │           ├── EditPostPage
+    │           │   ├── EditPostPage.css
+    │           │   └── EditPostPage.jsx
+    │           ├── EditProfilePage
+    │           │   ├── EditProfilePage.css
+    │           │   └── EditProfilePage.jsx
+    │           ├── FinderPage
+    │           │   ├── FinderPage.css
+    │           │   └── FinderPage.jsx
+    │           ├── LandingPage
+    │           │   ├── LandingPage.css
+    │           │   └── LandingPage.jsx
+    │           ├── LoginPage
+    │           │   ├── LoginPage.css
+    │           │   └── LoginPage.jsx
+    │           ├── MakePostPage
+    │           │   ├── MakePostPage.css
+    │           │   └── MakePostPage.jsx
+    │           ├── PostPage
+    │           │   ├── PostPage.css
+    │           │   └── PostPage.jsx
+    │           ├── UserDashboardPage
+    │           │   ├── UserDashboardPage.css
+    │           │   └── UserDashboardPage.jsx
+    │           ├── UserPage
+    │           │   ├── UserPage.css
+    │           │   └── UserPage.jsx
+    │           └── index.js
+    ├── db
+    │   └── mongoose.js
+    ├── models
+    │   ├── admin.js
+    │   ├── user.js
+    │   └── userPost.js
+    ├── package-lock.json
+    ├── package.json
+    ├── screenshots
+    │   ├── admindashboard1.png
+    │   ├── admindashboard2.png
+    │   ├── editpost.png
+    │   ├── editprofile.png
+    │   ├── finder1.png
+    │   ├── finder2.png
+    │   ├── homepage.png
+    │   ├── login.png
+    │   ├── makepost.png
+    │   ├── postpage.png
+    │   ├── register.png
+    │   ├── userdashboard.png
+    │   └── userprofile.png
+    └── server.js
+
+67 directories, 171 files
+```
+
 ## External Libraries Used:
 - React
 - Leafleft (Maps)
