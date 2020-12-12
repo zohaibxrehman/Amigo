@@ -620,7 +620,6 @@ The application runs on **localhost:3000** on your local machine. The server run
 - Leafleft (Maps)
 - bcryptjs
 - cloudinary
-
-Bootstrap 4 (Very limited use. Only used for fonts and login page.)
+- Bootstrap 4 (Very limited use. Only used for fonts and login page.)
 
 **The pictures are taken from prexel which are free for commercial use and no attribution is required. The icons are taken from Icons8.**
