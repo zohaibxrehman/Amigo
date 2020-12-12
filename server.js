@@ -403,25 +403,6 @@ app.post('/api/users/:id/report', mongoChecker, authenticateUserOrAdmin, async (
     }
 })
 
-app.post('/api/users/:id/unreport', mongoChecker, authenticateAdmin, async (req, res) => {
-    try {
-        const user = await User.findById(req.params.id)
-        if (!user) {
-            res.status(404).send("User not found")
-            return;
-        }
-        user.flagged = false
-        user.save()
-        res.send(user)
-    } catch(error) {
-        if (isMongoError(error)) {
-            res.status(500).send('Internal server error')
-        } else {
-            res.status(400).send('Bad Request')
-        }
-    }
-})
-
 app.delete('/api/users/:id', mongoChecker, authenticateAdmin, async (req, res) => {
     try {
         // remove user
@@ -573,25 +554,6 @@ app.post('/api/posts/:id/report', mongoChecker, authenticateUserOrAdmin, async (
             return;
         }
         post.flagged = true
-        post.save()
-        res.send(post)
-    } catch(error) {
-        if (isMongoError(error)) {
-            res.status(500).send('Internal server error')
-        } else {
-            res.status(400).send('Bad Request')
-        }
-    }
-})
-
-app.post('/api/posts/:id/unreport', mongoChecker, authenticateAdmin, async (req, res) => {
-    try {
-        const post = await UserPost.findById(req.params.id)
-        if (!post) {
-            res.status(404).send("Post not found")
-            return;
-        }
-        post.flagged = false
         post.save()
         res.send(post)
     } catch(error) {
