@@ -29,20 +29,20 @@ export const getPosts = (postList) => {
                 // console.log(res.json())
                 return res.json();
             } else {
-                alert("Could not get posts");
+                console.log('unable to get posts')
             }
         })
         .then(json => {
             // the resolved promise with the JSON body
             for (let i = 0; i < json.length; i++){
-                const user_url = "/users/" + json[i]["creator"]
+                const user_url = "/api/users/" + json[i]["creator"]
 
                 fetch(user_url).then(resq => {
                     if (resq.status === 200){
                         return resq.json();
                     }
                     else{
-                        alert("Could not get User");
+                        console.log('unable to get users')
                     }
                 }).then(json_user => {
                     json[i]["creator_name"] = json_user.firstName + " " + json_user.lastName;
