@@ -1,9 +1,9 @@
-# team39 - Amigo
+# Amigo
 
 ## Purpose:
 Canada is the land of immigrants.  The newcomers don’t have contacts when they arrive and as a result, have difficulty finding roommates to stay at shared rentals at affordable pricing. This issue is faced by professionals and students alike.  We aim to simplify the process of finding roommates.
 
-## Usage & Current Functionality:
+## Usage & Functionality:
 
 ### Homepage - https://dry-spire-46880.herokuapp.com/
 The home page displays information and acts as the landing page for our project. On the homepage, you can click the posting button on the navbar to view the posting page, login button to login in as an admin or an user, dashboard button for viewing your dashboard once logged in. 
